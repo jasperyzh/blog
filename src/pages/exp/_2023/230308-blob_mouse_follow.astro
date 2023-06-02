@@ -1,0 +1,73 @@
+<pre>
+<a target="_blank" href="https://www.youtube.com/watch?v=kySGqoU7X-s">Hyperplexed - blurry blob follow mouse slowly</a>
+<a target="_blank" href="https://www.poppr.be/en">inspiration: https://www.poppr.be/en</a>
+</pre>
+<section>
+  <div id="blob"></div>
+  <div id="blur"></div>
+</section>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  section {
+    background: #333;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    min-height: 100vmin;
+  }
+
+  #blur {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    backdrop-filter: blur(200px);
+  }
+  #blob {
+    background-color: white;
+    height: 500px;
+    aspect-ratio: 1/1;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+
+    background: linear-gradient(to right, aquamarine, mediumpurple);
+
+    animation: rotate 13s infinite;
+  }
+  @keyframes rotate {
+    from {
+      rotate: 0deg;
+    }
+    60% {
+      scale: 1 1.2;
+    }
+    to {
+      rotate: 360deg;
+    }
+  }
+</style>
+<script is:inline>
+  const blob = document.getElementById("blob");
+
+  document.body.onpointermove = (event) => {
+    const { clientX, clientY } = event;
+
+    // blob.style.left = `${clientX}px`;
+    // blob.style.top = `${clientY}px`;
+    blob.animate(
+      {
+        left: `${clientX}px`,
+        top: `${clientY}px`,
+      },
+      { duration: 4000, fill: "forwards" }
+    );
+  };
+</script>

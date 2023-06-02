@@ -1,0 +1,63 @@
+---
+import Icon from "astro-icon";
+
+interface Props {
+  href: string;
+  classList?: object;
+  icon_left?: {
+    name: string;
+    title: string;
+  };
+  icon_right?: {
+    name: string;
+    title: string;
+  };
+}
+
+const {
+  href = "#",
+  classList,
+  icon_left,
+  icon_right,
+  ...rest
+} = Astro.props as Props;
+
+// https://icon-sets.iconify.design/ant-design/
+// https://icon-sets.iconify.design/ph/
+---
+
+<a class:list={["link", classList]} href={href} {...rest}>
+  {
+    icon_left && (
+      <Icon
+        name={icon_left.name}
+        title={icon_left.title}
+        width="24"
+        height="24"
+      />
+    )
+  }
+  <slot><span>[link]</span></slot>
+  {
+    icon_right && (
+      <Icon
+        name={icon_right.name}
+        title={icon_right.title}
+        width="24"
+        height="24"
+      />
+    )
+  }
+</a>
+<style>
+  a.link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+  }
+  :where(a.active, a:hover) {
+    background-color: rgba(0 0 0 / 8%);
+  }
+</style>

@@ -1,0 +1,70 @@
+html {
+    color-scheme: light dark;
+    font-family: "IBM Plex Mono", "Courier New", Courier, monospace;
+
+}
+:root {
+    --spacer: 0.5rem;
+    --transition-backgroundColor: background-color 0.8s ease;
+    --body-backgroundColor: #fafafa;
+}
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+body {
+    background-color: var(--body-backgroundColor);
+    line-height: 1.5;
+
+    /* sticky_footer */
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+
+    & > main {
+        flex-grow: 1;
+    }
+    & > footer {
+        margin-top: auto;
+    }
+}
+
+main > article {
+    width: min(70ch, 100% - 4rem);
+    margin-inline: auto;
+}
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+
+    /* fixes for markdown? */
+    :is(& > ol, & > ul) {
+        line-height: 1;
+    }
+
+    .task-list-item {
+        list-style-type: none;
+    }
+    ul ul,
+    ol ol {
+        padding-left: 1rem;
+    }
+}
+svg,
+img,
+video {
+    max-width: 100%;
+    height: auto;
+}
+a {
+    transition: var(--transition-backgroundColor);
+}
+
+.small {
+    @apply tw-text-sm;
+}
+.muted {
+    @apply tw-text-gray-400;
+}

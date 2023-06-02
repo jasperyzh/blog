@@ -1,0 +1,194 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Bs5Accordion from "../bootstrap/_Bs5Accordion.astro";
+
+import "./scss/_bootstrap.scss";
+
+const focus_education = [
+  {
+    title: "Asrama Harian Luar Bandar",
+    content:
+      "Students from rural areas often have to travel for hours to reach school. To help remove education barriers, alleviate socio-economic pressures and tackle student dropouts, PETRONAS is building two Rural Daily Hostels in Pulau Balambangan, Sabah, and Paloh, Sarawak, which provide a transit location en-route to school and back during the day and week.",
+  },
+  {
+    title: "Mara Junior Science College (MRSM) in Sabah and Sarawak",
+    content:
+      "PETRONAS provided financial assistance for the construction of two MARA Junior Science Colleges in Ranau, Sabah, and Bintulu, Sarawak. The intention is to spur students’ further interest in STEM while developing talent and cultivating an interest from students in this area.",
+  },
+  {
+    title: "Program MRSM Budi PETRONAS",
+    content:
+      "PETRONAS funds the annual education allowance of selected students from underprivileged families in 6 MRSMs in Sabah and Sarawak, for school uniforms, textbooks, sports apparel, learning aids and other items. To date, RM2 million has been invested and 481 students have benefited from this programme, which is a collaborative effort with MARA.",
+  },
+  {
+    title:
+      "Transforming English in Terengganu (TRENGLISH) – part of Sentuhan ILMU",
+    content:
+      "Initiated by the State Government of Terengganu, this programme enhances English communication skills amongst local students. Since 2015, PETRONAS has contributed over RM1.3 million towards supporting 40 secondary schools and 10 primary schools throughout the state. The initiatives include the Mega TRENGLISH camp, circulation of magazines, newspaper insertions and TRENGLISH activities in schools.",
+  },
+  {
+    title: "Underprivileged Students",
+    content:
+      "We believe education is an equaliser and no learner should be left behind.",
+    button: { href: "/programs/underprivileged-students/" },
+  },
+  {
+    title: "Youth",
+    content:
+      "Yayasan PETRONAS will roll out a nationwide competition on social entrepreneurship in the digital age for Malaysian youths.",
+    button: { href: "/program/youth/" },
+  },
+  {
+    title: "Secondary School Students (14-16 years olds)",
+    content:
+      "Students can be taught to creatively use science and technology to solve real world issues. We want to promote a culture of innovation amongst students.",
+    button: { href: "/program/secondary-school-students/" },
+  },
+];
+
+const focus_community = [
+  {
+    title: "Better Health – Food Basket",
+    content:
+      "In 2021, Yayasan PETRONAS provided relief for communities impacted by Covid-19 pandemic through the contributions of medical and non-medical equipment to hospitals and frontliners as well as food aids for more than 14,400 families under the Foodbank initiative in collaboration with PETRONAS Dagangan Berhad.",
+  },
+
+  {
+    title: "Better Water Supply and Sanitation – Disaster Relief",
+    content:
+      "Partnering with MyKasih, PETRONAS has stepped in to provide food and various essential supplies to affected families of floods and other natural disasters. The items, including bottled water and tissue paper, help get them back to their daily lives and reduce the risk of transmittable diseases.",
+  },
+
+  {
+    title: "Better Water Supply and Sanitation – Water for Life",
+    content:
+      "With our partner Malaysian Nature Society (MNS), PETRONAS prioritises water conservation for future generations. There are a number of villages and communities living without piped water. This programme addresses the issue by creating facilities that supply clean water to the community.",
+  },
+  { title: "Planting Tomorrow" },
+];
+
+const focus_environment = [
+  {
+    title: "Forest Conservation",
+    content:
+      "Imbak Canyon is a treasure trove of flora and fauna – a place where scientific minds and traditional healers complement one another almost perfectly. PETRONAS has conducted a range of awareness and educational activities, community outreach programmes and capacity building efforts such as train-the-trainer programmes and sustainable development camps.",
+  },
+  {
+    title: "Mangrove Conservation",
+    content: `<p>
+<b>Seeding the love for nature</b>
+<br>
+Planting mangrove trees is one of the communal activities offered by the ecoCare programme, involving local communities, government agencies, private sector, university students and volunteers.
+<br>
+<b>Preserving Nature, Preserving Our Future</b>
+<br>
+Almost 12,000 mangrove trees have been planted in a 14,000 sqm area along Sungai Kerteh, Terengganu.</p>`,
+  },
+  {
+    title: "Marine Conservation",
+    content: `<p>
+<b>Love for the ocean runs deep</b>
+<br>
+The Biodiversity, Environmental and Conservation (BEACON) project aims to conserve and regenerate marine biodiversity in offshore areas in Bintulu, Sarawak.
+Thousands of reef balls are embedded into the seabed, so that corals can amalgamate. Diving lessons, and beach and coral cleaning are regular activities here.
+At Similajau Beach, the sea turtles are returning to land, and sightings of dolphins are now back in trend.</p>`,
+  },
+];
+---
+
+<Layout is_bootstrap={true}>
+  <Bs5Accordion
+    classes="mb-4"
+    accordion_id="focus_education"
+    items={focus_education}
+  />
+
+  <Bs5Accordion
+    classes="mb-4"
+    accordion_id="focus_community"
+    items={focus_community}
+  />
+
+  <Bs5Accordion
+    classes="mb-4"
+    accordion_id="focus_environment"
+    items={focus_environment}
+  />
+
+  <div class="container py-5 text-center">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card h-100 border-0">
+          <!-- <img
+            src="http://stagingyayasan.fishermen-analytics.com/wp-content/uploads/yayasan/touch-1.png"
+            class="mx-auto"
+            style="aspect-ratio: 1/1"
+            alt=""
+          /> -->
+          <div class="card-body">
+            <h3 class="h4">Sentuhan Ilmu</h3>
+            <p class="card-text">
+              The Sentuhan Ilmu series of programmes aims to improve education
+              outcomes and better the opportunities for underprivileged
+              students.
+            </p>
+          </div>
+          <div class="card-footer border-0 bg-transparent">
+            <a href="/focus-area/education" class="btn btn-primary"
+              >Learn More</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 border-0">
+          <!--   <img
+            src="http://stagingyayasan.fishermen-analytics.com/wp-content/uploads/yayasan/touch-2.png"
+            class="mx-auto"
+            style="aspect-ratio: 1/1"
+            alt=""
+          /> -->
+          <div class="card-body">
+            <h3 class="h4">Sentuhan Harapan</h3>
+            <p class="card-text">
+              PETRONAS has worked with single mothers, rural entrepreneurs and
+              others from marginalised communities across Malaysia.
+            </p>
+          </div>
+          <div class="card-footer border-0 bg-transparent">
+            <a href="/focus-area/community" class="btn btn-primary"
+              >Learn More</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 border-0">
+          <!--  <img
+            src="http://stagingyayasan.fishermen-analytics.com/wp-content/uploads/yayasan/touch-3.png"
+            class="mx-auto"
+            style="aspect-ratio: 1/1"
+            alt=""
+          /> -->
+          <div class="card-body">
+            <h3 class="h4">Sentuhan Alam</h3>
+            <p class="card-text">
+              Home to the world’s oldest rainforest and rich marine life,
+              Malaysia has an opportunity to showcase how sustainability can be
+              balanced with progress.
+            </p>
+          </div>
+          <div class="card-footer border-0 bg-transparent">
+            <a href="/focus-area/environment" class="btn btn-primary"
+              >Learn More</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    import * as bootstrap from "bootstrap";
+  </script>
+</Layout>

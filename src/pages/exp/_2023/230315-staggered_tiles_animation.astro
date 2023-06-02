@@ -1,0 +1,193 @@
+<pre>
+230315 - [Anime.js Staggered Grid Effect](https://www.youtube.com/watch?v=bAwEj_mSzOs)
+</pre>
+
+<section id="bg">
+  <div id="tiles"></div>
+
+  <h1 id="title" class="centered">
+    The name of the game is
+    <span class="fancy">Chess</span>.
+  </h1>
+
+  <h2 id="chess" class="centered">
+    &#x265F &#x1F451 &#x1F40E &#x1F54D &#x1F5FC &#x1F52B <br />Chess is fun!?
+  </h2>
+  <!-- <i id="icon" class="fa-solid fa-chess centered"></i> -->
+</section>
+
+<script
+  is:inline
+  src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+></script>
+<script is:inline>
+  const wrapper = document.getElementById("tiles");
+
+  let columns = 0,
+    rows = 0,
+    toggled = false;
+
+  const toggle = () => {
+    toggled = !toggled;
+
+    document.getElementById("bg").classList.toggle("toggled");
+  };
+
+  const handleOnClick = (index) => {
+    toggle();
+
+    let test = anime({
+      targets: ".tile",
+      opacity: toggled ? 0 : 1,
+      delay: anime.stagger(50, {
+        grid: [columns, rows],
+        from: index,
+      }),
+    });
+    console.log(test);
+  };
+
+  const createTile = (index) => {
+    const tile = document.createElement("div");
+
+    tile.classList.add("tile");
+
+    tile.style.opacity = toggled ? 0 : 1;
+
+    tile.onclick = (e) => handleOnClick(index);
+
+    return tile;
+  };
+
+  const createTiles = (quantity) => {
+    Array.from(Array(quantity)).map((tile, index) => {
+      wrapper.appendChild(createTile(index));
+    });
+  };
+
+  const createGrid = () => {
+    wrapper.innerHTML = "";
+
+    const size = document.getElementById("bg").clientWidth > 800 ? 100 : 50;
+
+    columns = Math.floor(document.getElementById("bg").clientWidth / size);
+    rows = Math.floor(document.getElementById("bg").clientHeight / size);
+
+    wrapper.style.setProperty("--columns", columns);
+    wrapper.style.setProperty("--rows", rows);
+
+    createTiles(columns * rows);
+  };
+
+  createGrid();
+
+  window.onresize = () => createGrid();
+</script>
+
+<style is:global lang="scss">
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  @keyframes background-pan {
+    from {
+      background-position: 0% center;
+    }
+
+    to {
+      background-position: -200% center;
+    }
+  }
+
+  #bg {
+    animation: background-pan 10s linear infinite;
+    background: linear-gradient(to right, var(--g1), var(--g2), var(--g1));
+    background-size: 200%;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0px;
+    position: relative;
+  }
+
+  #bg.toggled {
+    animation: none;
+  }
+
+  #bg.toggled > #title {
+    opacity: 0;
+  }
+
+  #bg.toggled > #chess {
+    opacity: 1;
+  }
+
+  #bg.toggled > #tiles > .tile:hover {
+    opacity: 0.1 !important;
+  }
+
+  #bg {
+    --g1: rgb(98, 0, 234);
+    --g2: rgb(236, 64, 122);
+    .centered {
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #tiles {
+      height: calc(100vh - 1px);
+      width: calc(100vw - 1px);
+      position: relative;
+      z-index: 2;
+
+      display: grid;
+      grid-template-columns: repeat(var(--columns), 1fr);
+      grid-template-rows: repeat(var(--rows), 1fr);
+    }
+
+    .tile {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .tile:hover:before {
+      background-color: rgb(30, 30, 30);
+    }
+
+    .tile:before {
+      background-color: rgb(15, 15, 15);
+      content: "";
+      inset: 0.5px;
+      position: absolute;
+    }
+
+    #title {
+      color: white;
+      font-family: "Rubik", sans-serif;
+      font-size: 6vw;
+      margin: 0px;
+      pointer-events: none;
+      transition: opacity 1200ms ease;
+      width: 50vw;
+      z-index: 3;
+    }
+
+    #title > .fancy {
+      color: var(--g2);
+      font-family: "Dancing Script", cursive;
+      font-size: 1.5em;
+      line-height: 0.9em;
+    }
+
+    #chess {
+      color: rgba(255, 255, 255, 0.15);
+      font-size: 5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1200ms ease;
+      z-index: 1;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  }
+</style>

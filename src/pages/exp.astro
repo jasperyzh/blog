@@ -1,0 +1,960 @@
+---
+import Layout from "../layouts/Layout.astro";
+// import Debug from "astro/components/Debug.astro";
+
+// 2303
+// import ShinyCard from "./exp/_2301-2303/230322-shiny_card.astro";
+// import ShinyText from "./exp/_2301-2303/230322-shiny_text.astro";
+// import PolygonNavbar from "./exp/_2301-2303/230322-polygon_navbar.astro";
+// import HaikuGenerator from "./exp/230328-HaikuGenerator.astro";
+
+// from petrosains
+// import TestSliderParallax from "./TestSliderParallax.astro";
+// p5 import PetrosainsAnimation from "./petrosains-animation.astro";
+
+// import YoutubeApi from "./_youtube_api.astro";
+
+// const get_channels = await fetch("/data/230531-youtube_subscribed_data.json");
+
+import get_channels from "../../public/data/230531-youtube_subscribed_data.json";
+
+import BreathingShapes from "./exp/230424-breathing_shapes.astro";
+import { Debug } from "astro/components";
+---
+
+<Layout hide_header={false} hide_footer={false} main_classList={[]}>
+  <!-- <YoutubeApi /> -->
+
+  <!-- <Debug {get_channels} /> -->
+  
+  <section class="tw-grid tw-grid-cols-8 tw-gap-3 mx-auto px-4">
+    {
+      get_channels &&
+        get_channels.map((item) => (
+          <>
+            <article>
+              <a
+                href={`https://www.youtube.com/channel/${item.snippet.resourceId.channelId}`}
+                target="_blank"
+              >
+                <img src={item.snippet.thumbnails.default.url} alt="" />
+                <h2>
+                  {item.snippet.title} |{" "}
+                  <small>{item.contentDetails.totalItemCount}</small>
+                </h2>
+                <p class="yt-desc">{item.snippet.description}</p>
+              </a>
+            </article>
+          </>
+
+          // <p>{item.id}</p>
+          // <p>{item.snippet.publishedAt}</p>
+          // <p>{item.snippet.channelId}</p>
+        ))
+    }
+    <style>
+      .yt-desc {
+        display: -webkit-box;
+        -webkit-line-clamp: 5; /* limit to 5 lines of text */
+        -webkit-box-orient: vertical;
+        overflow: hidden; /* important to hide the rest of the text */
+      }
+    </style>
+  </section>
+
+  <section>
+    <pre>SNS Button Simple hover effect - https://codepen.io/ryok_codepen/pen/vLoRVg</pre>
+    <div class="buttons">
+      <div class="button button-fb">
+        <i class="fa fa-facebook"></i>
+      </div>
+      <div class="button button-tw">
+        <i class="fa fa-twitter"></i>
+      </div>
+      <div class="button button-go">
+        <i class="fa fa-google-plus"></i>
+      </div>
+    </div>
+  </section>
+  <style lang="scss">
+    @import url(https://fonts.googleapis.com/css?family=Raleway:400,900);
+
+    $basic_button_width: 50px;
+    $basic_button_height: 50px;
+    $hover_button_width: 150px;
+
+    @mixin circle($color) {
+      background-color: $color;
+      color: #ffe;
+      width: $basic_button_width;
+      height: $basic_button_height;
+      border-radius: $basic_button_height / 2;
+      margin-bottom: $basic_button_height / 2;
+      text-align: center;
+      font-size: 130%;
+      line-height: $basic_button_height;
+      box-shadow: rgba(16, 25, 36, 0.65098) 3px 3px 8px 0px;
+    }
+
+    .buttons {
+      margin-top: 30px;
+      font-family: "Raleway", sans-serif;
+
+      .button {
+        margin: 25px auto;
+        transition: all 0.3s;
+        overflow: hidden;
+        cursor: pointer;
+        @include circle(goldenrod);
+
+        i:after {
+          margin-left: 10px;
+          letter-spacing: 1px;
+        }
+
+        &:hover {
+          width: $hover_button_width;
+        }
+      }
+
+      .button-fb:hover i:after {
+        content: "share";
+      }
+      .button-tw:hover i:after {
+        content: "tweet";
+      }
+      .button-go:hover i:after {
+        content: "+1";
+      }
+    }
+  </style>
+
+  <section>
+    <pre>
+  - [ ] try replicate filter component with shufflejs - <a href="https://prium.github.io/tryposh/component-filter.html" target="_blank">https://prium.github.io/tryposh/component-filter.html</a>
+</pre>
+  </section>
+
+  <section class="marquee">
+    <div>
+      <h2>Marquee in CSS -</h2>
+      <h2>Marquee in CSS -</h2>
+      <h2>Marquee in CSS -</h2>
+    </div>
+  </section>
+  <style>
+    .marquee {
+      height: 50px;
+      overflow: hidden;
+      position: relative;
+      background: #fefefe;
+      color: #333;
+      border: 1px solid #4a4a4a;
+      white-space: nowrap;
+    }
+    .marquee h2 {
+      display: inline-block;
+      margin: 0;
+      line-height: 50px;
+    }
+    .marquee > div {
+      display: inline-block;
+      position: absolute;
+      width: auto;
+      height: 100%;
+      transform: translateX(200%);
+      animation: scroll-left 10s linear infinite;
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(200%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .marquee > div {
+        animation-iteration-count: 1;
+        animation-duration: 0.01;
+        /* instead of animation: none, so an animationend event is 
+     * still available, if previously attached.
+     */
+        width: auto;
+        padding-left: 0;
+      }
+    }
+  </style>
+
+  <section class="tw-p-6" style="background-color: hsla(0,0%,90%,1);">
+    <pre>
+      <a href="https://simurai.com/lab/2011/08/21/brushed-metal">https://simurai.com/lab/2011/08/21/brushed-metal</a>
+      <a href="https://codepen.io/simurai/pen/kvyEeg">https://codepen.io/simurai/pen/kvyEeg</a></pre>
+    <button class="metal radial">✈</button>
+    <button class="metal linear">2</button>
+    <button class="metal linear">1</button>
+    <button class="metal linear">0</button>
+  </section>
+
+  <style>
+    /* Metal ------------------------- */
+    .metal {
+      position: relative;
+      margin: 40px auto;
+      outline: none;
+      text-align: center;
+      color: hsla(0, 0%, 20%, 1);
+      text-shadow: hsla(0, 0%, 40%, 0.5) 0 -1px 0,
+        hsla(0, 0%, 100%, 0.6) 0 2px 1px;
+
+      background-color: hsl(0, 0%, 90%);
+      box-shadow: inset hsla(0, 0%, 15%, 1) 0 0px 0px 4px,
+        /* border */ inset hsla(0, 0%, 15%, 0.8) 0 -1px 5px 4px,
+        /* soft SD */ inset hsla(0, 0%, 0%, 0.25) 0 -1px 0px 7px,
+        /* bottom SD */ inset hsla(0, 0%, 100%, 0.7) 0 2px 1px 7px,
+        /* top HL */ hsla(0, 0%, 0%, 0.15) 0 -5px 6px 4px,
+        /* outer SD */ hsla(0, 0%, 100%, 0.5) 0 5px 6px 4px; /* outer HL */
+
+      transition: color 0.2s;
+    }
+
+    /* Radial ------------------------- */
+
+    .radial.metal {
+      width: 160px;
+      height: 160px;
+      line-height: 160px;
+      border-radius: 80px;
+      background-image: -webkit-radial-gradient(
+          50% 0%,
+          8% 50%,
+          hsla(0, 0%, 100%, 0.5) 0%,
+          hsla(0, 0%, 100%, 0) 100%
+        ),
+        -webkit-radial-gradient(50% 100%, 12% 50%, hsla(0, 0%, 100%, 0.6) 0%, hsla(
+                0,
+                0%,
+                100%,
+                0
+              )
+              100%),
+        -webkit-radial-gradient(0% 50%, 50% 7%, hsla(0, 0%, 100%, 0.5) 0%, hsla(
+                0,
+                0%,
+                100%,
+                0
+              )
+              100%),
+        -webkit-radial-gradient(100% 50%, 50% 5%, hsla(0, 0%, 100%, 0.5) 0%, hsla(
+                0,
+                0%,
+                100%,
+                0
+              )
+              100%),
+        -webkit-repeating-radial-gradient(50% 50%, 100% 100%, hsla(0, 0%, 0%, 0)
+              0%, hsla(0, 0%, 0%, 0) 3%, hsla(0, 0%, 0%, 0.1) 3.5%),
+        -webkit-repeating-radial-gradient(50% 50%, 100% 100%, hsla(
+                0,
+                0%,
+                100%,
+                0
+              )
+              0%, hsla(0, 0%, 100%, 0) 6%, hsla(0, 0%, 100%, 0.1) 7.5%),
+        -webkit-repeating-radial-gradient(50% 50%, 100% 100%, hsla(
+                0,
+                0%,
+                100%,
+                0
+              )
+              0%, hsla(0, 0%, 100%, 0) 1.2%, hsla(0, 0%, 100%, 0.2) 2.2%),
+        -webkit-radial-gradient(50% 50%, 200% 50%, hsla(0, 0%, 90%, 1) 5%, hsla(
+                0,
+                0%,
+                85%,
+                1
+              )
+              30%, hsla(0, 0%, 60%, 1) 100%);
+    }
+
+    .metal.radial:before,
+    .metal.radial:after {
+      content: "";
+      top: 0;
+      left: 0;
+      position: absolute;
+      width: inherit;
+      height: inherit;
+      border-radius: inherit;
+
+      /* fake conical gradients */
+      background-image: -webkit-radial-gradient(
+          50% 0%,
+          10% 50%,
+          hsla(0, 0%, 0%, 0.1) 0%,
+          hsla(0, 0%, 0%, 0) 100%
+        ),
+        -webkit-radial-gradient(50% 100%, 10% 50%, hsla(0, 0%, 0%, 0.1) 0%, hsla(
+                0,
+                0%,
+                0%,
+                0
+              )
+              100%),
+        -webkit-radial-gradient(0% 50%, 50% 10%, hsla(0, 0%, 0%, 0.1) 0%, hsla(
+                0,
+                0%,
+                0%,
+                0
+              )
+              100%),
+        -webkit-radial-gradient(100% 50%, 50% 06%, hsla(0, 0%, 0%, 0.1) 0%, hsla(
+                0,
+                0%,
+                0%,
+                0
+              )
+              100%);
+    }
+    .metal.radial:before {
+      transform: rotate(65deg);
+    }
+    .metal.radial:after {
+      transform: rotate(-65deg);
+    }
+
+    /* Linear ------------------------- */
+
+    .metal.linear {
+      width: 100px;
+      font-size: 4em;
+      height: 80px;
+      border-radius: 0.5em;
+      background-image: -webkit-repeating-linear-gradient(
+          left,
+          hsla(0, 0%, 100%, 0) 0%,
+          hsla(0, 0%, 100%, 0) 6%,
+          hsla(0, 0%, 100%, 0.1) 7.5%
+        ),
+        -webkit-repeating-linear-gradient(left, hsla(0, 0%, 0%, 0) 0%, hsla(
+                0,
+                0%,
+                0%,
+                0
+              )
+              4%, hsla(0, 0%, 0%, 0.03) 4.5%),
+        -webkit-repeating-linear-gradient(left, hsla(0, 0%, 100%, 0) 0%, hsla(
+                0,
+                0%,
+                100%,
+                0
+              )
+              1.2%, hsla(0, 0%, 100%, 0.15) 2.2%),
+        linear-gradient(
+          180deg,
+          hsl(0, 0%, 78%) 0%,
+          hsl(0, 0%, 90%) 47%,
+          hsl(0, 0%, 78%) 53%,
+          hsl(0, 0%, 70%) 100%
+        );
+    }
+
+    /* Oval ------------------------- */
+
+    .metal.linear.oval {
+      margin-top: 100px;
+      width: 70px;
+      height: 60px;
+      line-height: 60px !important;
+      border-radius: 50%;
+      font: italic bold 3em/50px Georgia, "Times New Roman", Times, serif;
+    }
+
+    /* active ------------------------- */
+
+    .metal:active {
+      color: hsl(210, 100%, 40%);
+      text-shadow: hsla(210, 100%, 20%, 0.3) 0 -1px 0,
+        hsl(210, 100%, 85%) 0 2px 1px, hsla(200, 100%, 80%, 1) 0 0 5px,
+        hsla(210, 100%, 50%, 0.6) 0 0 20px;
+      box-shadow: inset hsla(210, 100%, 30%, 1) 0 0px 0px 4px,
+        /* border */ inset hsla(210, 100%, 15%, 0.4) 0 -1px 5px 4px,
+        /* soft SD */ inset hsla(210, 100%, 20%, 0.25) 0 -1px 0px 7px,
+        /* bottom SD */ inset hsla(210, 100%, 100%, 0.7) 0 2px 1px 7px,
+        /* top HL */ hsla(210, 100%, 75%, 0.8) 0 0px 3px 2px,
+        /* outer SD */ hsla(210, 50%, 40%, 0.25) 0 -5px 6px 4px,
+        /* outer SD */ hsla(210, 80%, 95%, 1) 0 5px 6px 4px; /* outer HL */
+    }
+  </style>
+
+  <BreathingShapes />
+
+  <section id="layout_art">
+    <div class="canvas">
+      <div class="box tw-bg-slate-500"></div>
+      <pre>hello world
+
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit magni minima itaque, nulla sequi doloremque nemo accusantium ipsa, aliquam ad, officia dolores? Labore facere est doloremque! Iure, omnis! Voluptate, nam?
+      </pre>
+    </div>
+    <div class="canvas">
+      <div class="box tw-bg-slate-500"></div>
+
+      <pre>hello world
+
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit magni minima itaque, nulla sequi doloremque nemo accusantium ipsa, aliquam ad, officia dolores? Labore facere est doloremque! Iure, omnis! Voluptate, nam?
+
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit magni minima itaque, nulla sequi doloremque nemo accusantium ipsa, aliquam ad, officia dolores? Labore facere est doloremque! Iure, omnis! Voluptate, nam?
+
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit magni minima itaque, nulla sequi doloremque nemo accusantium ipsa, aliquam ad, officia dolores? Labore facere est doloremque! Iure, omnis! Voluptate, nam?
+      </pre>
+    </div>
+  </section>
+  <style is:global>
+    #layout_art {
+      /* min-height: 100vh; */
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .canvas {
+      width: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 4/3;
+      @apply tw-bg-slate-100 tw-border tw-border-solid tw-border-gray-200;
+    }
+    .box {
+      position: relative;
+      aspect-ratio: 1/1;
+      width: calc(100% * 0.618);
+      max-width: 512px;
+    }
+    @media screen and (min-width: 1026px) {
+      #layout_art {
+        flex-wrap: nowrap;
+      }
+      .canvas {
+        aspect-ratio: 1/1;
+      }
+      .canvas pre {
+        position: absolute;
+        bottom: 0;
+        padding: 1rem 3rem;
+        display: block;
+      }
+    }
+    ::selection {
+      background: #a8a0e9;
+    }
+  </style>
+  <!-- <div slot="main" class="site-container">
+    <header>exp_header</header>
+    <main>exp_main</main>
+    <footer>exp_footer</footer>
+  </div> -->
+  <!-- <PolygonNavbar /> -->
+
+  <!-- 
+  <ShinyText />
+  <ShinyCard />
+  -->
+
+  <section id="blobs">
+    <pre><a href="https://codepen.io/mimikos/pen/oWJjYZ">https://codepen.io/mimikos/pen/oWJjYZ</a></pre>
+    <figure class="blob_canvas" style="width: 300px; height: 300px">
+      <svg
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 300 300"
+      >
+        <defs>
+          <filter id="goo_default">
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"
+            ></feGaussianBlur>
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+              result="goo"></feColorMatrix>
+            <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+          </filter>
+          <linearGradient id="MyGradient">
+            <stop offset="5%" stop-color="#40204c"></stop>
+            <stop offset="40%" stop-color="#a3225c"></stop>
+            <stop offset="100%" stop-color="#e24926"></stop>
+          </linearGradient>
+        </defs>
+        <mask id="maska_default">
+          <g class="blobs" filter="url(#goo_default)">
+            <circle
+              class="blob"
+              cx="150"
+              cy="80"
+              r="40"
+              transform="rotate(0) translate(0, 0) rotate(0)"
+              fill="#fff"></circle>
+            <circle
+              class="blob"
+              cx="150"
+              cy="200"
+              r="80"
+              transform="rotate(0) translate(0, 0) rotate(0)"
+              fill="#fff"></circle>
+          </g>
+        </mask>
+        <rect
+          x="0"
+          y="0"
+          mask="url(#maska_default)"
+          width="300"
+          height="300"
+          fill="url(#MyGradient)"
+        >
+        </rect>
+      </svg>
+    </figure>
+
+    <figure
+      class="blob_canvas"
+      style="width: 300px; height: 300px; --svg-rotate: 0deg; "
+    >
+      <svg
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 300 300"
+        style="rotate: var(--svg-rotate);"
+      >
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"
+            ></feGaussianBlur>
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+              result="goo"></feColorMatrix>
+            <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+          </filter>
+        </defs>
+        <mask id="maska" transform="rotate(0) translate(0, 0) rotate(0)">
+          <g class="blobs" filter="url(#goo)">
+            <circle
+              class="blob"
+              cx="50%"
+              cy="18%"
+              r="30"
+              transform="rotate(0) translate(0, 0) rotate(0)"
+              fill="#fff"></circle>
+            <circle
+              class="blob"
+              cx="50%"
+              cy="50%"
+              r="60"
+              transform="rotate(0) translate(0, 0) rotate(0)"
+              fill="#fff"></circle>
+          </g>
+        </mask>
+        <rect
+          x="0"
+          y="0"
+          mask="url(#maska)"
+          width="300"
+          height="300"
+          fill="#00A19C"
+        >
+        </rect>
+      </svg>
+    </figure>
+    <figure
+      class="blob_canvas"
+      style="width: 300px; height: 300px; --svg-rotate: 0deg; "
+    >
+      <svg
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 300 300"
+        style="rotate: var(--svg-rotate);"
+      >
+        <defs>
+          <filter id="goo2">
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"
+            ></feGaussianBlur>
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+              result="goo"></feColorMatrix>
+            <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+          </filter>
+        </defs>
+        <mask id="maska2" transform="rotate(0) translate(0, 0) rotate(0)">
+          <g class="blobs" filter="url(#goo2)">
+            <circle
+              class="blob"
+              cx="50%"
+              cy="25%"
+              r="30"
+              transform="rotate(0) translate(0, 0) rotate(0)"
+              fill="#fff"></circle>
+            <circle
+              class="blob"
+              cx="50%"
+              cy="50%"
+              r="60"
+              transform="rotate(0) translate(0, 0) rotate(0)"
+              fill="#fff"></circle>
+          </g>
+        </mask>
+        <rect
+          x="0"
+          y="0"
+          mask="url(#maska2)"
+          width="300"
+          height="300"
+          fill="#00A19C"
+        >
+        </rect>
+      </svg>
+    </figure>
+    <figure
+      class="blob_canvas"
+      style="width: 300px; height: 300px; --svg-rotate: 0deg; "
+    >
+      <svg
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 300 300"
+        style="rotate: var(--svg-rotate);"
+      >
+        <defs>
+          <filter id="goo3">
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"
+            ></feGaussianBlur>
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+              result="goo"></feColorMatrix>
+            <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+          </filter>
+        </defs>
+        <mask id="maska3" transform="rotate(0) translate(0, 0) rotate(0)">
+          <g class="blobs" filter="url(#goo3)">
+            <circle
+              class="blob"
+              cx="50%"
+              cy="31%"
+              r="30"
+              transform="rotate(0) translate(0, 0) rotate(0)"
+              fill="#fff"></circle>
+            <circle
+              class="blob"
+              cx="50%"
+              cy="50%"
+              r="60"
+              transform="rotate(0) translate(0, 0) rotate(0)"
+              fill="#fff"></circle>
+          </g>
+        </mask>
+        <rect
+          x="0"
+          y="0"
+          mask="url(#maska3)"
+          width="300"
+          height="300"
+          fill="#00A19C"
+        >
+        </rect>
+      </svg>
+    </figure>
+  </section>
+  <script
+    is:inline
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"
+  ></script>
+  <script is:inline>
+    const radius = 2;
+    TweenMax.staggerFromTo(
+      ".blob",
+      4,
+      {
+        cycle: {
+          attr: function (i) {
+            const r = i * 90;
+            return {
+              transform:
+                "rotate(" +
+                r +
+                ") translate(" +
+                radius +
+                ",0.1) rotate(" +
+                -r +
+                ")",
+            };
+          },
+        },
+      },
+      {
+        cycle: {
+          attr: function (i) {
+            const r = i * 90 + 360;
+            return {
+              transform:
+                "rotate(" +
+                r +
+                ") translate(" +
+                radius +
+                ",0.1) rotate(" +
+                -r +
+                ")",
+            };
+          },
+        },
+        ease: Linear.easeNone,
+        repeat: -1,
+      }
+    );
+  </script>
+
+  <section id="animate-from-display-none">
+    <h1>Animating a &ltdialog&gt element</h1>
+    <p>Animate from Display: None</p>
+    <a href="https://codepen.io/kevinpowell/pen/QWaBeGm"
+      >animating dialog and ::backdrop - codepen</a
+    >
+    <ol>
+      <li>Insert stuff</li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ol>
+    <button class="button open-button">open modal</button>
+
+    <!-- attribute open/closing will be added via js -->
+    <dialog class="modal" id="modal">
+      <h2>An interesting title</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum esse
+        nisi, laboriosam illum temporibus ipsam?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, quo.
+      </p>
+      <button class="button close-button">close modal</button>
+    </dialog>
+  </section>
+
+  <img src="/art/230404-perlin_noice.gif" />
+
+  <script is:inline>
+    const modal = document.querySelector("#modal");
+    const openModal = document.querySelector(".open-button");
+    const closeModal = document.querySelector(".close-button");
+
+    openModal.addEventListener("click", () => {
+      modal.showModal();
+    });
+
+    closeModal.addEventListener("click", () => {
+      modal.setAttribute("closing", "");
+
+      modal.addEventListener(
+        "animationend",
+        () => {
+          modal.removeAttribute("closing");
+          modal.close();
+        },
+        { once: true }
+      );
+    });
+  </script>
+
+  <style lang="scss" is:global>
+    #animate-from-display-none {
+      .modal {
+        box-shadow: var(--shadow-2), 0 0 0 100vw rgb(0 0 0 / 0.5);
+        background: #fff;
+        color: #222;
+        border: 0;
+        border-radius: 0.25rem;
+      }
+
+      .modal::backdrop {
+        background: rgb(0 0 0 / 0.5);
+        opacity: 0;
+      }
+
+      .modal[open] {
+        animation: slide-up 1000ms forwards, fade-in 500ms forwards;
+      }
+      // .modal[open]::backdrop {
+      //   animation: fade-in 500ms forwards;
+      // }
+
+      .modal[closing] {
+        display: block;
+        pointer-events: none;
+        inset: 0;
+        animation: fade-out 500ms forwards;
+      }
+
+      // .modal[closing]::backdrop {
+      //   animation: fade-out 500ms forwards;
+      // }
+
+      @keyframes fade-in {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fade-out {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes slide-up {
+        0% {
+          transform: translateY(100%);
+        }
+        100% {
+          transform: translateY(0%);
+        }
+      }
+
+      /* extra styling */
+      .modal {
+        max-width: 50ch;
+
+        & > * {
+          margin: 0 0 0.5rem 0;
+        }
+      }
+      button.button {
+        padding: 1rem;
+        background-color: blueviolet;
+        color: #fff;
+      }
+    }
+  </style>
+</Layout>
+
+<!-- 
+
+## Programming Project for noobs
+
+[Duel (a shooter game) by FAL ](https://openprocessing.org/sketch/453716)
+- [ ] QR code generator
+- [ ] Zipcode generator
+1. Name Generator
+2. Higher or Lower / Heads or Tails
+3. Temperature Converter
+4. Calculate your age in seconds
+5. Simple encryption/decryption
+6. Fizzbuzz
+7. Rock Paper Scissors and/or Rock Paper Scissors Lizard Spock
+8. Hangman
+9. Love Calculator
+10. Pseudorandom quote generator
+11. ~~Password generator~~
+12. Atomically correct time from an internet clock
+13. ~~Haiku generator~~
+14. Magic eight ball
+15. Collatz conjecture
+16. Reverse a string
+17. Count the vowels in a string
+18. Count the words in a string
+19. Minesweeper
+20. Connect four
+21. BMI calculator
+22. 4chan thread downloader (Images)
+23. Suduku generator / Solver
+24. Maze game and solution algorithm
+25. Decimal to Binary
+26. Picross solver
+27. Eulerian path
+28. Fibonacci sequence algorithm
+29. Calculate and print the factorial of 100 029.- Encryption collection. (Implement all of the tools in the rumkin collection: http://rumkin.com/tools/cipherd)
+30. Blackjack
+31. Text adventure Game
+32. Generate an ASCII image of a christmas tree to a user given height
+33. Area calculator
+34. Benfords law
+35. Hunt the wumpus
+36. Static website generator
+37. Crossword Game
+38. NTP Server
+39. Stronger password generator (with less chance of predicting an outcome)
+40. Find the largest number in an array, and print its position
+41. ASCII analogue clock
+42. Dijkstra's algorithm
+43. Text to more translator (bonus points for generating the sound)
+44. Noughts and Crosses / Tic tac toe / X&O
+45. Snake Game
+46. FTP client (TCP or UDP with ACK)
+47. Telnet server
+48. IMP interpreter
+49. Tetris
+50. Conway's Game of Life
+51. Web Crawler
+52. Text Editor
+53. RSS Feed creator
+54. Evaluate Binomial coefficients
+55. Reverse Polish Notation (RPN) calculator
+56. Output the mandlebrot set in ASCII,
+57. Sorting algorithm
+58. Convert markup to HTML
+59. The N Queens problem
+60. Details validator using regular expresions. Validate Phone Numbers, emails, names ect.
+61. Linked list
+62. Mastermind
+63. Random image generator
+64. Last.FM scrobbler
+65. Klingon translator
+66. Prime number generator using a sieve
+67. Markov chain
+68. Graphical Digital clock (GUI)
+69. Oil spill game
+70. Algorithm to calculate triangle numbers
+71. Calculate a users typing speed
+72. Name art in ASCII
+73. Towers of Hanoi
+74. Quine
+75. IRC bot
+76. Brainfuck interpreter
+77. Sorting algorithim audibilization and/or visualisation
+78. Chip-8 emulator
+79. Geekcode generator (3.12)
+80. Define, translate and rotate a shape with an arbitrary amount of vertices
+81. Pong with variable vectors
+82. Battleships with an Al opponent. Make sure they're beatable
+83. Simple rougelike. Mega chapeau for multiplayer over LAN
+84. TCP chat program with basic encryption (XOR)
+85. Incremental Economy simulator (Look up time of exploration)
+86. Encryption / Decryption hiding text in an image
+87. Calculate pascals triangle
+88. Sine wave generator for pseudorandom numbers
+89. Pacman clone with ghost AL 090.- Flappy birds clone
+90. Fast fourier transform
+91. Graphical digital clock (GUI) that allows the user to set alarms and change colour
+92. Binary search
+93. Nintendo oil panic
+94. Generate the sierpinski triangle
+95. Calculate the dot and cross of two vectors
+96. Little man computer simulator
+97. Basic LISP interpreter
+98. Hailstone Sequence
+
+ -->

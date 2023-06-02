@@ -1,0 +1,58 @@
+---
+import { Icon } from "astro-icon";
+
+import Link from "./Link.astro";
+
+const nav_primary = [
+  {
+    name: "home",
+    path: "/",
+  },
+  {
+    name: "bootstrap",
+    path: "/bootstrap/",
+  },
+  {
+    name: "exp",
+    path: "/exp/",
+  },
+  {
+    name: "standard",
+    path: "/standard/",
+  },
+  {
+    name: "404-astro",
+    path: "/404/",
+  },
+];
+---
+
+<header id="site-header" aria-label="site-header" class="tw-container">
+  <nav
+    id="primary-nav"
+    aria-label="primary-nav"
+    class="tw-flex tw-justify-between"
+  >
+    <Link
+      href="/"
+      aria-label="homepage"
+      classList={["hover:tw-bg-transparent"]}
+    >
+      <Icon name="logo" width="48" />
+      <span>{import.meta.env.PUBLIC_SITE_TITLE}</span>
+    </Link>
+
+    <ol class="tw-flex tw-justify-between tw-items-center tw-gap-2">
+      {
+        nav_primary.map((item) => (
+          <Link
+            classList={[Astro.url.pathname === item.path && "active"]}
+            href={item.path}
+          >
+            <span>{item.name}</span>
+          </Link>
+        ))
+      }
+    </ol>
+  </nav>
+</header>

@@ -1,0 +1,71 @@
+---
+interface Props {
+  accordion_id: string;
+  classes: string;
+  items?: {
+    title: string;
+    content: string;
+    button?: {
+      href: string;
+      label?: string;
+    }[];
+  }[];
+}
+const {
+  accordion_id = "accordionExample",
+  classes = "",
+  items = [
+    {
+      title: "title1",
+      content: "<b>content here1</b>",
+    },
+    {
+      title: "title2",
+      content: "<b>content here2</b>",
+    },
+    {
+      title: "title2",
+      content: "<b>content here2</b>",
+    },
+  ],
+} = Astro.props as Props;
+---
+
+<div class:list={["accordion", classes]} id={accordion_id}>
+  {
+    items.map((item, index) => (
+      <div class="accordion-item">
+        <h2 class="accordion-header" id={`${accordion_id}-heading__${index}`}>
+          <button
+            class:list={["accordion-button", index >= 1 ? "collapsed" : ""]}
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target={`#${accordion_id}-collapse__${index}`}
+            aria-expanded={index <= 0 ? "true" : "false"}
+            aria-controls={`${accordion_id}-collapse__${index}`}
+          >
+            {item.title}
+          </button>
+        </h2>
+        <div
+          id={`${accordion_id}-collapse__${index}`}
+          class:list={["accordion-collapse collapse", index <= 0 ? "show" : ""]}
+          aria-labelledby={`${accordion_id}-heading__${index}`}
+          data-bs-parent={`#${accordion_id}`}
+        >
+          <div class:list={["accordion-body", !item.content && "d-none"]}>
+            <Fragment set:html={item.content} />
+
+            {item.button?.href && (
+              <p class="my-2">
+                <a href={item.button.href} class="btn btn-primary btn-sm">
+                  {item.button.label ? item.button.label : "Read more"}
+                </a>
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>

@@ -1,0 +1,40 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import NavMegamenu from "./_nav-megamenu.astro";
+
+import CardBlog from "./_card-blog.astro";
+import CardBlog2 from "./_card-blog2.astro";
+import CardBlog3 from "./_card-blog3.astro";
+---
+
+<Layout is_bootstrap={true} main_classList={[]}>
+  <pre>
+    move all completed components into cheatsheet's component
+  </pre>
+  <header>
+    <NavMegamenu />
+  </header>
+  <div class="container my-5">
+    <CardBlog />
+  </div>
+  <CardBlog2 />
+  <div class="container my-5">
+    <CardBlog3 />
+  </div>
+
+  <!-- <div id="custom-bs">
+    <section class="navs-tabs container my-4">
+      <NavsTabs />
+    </section>
+
+    <BlogCards />
+  </div> -->
+
+  <!-- <BlogCards2 /> -->
+</Layout>
+<style lang="scss" is:global>
+  @import "./scss/_bootstrap-functions.scss";
+  // @import "./scss/_posh.scss";
+  @import "./scss/_bootstrap-reboot.scss";
+</style>

@@ -1,0 +1,21 @@
+---
+import Icon from "astro-icon";
+import Link from "./Link.astro";
+
+const year = new Date().getFullYear();
+---
+
+<footer
+  id="footer"
+  class="tw-flex tw-flex-col tw-items-center tw-text-center tw-py-4"
+>
+  <p class="small muted">Coding with intent, in stillness and mindfulness, learning to create.</p>
+  <Link
+    href="/rss.xml"
+    icon_left={{ name: "ph:rss-fill", title: "subscribe to RSS" }}
+  >
+    <></>
+  </Link>
+  <p class="small muted">&copy; {import.meta.env.PUBLIC_SITE_TITLE} {year}</p>
+</footer>
+

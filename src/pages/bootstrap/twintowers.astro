@@ -1,0 +1,1600 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import Content from "./cheatsheet/_content.astro";
+import Components from "./cheatsheet/_components.astro";
+import Forms from "./cheatsheet/_forms.astro";
+
+import "./scss/_twintowers.scss";
+---
+
+<Layout
+    is_bootstrap={true}
+    hide_header={true}
+    hide_footer={true}
+    main_classList={[]}
+>
+    <!-- <script src="https://www.youtube.com/iframe_api?v=3.0.20" id="YTAPI"
+    ></script>
+    <link
+        href="assets/lib/bootstrap/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    /> -->
+    <link
+        href="https://prium.github.io/tryposh/assets/lib/font-awesome/css/font-awesome.min.css"
+        rel="stylesheet"
+    /><link
+        href="https://prium.github.io/tryposh/assets/lib/iconsmind/iconsmind.css"
+        rel="stylesheet"
+    /><link
+        href="https://prium.github.io/tryposh/assets/lib/css-hamburgers/dist/hamburgers.css"
+        rel="stylesheet"
+    /><link
+        href="https://prium.github.io/tryposh/assets/lib/remodal/dist/remodal.css"
+        rel="stylesheet"
+    /><link
+        href="https://prium.github.io/tryposh/assets/lib/remodal/dist/remodal-default-theme.css"
+        rel="stylesheet"
+    /><link
+        href="https://prium.github.io/tryposh/assets/lib/semantic-ui-dropdown/dropdown.css"
+        rel="stylesheet"
+    /><link
+        href="https://prium.github.io/tryposh/assets/lib/semantic-ui-transition/transition.css"
+        rel="stylesheet"
+    /><!-- Main stylesheet and color file-->
+    <link
+        href="https://prium.github.io/tryposh/assets/css/style.css"
+        rel="stylesheet"
+    /><link
+        href="https://prium.github.io/tryposh/assets/css/custom.css"
+        rel="stylesheet"
+    />
+    <section>
+        <div class="remodal-bg remodal-is-closed">
+            <div class="znav-container" id="znav-container">
+                <div class="container">
+                    <nav class="navbar navbar-toggleable-md">
+                        <button
+                            class="navbar-toggler navbar-toggler-right d-lg-none"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#navbarNavDropdown"
+                            aria-controls="navbarNavDropdown"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation"
+                            ><div class="hamburger hamburger--emphatic">
+                                <div class="hamburger-box">
+                                    <div class="hamburger-inner"></div>
+                                </div>
+                            </div></button
+                        >
+                        <a
+                            class="navbar-brand overflow-hidden"
+                            href="index.html"
+                            ><img
+                                src="https://prium.github.io/tryposh/assets/images/posh-logo-white.png"
+                                alt="logo"
+                                width="70px"
+                            /></a
+                        ><div
+                            class="__collapse __navbar-collapse"
+                            id="navbarNavDropdown"
+                        >
+                            <ul class="navbar-nav ml-auto flex-row">
+                                <li class="has-dropdown">
+                                    <a href="#">Homes</a><ul
+                                        class="dropdown dropdown-push-left"
+                                    >
+                                        <li>
+                                            <a href="home-conference.html"
+                                                >Conference</a
+                                            >
+                                        </li><li>
+                                            <a href="home-digital-agency.html"
+                                                >Digital Agency</a
+                                            >
+                                        </li><li>
+                                            <a href="home-education.html"
+                                                >Education</a
+                                            >
+                                        </li><li>
+                                            <a href="home-hospital.html"
+                                                >Hospital</a
+                                            >
+                                        </li><li>
+                                            <a href="home-hotel.html">Hotel</a>
+                                        </li><li>
+                                            <a href="home-landing-nokia.html"
+                                                >Landing NOKIA</a
+                                            >
+                                        </li><li>
+                                            <a href="home-landing-software.html"
+                                                >Landing Software</a
+                                            >
+                                        </li><li>
+                                            <a href="home-personal.html"
+                                                >Personal</a
+                                            >
+                                        </li><li>
+                                            <a href="home-restaurant.html"
+                                                >Restaurant</a
+                                            >
+                                        </li><li>
+                                            <a href="home-shop.html">Shop</a>
+                                        </li><li>
+                                            <a href="home-travel-agency.html"
+                                                >Travel Agency</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </li><li class="has-dropdown">
+                                    <a href="#">Pages</a><ul class="dropdown">
+                                        <li>
+                                            <a href="page-starter.html"
+                                                >Starter</a
+                                            >
+                                        </li><li class="has-dropdown">
+                                            <a href="#">About</a><ul
+                                                class="dropdown dropdown-push-left"
+                                            >
+                                                <li>
+                                                    <a
+                                                        href="page-about-company.html"
+                                                        >About Company</a
+                                                    >
+                                                </li><li>
+                                                    <a
+                                                        href="page-about-team.html"
+                                                        >About Team</a
+                                                    >
+                                                </li>
+                                            </ul>
+                                        </li><li class="has-dropdown">
+                                            <a href="#">Career</a><ul
+                                                class="dropdown dropdown-push-left"
+                                            >
+                                                <li>
+                                                    <a href="page-careers.html"
+                                                        >Careers</a
+                                                    >
+                                                </li><li>
+                                                    <a
+                                                        href="page-job-details.html"
+                                                        >Job Details</a
+                                                    >
+                                                </li>
+                                            </ul>
+                                        </li><li class="has-dropdown">
+                                            <a href="#">Contacts</a><ul
+                                                class="dropdown dropdown-push-left"
+                                            >
+                                                <li>
+                                                    <a
+                                                        href="page-contact-1.html"
+                                                        >Contact 1</a
+                                                    >
+                                                </li><li>
+                                                    <a
+                                                        href="page-contact-2.html"
+                                                        >Contact 2</a
+                                                    >
+                                                </li><li>
+                                                    <a
+                                                        href="page-contact-3.html"
+                                                        >Contact 3</a
+                                                    >
+                                                </li>
+                                            </ul>
+                                        </li><li class="has-dropdown">
+                                            <a href="#">Pricing</a><ul
+                                                class="dropdown dropdown-push-left"
+                                            >
+                                                <li>
+                                                    <a
+                                                        href="page-pricing-1.html"
+                                                        >Pricing 1</a
+                                                    >
+                                                </li><li>
+                                                    <a
+                                                        href="page-pricing-2.html"
+                                                        >Pricing 2</a
+                                                    >
+                                                </li>
+                                            </ul>
+                                        </li><li class="has-dropdown">
+                                            <a href="#">Services</a><ul
+                                                class="dropdown dropdown-push-left"
+                                            >
+                                                <li>
+                                                    <a
+                                                        href="page-services-1.html"
+                                                        >Services 1</a
+                                                    >
+                                                </li><li>
+                                                    <a
+                                                        href="page-services-2.html"
+                                                        >Services 2</a
+                                                    >
+                                                </li><li>
+                                                    <a
+                                                        href="page-services-3.html"
+                                                        >Services 3</a
+                                                    >
+                                                </li>
+                                            </ul>
+                                        </li><li class="has-dropdown">
+                                            <a href="#">Accounts</a><ul
+                                                class="dropdown dropdown-push-left"
+                                            >
+                                                <li>
+                                                    <a href="page-log-in.html"
+                                                        >Log in (Simple)</a
+                                                    >
+                                                </li><li>
+                                                    <a
+                                                        href="page-log-in-social.html"
+                                                        >Log in (With Social)</a
+                                                    >
+                                                </li><li>
+                                                    <a href="page-profile.html"
+                                                        >Profile</a
+                                                    >
+                                                </li><li>
+                                                    <a href="page-settings.html"
+                                                        >Settings</a
+                                                    >
+                                                </li><li>
+                                                    <a href="page-recovery.html"
+                                                        >Account Recovery</a
+                                                    >
+                                                </li>
+                                            </ul>
+                                        </li><li class="has-dropdown">
+                                            <a href="#">Utility</a><ul
+                                                class="dropdown dropdown-push-left"
+                                            >
+                                                <li>
+                                                    <a href="page-404.html"
+                                                        >404</a
+                                                    >
+                                                </li><li>
+                                                    <a href="page-500.html"
+                                                        >500</a
+                                                    >
+                                                </li><li>
+                                                    <a
+                                                        href="page-maintenance.html"
+                                                        >Maintenance</a
+                                                    >
+                                                </li>
+                                            </ul>
+                                        </li><li class="has-dropdown">
+                                            <a href="#">Shop</a><ul
+                                                class="dropdown dropdown-push-left"
+                                            >
+                                                <li>
+                                                    <a
+                                                        href="shop-products-list.html"
+                                                        >Products List</a
+                                                    >
+                                                </li><li>
+                                                    <a
+                                                        href="shop-products-grid.html"
+                                                        >Products Grid</a
+                                                    >
+                                                </li><li>
+                                                    <a
+                                                        href="shop-product-details.html"
+                                                        >Product Details</a
+                                                    >
+                                                </li><li>
+                                                    <a href="shop-cart.html"
+                                                        >Cart</a
+                                                    >
+                                                </li>
+                                            </ul>
+                                        </li><li class="has-dropdown">
+                                            <a href="#">Portfolio</a><ul
+                                                class="dropdown dropdown-push-left"
+                                            >
+                                                <li>
+                                                    <a href="portfolio-1.html"
+                                                        >List Title inside</a
+                                                    >
+                                                </li><li>
+                                                    <a href="portfolio-2.html"
+                                                        >List Title Outside</a
+                                                    >
+                                                </li><li>
+                                                    <a href="portfolio-3.html"
+                                                        >List Title hover</a
+                                                    >
+                                                </li><li>
+                                                    <a
+                                                        href="portfolio-details.html"
+                                                        >Portfolio Details</a
+                                                    >
+                                                </li><li>
+                                                    <a
+                                                        href="portfolio-case-study.html"
+                                                        >Case Study</a
+                                                    >
+                                                </li>
+                                            </ul>
+                                        </li><li class="has-dropdown">
+                                            <a href="#">Blog</a><ul
+                                                class="dropdown dropdown-push-left"
+                                            >
+                                                <li>
+                                                    <a href="blog-list.html"
+                                                        >Blog list</a
+                                                    >
+                                                </li><li>
+                                                    <a href="blog-article.html"
+                                                        >Article</a
+                                                    >
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li><li class="has-megamenu">
+                                    <a href="#">Components</a><div
+                                        class="container megamenu"
+                                    >
+                                        <div class="row">
+                                            <div
+                                                class="col gutter-0 hidden-md-down color-white"
+                                            >
+                                                <div
+                                                    class="background-holder overlay"
+                                                    style="background-image:url(https://prium.github.io/tryposh/assets/images/megamenu.jpg);"
+                                                >
+                                                </div><!--/.background-holder-->
+                                                <div
+                                                    class="row justify-content-center h-100 py-9"
+                                                >
+                                                    <div
+                                                        class="col-6 align-self-center"
+                                                    >
+                                                        <p
+                                                            class="lead lh-3 fw-400"
+                                                        >
+                                                            Detailed and
+                                                            organised components
+                                                        </p><a
+                                                            class="btn btn-outline-white btn-sm"
+                                                            href="#"
+                                                            >Start Creating</a
+                                                        >
+                                                    </div>
+                                                </div>
+                                            </div><div class="col-lg-6">
+                                                <div
+                                                    class="row justify-content-center my-5 pl-5 no-gutters"
+                                                >
+                                                    <div class="col-sm-4">
+                                                        <ul>
+                                                            <li>
+                                                                <a
+                                                                    href="component-accordion.html"
+                                                                    >Accordion</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-alerts.html"
+                                                                    >Alerts</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-backgrounds.html"
+                                                                    >Backgrounds</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-badge.html"
+                                                                    >Badge</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-decorative-helpers.html"
+                                                                    >Border
+                                                                    &amp; Radius</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-buttons.html"
+                                                                    >Buttons</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-cards.html"
+                                                                    >Cards</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-carousel.html"
+                                                                    >Carousel</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-colors.html"
+                                                                    >Colors</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-dropdowns.html"
+                                                                    >Dropdown
+                                                                    &amp; Dropup</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-filter.html"
+                                                                    >Filter</a
+                                                                >
+                                                            </li>
+                                                        </ul>
+                                                    </div><div class="col-sm-4">
+                                                        <ul>
+                                                            <li>
+                                                                <a
+                                                                    href="component-forms.html"
+                                                                    >Form
+                                                                    elements</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-grid.html"
+                                                                    >Grid system</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-layout-helpers.html"
+                                                                    >Layout
+                                                                    helpers</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-icons.html"
+                                                                    >Icons</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-lightbox.html"
+                                                                    >Lightbox</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-maps.html"
+                                                                    >Maps</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-masonry.html"
+                                                                    >Masonry
+                                                                    grid</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-modal-video.html"
+                                                                    >Modal video</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-modals.html"
+                                                                    >Modals</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-navigations.html"
+                                                                    >Navigations</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-navigation-in-page.html"
+                                                                    >Navigation
+                                                                    in page</a
+                                                                >
+                                                            </li>
+                                                        </ul>
+                                                    </div><div class="col-sm-4">
+                                                        <ul>
+                                                            <li>
+                                                                <a
+                                                                    href="component-parallax.html"
+                                                                    >Parallax</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-php-ajax-form.html"
+                                                                    >PHP-AJAX
+                                                                    form</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-scrollspy.html"
+                                                                    >Scrollspy</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-sliders.html"
+                                                                    >Sliders</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-spacing.html"
+                                                                    >Spacing</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-tables.html"
+                                                                    >Tables</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-tabs.html"
+                                                                    >Tabs</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-tooltips.html"
+                                                                    >Tooltips</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-typed-text.html"
+                                                                    >Typed Text</a
+                                                                >
+                                                            </li><li>
+                                                                <a
+                                                                    href="component-typography.html"
+                                                                    >Typography</a
+                                                                >
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div><!-- /.container-->
+            </div><!-- /.znav-container-->
+            <section class="color-white text-center p-0" id="header-video">
+                <div
+                    class="background-holder overlay"
+                    style="background-image:url(https://prium.github.io/tryposh/assets/images/tarvel-header.jpg);"
+                >
+                    <div
+                        class="youtube-background mb_YTPlayer isMuted"
+                        data-video-url="https://youtu.be/rvegc9iw0Yw"
+                        data-start-at="2"
+                        data-stop-at="27"
+                        data-quality="hd720"
+                        data-property='{videoURL:"https://youtu.be/rvegc9iw0Yw",containment:"self",autoPlay:true, mute:true, startAt:2, stopAt:27, opacity:1, quality: "hd720"}'
+                        id="YTP_1684302778012"
+                    >
+                        <span
+                            id="controlBar_YTP_1684302778012"
+                            class="mb_YTPBar inlinePlayer compact"
+                            style="white-space: nowrap; position: absolute; z-index: 1000; display: none;"
+                            ><div class="buttonBar">
+                                <span class="mb_YTPPlaypause ytpicon">P</span
+                                ><span class="mb_YTPMuteUnmute ytpicon">A</span
+                                ><div
+                                    class="mb_YTPVolumeBar simpleSlider muted"
+                                    style="display: inline-block; cursor: auto;"
+                                >
+                                    <div class="level horizontal"></div>
+                                </div><span class="mb_YTPTime"
+                                    >-- : -- / -- : --</span
+                                ><span
+                                    class="mb_YTPUrl ytpicon"
+                                    title="view on YouTube">Y</span
+                                ><span class="mb_OnlyYT ytpicon">O</span>
+                            </div><div
+                                class="mb_YTPProgress"
+                                style="position: absolute;"
+                            >
+                                <div
+                                    class="mb_YTPLoaded"
+                                    style="position: absolute; left: 0px; width: 0%;"
+                                >
+                                </div><div
+                                    class="mb_YTPseekbar"
+                                    style="position: absolute; left: 0px;"
+                                >
+                                </div>
+                            </div></span
+                        ><div
+                            class="mbYTP_wrapper"
+                            id="wrapper_YTP_1684302778012"
+                            style="position: absolute; z-index: 0; min-width: 100%; min-height: 100%; left: 0px; top: 0px; overflow: hidden; opacity: 0;"
+                        >
+                            <iframe
+                                id="iframe_YTP_1684302778012"
+                                class="playerBox"
+                                style="position: absolute; z-index: 0; width: 1423px; height: 801px; top: 0px; left: 0px; overflow: hidden; opacity: 1; user-select: none; margin-top: -8px; margin-left: 0px; max-width: initial;"
+                                frameborder="0"
+                                allowfullscreen="1"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                title="YouTube video player"
+                                width="640"
+                                height="360"
+                                src="https://www.youtube.com/embed/rvegc9iw0Yw?modestbranding=1&autoplay=0&controls=0&showinfo=0&rel=0&enablejsapi=1&version=3&playerapiid=iframe_YTP_1684302778012&origin=https%3A%2F%2Fprium.github.io&allowfullscreen=true&wmode=transparent&iv_load_policy=3&html5=1&widgetid=1"
+                                unselectable="on"></iframe><div
+                                class="YTPOverlay"
+                                style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;"
+                            >
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.background-holder-->
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 align-self-center py-11">
+                            <h1 class="fs-3 fs-md-4 mb-5 fw-300">
+                                Jump into <span class="fw-600">Ireland</span>
+                            </h1><a
+                                class="video-modal d-block pb-2"
+                                href="https://www.youtube.com/watch?v=c8aFcHFu8QM"
+                                data-start="16"
+                                data-end="168"
+                                ><img
+                                    src="https://prium.github.io/tryposh/assets/images/icons/icon-play.svg"
+                                    width="80"
+                                /></a
+                            ><h6 class="fs-0 font-1 lh-2 m-0">
+                                Live in the Now
+                            </h6>
+                        </div><div
+                            class="col-12 align-self-bottom background-1"
+                        >
+                            <div
+                                class="text-center lead color-9 py-4 font-italic fs-2"
+                            >
+                                Explore our warm welcoming island and become
+                                part of it
+                            </div>
+                        </div>
+                    </div><!--/.row-->
+                </div><!--/.container-->
+            </section><section class="py-0">
+                <div class="container">
+                    <div class="row no-gutter">
+                        <a
+                            class="color-11 col-md-6 pt-11 px-4 position-relative"
+                            href="#"
+                            ><div
+                                class="background-holder overlay overlay-gradient"
+                                style="background-image:url(https://prium.github.io/tryposh/assets/images/travel-01.jpg);"
+                            >
+                            </div><!--/.background-holder-->
+                            <span
+                                class="badge badge-default mb-2 text-uppercase py-2 px-3 ls"
+                                >Wild Atlantic Way</span
+                            ><h4 class="mb-0 pb-4">
+                                A wild and rugged journey
+                            </h4></a
+                        ><a
+                            class="color-11 col-md-6 pt-11 px-4 position-relative"
+                            href="#"
+                            ><div
+                                class="background-holder overlay overlay-gradient"
+                                style="background-image:url(https://prium.github.io/tryposh/assets/images/travel-02.jpg);"
+                            >
+                            </div><!--/.background-holder-->
+                            <span
+                                class="badge badge-default mb-2 text-uppercase py-2 px-3 ls"
+                                >Northern Ireland</span
+                            ><h4 class="mb-0 pb-4">
+                                Get ready for an adventure
+                            </h4></a
+                        ><a
+                            class="color-11 col-md-6 pt-11 px-4 position-relative"
+                            href="#"
+                            ><div
+                                class="background-holder overlay overlay-gradient"
+                                style="background-image:url(https://prium.github.io/tryposh/assets/images/travel-04.jpg);"
+                            >
+                            </div><!--/.background-holder-->
+                            <span
+                                class="badge badge-default mb-2 text-uppercase py-2 px-3 ls"
+                                >Dublin</span
+                            ><h4 class="mb-0 pb-4">
+                                Experience the unexpected
+                            </h4></a
+                        ><a
+                            class="color-11 col-md-6 pt-11 px-4 position-relative"
+                            href="#"
+                            ><div
+                                class="background-holder overlay overlay-gradient"
+                                style="background-image:url(https://prium.github.io/tryposh/assets/images/travel-03.jpg);"
+                            >
+                            </div><!--/.background-holder-->
+                            <span
+                                class="badge badge-default mb-2 text-uppercase py-2 px-3 ls"
+                                >Ireland’s Ancient East</span
+                            ><h4 class="mb-0 pb-4">
+                                Centuries of ancient stories
+                            </h4></a
+                        ><div class="col-12 mt-5 text-center">
+                            <a class="btn btn-link fs-0" href="#">View All ⟶</a>
+                        </div>
+                    </div><!--/.row-->
+                </div><!--/.container-->
+            </section><section class="py-8 text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6 col-md-3 mb-5 mb-md-0">
+                            <span
+                                class="icon-Mail-3 fs-6 color-4"
+                                style="font-size: 5rem !important"></span><h5
+                                class="mt-3 di"
+                            >
+                                Future Updates
+                            </h5><p class="color-5 font-1">
+                                Directly to your inbox
+                            </p>
+                        </div><div class="col-6 col-md-3 mb-5 mb-md-0">
+                            <span
+                                class="icon-Air-Balloon fs-6 color-4"
+                                style="font-size: 5rem !important"></span><h5
+                                class="mt-3 di"
+                            >
+                                Modular Codes
+                            </h5><p class="color-5 font-1">
+                                Use any section everywhere
+                            </p>
+                        </div><div class="col-6 col-md-3 mb-5 mb-md-0">
+                            <span
+                                class="icon-Bacteria fs-6 color-4"
+                                style="font-size: 5rem !important"></span><h5
+                                class="mt-3 di"
+                            >
+                                Easy Documentation
+                            </h5><p class="color-5 font-1">
+                                For effortless customization
+                            </p>
+                        </div><div class="col-6 col-md-3 mb-5 mb-md-0">
+                            <span
+                                class="icon-Fingerprint-2 fs-6 color-4"
+                                style="font-size: 5rem !important"></span><h5
+                                class="mt-3 di"
+                            >
+                                Dedicated Support
+                            </h5><p class="color-5 font-1">
+                                Whenever you need it
+                            </p>
+                        </div>
+                    </div><!--/.row-->
+                </div><!--/.container-->
+            </section><section
+                class="has-parallax py-11 color-white position-relative"
+            >
+                <div
+                    class="background-holder overlay parallax"
+                    style='background-image: url("https://prium.github.io/tryposh/assets/images/generic-01.jpg"); '
+                    data-rellax-speed="-10"
+                >
+                </div><!--/.background-holder-->
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5 col-md-6">
+                            <h5 class="mb-3">Explore Posh</h5><p
+                                class="lead font-italic"
+                            >
+                                From a simple hyperlink to the contact form,
+                                Posh is packed with so many elements and
+                                features to do more.
+                            </p><a
+                                class="btn btn-link pl-0 fs-0 color-white"
+                                href="#">Start exploring ⟶</a
+                            >
+                        </div>
+                    </div><!--/.row-->
+                </div><!--/.container-->
+            </section><section class="py-8">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4">
+                            <div class="card mb-5 mb-md-0">
+                                <a class="overflow-hidden" href="#"
+                                    ><img
+                                        class="card-img-top w-100"
+                                        src="https://prium.github.io/tryposh/assets/images/blog-02.jpg"
+                                        alt="Card image cap"
+                                    /></a
+                                ><div class="card-block p-4">
+                                    <a class="color-black" href="#"
+                                        ><h6 class="mb-2 card-title">
+                                            Luxury Apartment - Tribeca
+                                        </h6></a
+                                    ><p class="font-1 fs--1 color-5">
+                                        4 Nights · 2 Guests
+                                    </p><a class="fs--1 font-1 fw-600" href="#"
+                                        >View Experience</a
+                                    >
+                                </div>
+                            </div>
+                        </div><div class="col-sm-6 col-md-4">
+                            <div class="card mb-5 mb-md-0">
+                                <a class="overflow-hidden" href="#"
+                                    ><img
+                                        class="card-img-top w-100"
+                                        src="https://prium.github.io/tryposh/assets/images/blog-05.jpg"
+                                        alt="Card image cap"
+                                    /></a
+                                ><div class="card-block p-4">
+                                    <a class="color-black" href="#"
+                                        ><h6 class="mb-2 card-title">
+                                            Hyatt Zilara Cancun Escape
+                                        </h6></a
+                                    ><p class="font-1 fs--1 color-5">
+                                        3 Nights · 2 - 7 Guests
+                                    </p><a class="fs--1 font-1 fw-600" href="#"
+                                        >View Experience</a
+                                    >
+                                </div>
+                            </div>
+                        </div><div class="col-sm-6 col-md-4">
+                            <div class="card">
+                                <a class="overflow-hidden" href="#"
+                                    ><img
+                                        class="card-img-top w-100"
+                                        src="https://prium.github.io/tryposh/assets/images/blog-10.jpg"
+                                        alt="Card image cap"
+                                    /></a
+                                ><div class="card-block p-4">
+                                    <a class="color-black" href="#"
+                                        ><h6 class="mb-2 card-title">
+                                            Wailea Beach Resort
+                                        </h6></a
+                                    ><p class="font-1 fs--1 color-5">
+                                        4 Nights · 10 Guests
+                                    </p><a class="fs--1 font-1 fw-600" href="#"
+                                        >View Experience</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--/.row-->
+                </div><!--/.container-->
+            </section><section
+                class="py-8 background-11 text-center overflow-hidden"
+            >
+                <div class="container">
+                    <h3 class="fw-300 color-1 mb-0">
+                        Create Travel Website <span
+                            class="typed-text fw-600"
+                            data-typed-text='["effortlessly.","stunningly."]'
+                            >effortlessly.</span
+                        ><span class="typed-cursor">|</span>
+                    </h3><p class="lead color-5 font-1">
+                        Make unique design for travel websites from 174 premade
+                        layouts
+                    </p><form class="color-3 row mt-5">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="form-group">
+                                <input
+                                    class="form-control mb-2 mr-sm-2 mb-sm-0 w-100 px-5 fw-600 background-white"
+                                    type="text"
+                                    placeholder="Destination"
+                                />
+                            </div>
+                        </div><div class="col-md-6 col-lg-3">
+                            <div class="form-group">
+                                <input
+                                    class="form-control mb-2 mr-sm-2 mb-sm-0 w-100 px-5 fw-600 background-white"
+                                    type="text"
+                                    placeholder="Location"
+                                />
+                            </div>
+                        </div><div class="col-md-6 col-lg-3">
+                            <div class="form-group">
+                                <div
+                                    class="ui selection dropdown w-100"
+                                    tabindex="0"
+                                >
+                                    <input type="hidden" name="catagories " /><i
+                                        class="dropdown icon"></i><div
+                                        class="text"
+                                    >
+                                        Any Package
+                                    </div><div class="menu" tabindex="-1">
+                                        <div class="item">Honeymoon</div><div
+                                            class="item"
+                                        >
+                                            Family
+                                        </div><div class="item">Exotic</div><div
+                                            class="item"
+                                        >
+                                            Adult only
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="col-md-6 col-lg-3">
+                            <button class="btn btn-primary w-100" type="submit"
+                                >Submit</button
+                            >
+                        </div>
+                    </form><!--/.row-->
+                </div><!--/.container-->
+            </section><hr class="color-1 m-0" /><footer
+                class="background-1 color-8 py-3 fs--1 fw-600 font-heading"
+            >
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-auto font-1">
+                            © 2017 POSH ™ Inc.
+                        </div><div class="col fs-0 text-right">
+                            <a class="p-2 color-8" href="#"
+                                ><i class="fa fa-facebook"></i></a
+                            ><a class="p-2 color-8" href="#"
+                                ><i class="fa fa-twitter"></i></a
+                            ><a class="p-2 color-8" href="#"
+                                ><i class="fa fa-instagram"></i></a
+                            ><a class="p-2 color-8" href="#"
+                                ><i class="fa fa-behance"></i></a
+                            ><a class="p-2 color-8" href="#"
+                                ><i class="fa fa-dribbble"></i></a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </section>
+
+    <!-- <script is:inline
+        src="https://prium.github.io/tryposh/assets/lib/typed.js/dist/typed.min.js"
+    ></script>
+    <script is:inline
+        src="https://prium.github.io/tryposh/assets/lib/remodal/dist/remodal.js"
+    ></script>
+    <script is:inline
+        src="https://prium.github.io/tryposh/assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js"
+    ></script>
+    <script is:inline
+        src="https://prium.github.io/tryposh/assets/lib/semantic-ui-dropdown/dropdown.js"
+    ></script>
+    <script is:inline
+        src="https://prium.github.io/tryposh/assets/lib/semantic-ui-transition/transition.js"
+    ></script>
+    <script is:inline src="https://prium.github.io/tryposh/assets/lib/rellax/rellax.js"
+    ></script>
+    <script is:inline src="https://prium.github.io/tryposh/assets/js/core.js"></script>
+    <script is:inline src="https://prium.github.io/tryposh/assets/js/main.js"></script> -->
+    <!-- <div id="page-container" class="font-body overflow-hidden leading-tight d-none">
+        <div id="content-container" class="bg-repeat header-background">
+            <div class="absolute pin-t pin-l w-full z-40">
+                <header
+                    id="page-header"
+                    class="px-4 md:px-8 flex justify-between items-center"
+                >
+                    <h1 class="pt-5 md:py-5 z-50 relative">
+                        <a href="index.html"
+                            ><img
+                                class="h-9 md:h-10 w-auto block"
+                                src="https://prium.github.io/tryposh/assets/logo.png"
+                                alt="Space Needle"
+                            /></a
+                        >
+                    </h1><nav
+                        class="flex tracking-wider items-begin uppercase text-sm"
+                    >
+                        <a
+                            href="experience.html"
+                            class="mt-1 lg:mt-0 text-white p-2 lg:p-3 hidden md:inline-block"
+                        >
+                            Experience
+                        </a><a
+                            href="plan-your-visit.html"
+                            class="mt-1 lg:mt-0 text-white p-2 lg:p-3 hidden md:inline-block"
+                        >
+                            Visit
+                        </a><a
+                            href="base2space.html"
+                            class="mt-1 lg:mt-0 text-white p-2 lg:p-3 hidden md:inline-block"
+                        >
+                            Base 2 Space
+                        </a><div class="z-50 relative w-10">
+                            <a
+                                href="#"
+                                class="menu md:mt-2 pl-2 ml-2 top-0 absolute z-50"
+                                ><div class="bar1"></div><div class="bar2">
+                                </div><div class="bar3"></div></a
+                            ><div
+                                class="hidden offscreen shadow-xl fixed top-0 right-0 bg-blue px-5 py-8 md:py-16 z-40 h-screen w-full md:w-auto overflow-scroll"
+                            >
+                                <div class="border-yellow border-t mt-8">
+                                    <div
+                                        class="md:hidden border-yellow border-b pl-3 pr-24"
+                                    >
+                                        <a
+                                            href="experience.html"
+                                            class="text-white py-3 inline-block"
+                                        >
+                                            Experience
+                                        </a>
+                                    </div><div
+                                        class="md:hidden border-yellow border-b pl-3 pr-24"
+                                    >
+                                        <a
+                                            href="plan-your-visit.html"
+                                            class="text-white py-3 inline-block"
+                                        >
+                                            Visit
+                                        </a>
+                                    </div><div
+                                        class="md:hidden border-yellow border-b pl-3 pr-24"
+                                    >
+                                        <a
+                                            href="base2space.html"
+                                            class="text-white py-3 inline-block"
+                                        >
+                                            Base 2 Space
+                                        </a>
+                                    </div><div
+                                        class="border-yellow border-b pl-3 pr-24"
+                                    >
+                                        <a
+                                            href="https://sn.web.ticketing.siaticketing.com/?utm_source=redirect&utm_medium=website"
+                                            class="text-sm uppercase py-3 inline-block text-white"
+                                        >
+                                            BUY TICKETS
+                                        </a>
+                                    </div><div
+                                        class="border-yellow border-b pl-3 pr-24"
+                                    >
+                                        <a
+                                            href="https://gallery.siaphotos.com/"
+                                            class="text-sm uppercase py-3 inline-block text-white"
+                                        >
+                                            Find Photos
+                                        </a>
+                                    </div><div
+                                        class="border-yellow border-b pl-3 pr-24"
+                                    >
+                                        <a
+                                            href="https://space-needle.myshopify.com/"
+                                            class="text-sm uppercase py-3 inline-block text-white"
+                                        >
+                                            Shop
+                                        </a>
+                                    </div><div
+                                        class="border-yellow border-b pl-3 pr-24"
+                                    >
+                                        <a
+                                            href="60.html"
+                                            class="text-sm uppercase py-3 inline-block text-white"
+                                        >
+                                            60th Anniversary
+                                        </a>
+                                    </div><div
+                                        class="border-yellow border-b pl-3 pr-24"
+                                    >
+                                        <a
+                                            href="webcam/index.html"
+                                            class="text-sm uppercase py-3 inline-block text-white"
+                                        >
+                                            360° Live Webcam
+                                        </a>
+                                    </div><div
+                                        class="border-yellow border-b pl-3 pr-24"
+                                    >
+                                        <a
+                                            href="http://seeitall.com/?site=sn"
+                                            class="text-sm uppercase py-3 inline-block text-white"
+                                        >
+                                            See It All
+                                        </a>
+                                    </div><div
+                                        class="border-yellow border-b pl-3 pr-24"
+                                    >
+                                        <a
+                                            href="groups.html"
+                                            class="text-sm uppercase py-3 inline-block text-white"
+                                        >
+                                            Groups
+                                        </a>
+                                    </div><div
+                                        class="border-yellow border-b pl-3 pr-24"
+                                    >
+                                        <a
+                                            href="private-events.html"
+                                            class="text-sm uppercase py-3 inline-block text-white"
+                                        >
+                                            Private Events
+                                        </a>
+                                    </div><div
+                                        class="border-yellow border-b pl-3 pr-24"
+                                    >
+                                        <a
+                                            href="base2space.html"
+                                            class="text-sm uppercase py-3 inline-block text-white"
+                                        >
+                                            Base 2 Space
+                                        </a>
+                                    </div><div
+                                        class="border-yellow border-b pl-3 pr-24"
+                                    >
+                                        <a
+                                            href="lounge.html"
+                                            class="text-sm uppercase py-3 inline-block text-white"
+                                        >
+                                            LOUNGE
+                                        </a>
+                                    </div><div
+                                        class="border-yellow border-b pl-3 pr-24"
+                                    >
+                                        <a
+                                            href="about.html"
+                                            class="text-sm uppercase py-3 inline-block text-white"
+                                        >
+                                            About
+                                        </a>
+                                    </div><div
+                                        class="border-yellow border-b pl-3 pr-24"
+                                    >
+                                        <a
+                                            href="careers.html"
+                                            class="text-sm uppercase py-3 inline-block text-white"
+                                        >
+                                            CAREERS
+                                        </a>
+                                    </div><div
+                                        class="border-yellow border-b pl-3 pr-24"
+                                    >
+                                        <a
+                                            href="contact.html"
+                                            class="text-sm uppercase py-3 inline-block text-white"
+                                        >
+                                            CONTACT US
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+            </div><main class="md:pb-4">
+                <div class="bg-blue">
+                    <section
+                        class="relative flex justify-end pt-32 md:pt-24 h-screen w-full text-white"
+                    >
+                        <div
+                            class="absolute md:relative md:w-3/4 text-center md:text-right bottom-0 z-30 pt-8 pb-20 md:pb-8 flex flex-col md:items-end px-8 md:px-20"
+                        >
+                            <h1
+                                class="font-skinny text-5xl md:text-6xl lg:text-7xl font-normal tracking-wide leading-neg uppercase pb-4"
+                            >
+                                clearly awe-inspiring
+                            </h1><p
+                                class="pb-6 tracking-open md:max-w-xl text-sm md:text-base leading-normal md:leading-loose"
+                            >
+                                The Space Needle is safely open with limited
+                                capacity and industry-leading Elevating Clean
+                                standards.
+                            </p><div class="md:pt-4">
+                                <a
+                                    href="https://sn.web.ticketing.siaticketing.com/?utm_source=redirect&utm_medium=website"
+                                    class="btn">BUY TICKETS</a
+                                >
+                            </div>
+                        </div>
+                    </section><div
+                        class="w-full h-screen absolute top-0 bottom-0 left-0 z-20"
+                        style=""
+                    >
+                    </div><img
+                        src="/imager/assets/2113/az190903-0590_3a41f671e85a5cdee99cc1724d904ba9.jpg"
+                        width="411"
+                        height="411"
+                        data-sizes="100vw"
+                        class="hidden md:block blur-up block object-cover h-screen absolute top-0 left-0 w-full z-10 lazyloaded"
+                        data-src="/imager/assets/2113/az190903-0590_3a41f671e85a5cdee99cc1724d904ba9.jpg"
+                        data-srcset="/imager/assets/2113/az190903-0590_774a37fd53cd2f8e83efef4da9fcc130.jpg 2000w, /imager/assets/2113/az190903-0590_3a41f671e85a5cdee99cc1724d904ba9.jpg 1400w, /imager/assets/2113/az190903-0590_40ae7ffdb5b0eab41b8898e24dcce0da.jpg 900w, /imager/assets/2113/az190903-0590_02187ddc01b622d1ea71798d3f01e89c.jpg 40w"
+                        alt=""
+                        sizes="100vw"
+                        srcset="/imager/assets/2113/az190903-0590_774a37fd53cd2f8e83efef4da9fcc130.jpg 2000w, /imager/assets/2113/az190903-0590_3a41f671e85a5cdee99cc1724d904ba9.jpg 1400w, /imager/assets/2113/az190903-0590_40ae7ffdb5b0eab41b8898e24dcce0da.jpg 900w, /imager/assets/2113/az190903-0590_02187ddc01b622d1ea71798d3f01e89c.jpg 40w"
+                    /><img
+                        src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA7Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2ODApLCBxdWFsaXR5ID0gNjUK/9sAQwALCAgKCAcLCgkKDQwLDREcEhEPDxEiGRoUHCkkKyooJCcnLTJANy0wPTAnJzhMOT1DRUhJSCs2T1VORlRAR0hF/9sAQwEMDQ0RDxEhEhIhRS4nLkVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVF/8AAEQgAQwAoAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A6ryaTyfatDy6aY62Uy+UzzF7UxoqvFBuK9wM01o6pTFyme0VFW2joqucnlNcoKYVrM0/xBb6nbtNAHAVipDjBBwD/WuO8TeMdS02/NuFKxsuR5TAnH1xxXnKbvY63GyudS2txDVvsxtroKfkEvl/Luz/AC9602FeLP4uvTOrsckc5UDOfrXWeF/FuoapdNDKm+ONcks4B789MntWl5JEKzdjuGFFUl1GGUExyqwBwcHvRR7RmvszzO11+awRkicbC5ZhjPoP6UkettLcTmc+csx+VX5288YzWCHDZPbmnhwvHU561vZHJzMsNhdZXcqkElMEcdqtQ6pJbfZ0hZo0ikLMFbG/kHn1qmAWv3lUEqskhJ9OBVKaTZccEkcZqUNux0Nlq09rBO8WNj578hvWisQTbVI9TxRVeouZkRclVLelMZ90gK846gU9PlaVeMhQKht2/wBJHPc0r6Emmmfsd2V6kj/0Ef41mRbfNzMSfxrV3AWt2SMgPz+S1n+dFx8qj8KENg5/eE9EBAFFNcK5yrYB7AdaKLgVN7DOGPPWpioWIMOG9c0UVIjUX/j0vf8Aro38hVG1iSRpN4ztXI/MUUULdFPcaAAGx2fAooookOJ//9k="
+                        width="411"
+                        height="411"
+                        data-sizes="100vw"
+                        class="blur-up lazyload md:hidden block object-cover h-screen absolute top-0 left-0 w-full z-10"
+                        data-srcset="/imager/assets/2125/az190903-0590_mob_34e14afed3f55979654970614a422cf6.jpg 1000w, /imager/assets/2125/az190903-0590_mob_25659b2b5e0280470067ddba53dfe64b.jpg 900w, /imager/assets/2125/az190903-0590_mob_f2f1ee8d50fedd6d5adcf4c17f911333.jpg 40w"
+                        data-src="/imager/assets/2125/az190903-0590_mob_4ee4e75fbc3d61709c6a11298686742d.jpg"
+                        alt=""
+                    /><div
+                        class="relative md:absolute bottom-0 left-0 w-full md:pb-20 text-center md:text-left uppercase z-40 text-white pointer-events-none"
+                    >
+                        <a
+                            href="plan-your-visit.html"
+                            class="pointer-events-auto inline-block bg-blue md:pl-12 md:pr-6 py-4 hover:shadow-xl opacity-75 hover:opacity-100"
+                            ><span
+                                class="font-body block font-bold text-sm tracking-wide opacity-75 pt-1"
+                            ></span><span
+                                class="text-3xl font-display tracking-wider"
+                                >Open Daily at 9:00AM</span
+                            ><span
+                                class="font-body block font-bold text-sm tracking-wide opacity-75 pt-1"
+                                >Click for more info and hours</span
+                            ><span class="text-3xl font-display tracking-wider"
+                            ></span></a
+                        >
+                    </div>
+                </div><section class="text-white relative max-w-6xl mx-auto">
+                    <div class="w-full px-4 md:px-12">
+                        <div
+                            class="flex flex-wrap -mx-4 md:-mx-10 leading-normal builder"
+                        >
+                            <div class="sm:px-4 md:px-8 pb-8">
+                                <div
+                                    class="pt-6 normal px-6 md:px-10 w-full relative flex flex-col-reverse md:flex-row text-white items-center justify-between"
+                                    style="background-color:#36749D;"
+                                >
+                                    <div
+                                        class="text relative z-20 pb-6 md:py-6 md:pr-6"
+                                    >
+                                        <h2
+                                            class="text-5xl font-skinny tracking-wider leading-neg py-2 mb-2 uppercase"
+                                        >
+                                            Base 2 Space
+                                        </h2><p>
+                                            Seattle's Most Iconic Climb is back
+                                            on October 1! Conquer the Space
+                                            Needle's 832 open-air stairs to
+                                            support Fred Hutchinson Cancer
+                                            Center and the Space Needle
+                                            Foundation.
+                                        </p><div
+                                            class="text-center md:text-left flex-none pt-6 pb-6 relative z-20"
+                                        >
+                                            <a
+                                                href="base2space.html"
+                                                class="btn-small whitespace-no-wrap uppercase"
+                                                >Register Now</a
+                                            >
+                                        </div>
+                                    </div><div
+                                        class="flex items-center relative w-full md:w-1/4 flex-none md:h-full pt-6 pb-2 md:pb-0 md:pt-0"
+                                    >
+                                        <img
+                                            src="/imager/assets/60228/DSC03951_c51ccd2aada8e2834da211727c3114a9.JPG"
+                                            width="411"
+                                            height="411"
+                                            data-sizes="100vw"
+                                            class="mx-auto top-0 md:w-full object-cover block blur-up lazyloaded"
+                                            data-src="/imager/assets/60228/DSC03951_c51ccd2aada8e2834da211727c3114a9.JPG"
+                                            data-srcset="/imager/assets/60228/DSC03951_065837b16f2e5548dd6ba427f14c9585.JPG 1200w, /imager/assets/60228/DSC03951_c51ccd2aada8e2834da211727c3114a9.JPG 900w, /imager/assets/60228/DSC03951_3a9c36ffd18fd10544b2114e2b95b9e2.JPG 500w, /imager/assets/60228/DSC03951_9e3cd274c24ae2ead2bc7c0b9d1af50e.JPG 20w"
+                                            alt=""
+                                            sizes="100vw"
+                                            srcset="/imager/assets/60228/DSC03951_065837b16f2e5548dd6ba427f14c9585.JPG 1200w, /imager/assets/60228/DSC03951_c51ccd2aada8e2834da211727c3114a9.JPG 900w, /imager/assets/60228/DSC03951_3a9c36ffd18fd10544b2114e2b95b9e2.JPG 500w, /imager/assets/60228/DSC03951_9e3cd274c24ae2ead2bc7c0b9d1af50e.JPG 20w"
+                                        />
+                                    </div>
+                                </div>
+                            </div><div
+                                class="py-6 px-4 md:px-10 w-full lg:w-full text-center md:text-base pb-8"
+                                style="background-color:13-0755; color:35;"
+                            >
+                                <div class="">
+                                    <div class="text" style="">
+                                        <h2
+                                            id="eLEVATINGCLEAN"
+                                            class="leftinherit text-4xl md:text-5xl font-skinny tracking-wider leading-neg pt-8 pb-3 mb-4 uppercase"
+                                        >
+                                            ELEVATING CLEAN
+                                        </h2><p>
+                                            With the expiration of the state and
+                                            county indoor mask mandates on March
+                                            11, <strong
+                                                >masks will no longer be
+                                                required for Guests starting
+                                                Saturday, March 12</strong
+                                            >.
+                                        </p><p>
+                                            The safety of our Guests and Team
+                                            Members is our top priority, which
+                                            is why we’ve made investments to
+                                            implement the most effective,
+                                            science-backed cleaning technologies
+                                            and protocols available today.<br />
+                                        </p>
+                                    </div><div
+                                        class="text-center md:text-left pt-4 pb-8 md:text-center"
+                                    >
+                                        <a
+                                            href="elevatingclean.html"
+                                            class="btn-dark">LEARN MORE</a
+                                        >
+                                    </div>
+                                </div>
+                            </div><div
+                                class="py-0 px-4 md:px-10 w-full lg:w-1/3 text-left md:text-base pb-8"
+                                style=""
+                            >
+                                <div class="">
+                                    <div class="text" style="">
+                                        <h2
+                                            id="eXPERIENCETHEWOW"
+                                            class="leftinherit text-4xl md:text-5xl font-skinny tracking-wider leading-neg pt-8 pb-3 mb-4 uppercase"
+                                        >
+                                            EXPERIENCE THE WOW
+                                        </h2><p>
+                                            Tilting glass benches leaning out
+                                            over the city, the world's first and
+                                            only revolving glass floor, and
+                                            unmatched views of Seattle and
+                                            beyond.
+                                        </p>
+                                    </div><div
+                                        class="text-center md:text-left pt-4 pb-8"
+                                    >
+                                        <a
+                                            href="experience.html"
+                                            class="btn-grey">START EXPLORING</a
+                                        >
+                                    </div>
+                                </div>
+                            </div><div
+                                class="py-8 px-4 md:px-10 w-full lg:w-2/3 text-left md:text-base pb-8"
+                                style=""
+                            >
+                                <div class="">
+                                    <img
+                                        src="/imager/assets/7698/Guests-step-out-onto-The-Loupe-Space-Needle-revolving-glass-floor.-Courtesy-of-John-Lok-and-Space-Needle-LLC_200806_225521_cdbedb350f059d1023286feedbaf5ea6.jpg"
+                                        width="411"
+                                        height="411"
+                                        data-sizes="100vw"
+                                        class="inline-block blur-up w-full h-auto lazyloaded"
+                                        data-src="/imager/assets/7698/Guests-step-out-onto-The-Loupe-Space-Needle-revolving-glass-floor.-Courtesy-of-John-Lok-and-Space-Needle-LLC_200806_225521_cdbedb350f059d1023286feedbaf5ea6.jpg"
+                                        data-srcset="/imager/assets/7698/Guests-step-out-onto-The-Loupe-Space-Needle-revolving-glass-floor.-Courtesy-of-John-Lok-and-Space-Needle-LLC_200806_225521_26b7f4ee31988a68e5c956d5f4279f2c.jpg 1200w, /imager/assets/7698/Guests-step-out-onto-The-Loupe-Space-Needle-revolving-glass-floor.-Courtesy-of-John-Lok-and-Space-Needle-LLC_200806_225521_cdbedb350f059d1023286feedbaf5ea6.jpg 900w, /imager/assets/7698/Guests-step-out-onto-The-Loupe-Space-Needle-revolving-glass-floor.-Courtesy-of-John-Lok-and-Space-Needle-LLC_200806_225521_bdddbb393b997f9716b813bf1541a71b.jpg 500w, /imager/assets/7698/Guests-step-out-onto-The-Loupe-Space-Needle-revolving-glass-floor.-Courtesy-of-John-Lok-and-Space-Needle-LLC_200806_225521_b1473b53f7de808d5a85416bb2f1283c.jpg 20w"
+                                        alt=""
+                                        sizes="100vw"
+                                        srcset="/imager/assets/7698/Guests-step-out-onto-The-Loupe-Space-Needle-revolving-glass-floor.-Courtesy-of-John-Lok-and-Space-Needle-LLC_200806_225521_26b7f4ee31988a68e5c956d5f4279f2c.jpg 1200w, /imager/assets/7698/Guests-step-out-onto-The-Loupe-Space-Needle-revolving-glass-floor.-Courtesy-of-John-Lok-and-Space-Needle-LLC_200806_225521_cdbedb350f059d1023286feedbaf5ea6.jpg 900w, /imager/assets/7698/Guests-step-out-onto-The-Loupe-Space-Needle-revolving-glass-floor.-Courtesy-of-John-Lok-and-Space-Needle-LLC_200806_225521_bdddbb393b997f9716b813bf1541a71b.jpg 500w, /imager/assets/7698/Guests-step-out-onto-The-Loupe-Space-Needle-revolving-glass-floor.-Courtesy-of-John-Lok-and-Space-Needle-LLC_200806_225521_b1473b53f7de808d5a85416bb2f1283c.jpg 20w"
+                                    />
+                                </div><div class="">
+                                    <div class="text" style=""></div>
+                                </div>
+                            </div><div
+                                class="px-4 py-8 mb-4 w-full lg:w-full h-auto"
+                            >
+                                <div class="ratio">
+                                    <div id="cr__08c860004a11af96"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div><div class="py-8 bg-blue relative">
+            <footer
+                class="mx-auto container py-8 px-4 text-white relative z-30"
+            >
+                <div class="text-center pt-8 pb-4">
+                    <h2
+                        class="font-display uppercase text-4xl md:text-5xl leading-neg pb-5 tracking-wider"
+                    >
+                    </h2><p class="pt-1 pb-6"></p>
+                </div><div
+                    class="homefooter flex flex-wrap max-w-4xl md:px-6 mx-auto text-med leading-normal"
+                >
+                    <div class="navblock">
+                        <h3>PLAN YOUR VISIT</h3><p>
+                            Prepare for launch and have the safest and easiest
+                            experience around.
+                        </p><p></p><div>
+                            <a
+                                href="plan-your-visit.html"
+                                onclick="captureOutboundLink(''); return false;"
+                                >HOURS &amp; DIRECTIONS</a
+                            >
+                        </div><div>
+                            <a
+                                href="elevatingclean.html"
+                                onclick="captureOutboundLink(''); return false;"
+                                >ELEVATING CLEAN</a
+                            >
+                        </div><div>
+                            <a
+                                href="app.html"
+                                onclick="captureOutboundLink(''); return false;"
+                                >Download our app</a
+                            >
+                        </div><p></p>
+                    </div><div class="navblock">
+                        <h3>The Experience</h3><p>
+                            Discover two entirely new levels of thrills! From an
+                            all-glass floor below to an open-air deck above.
+                        </p><p></p><div>
+                            <a
+                                href="experience.html"
+                                onclick="captureOutboundLink(''); return false;"
+                                >Experience</a
+                            >
+                        </div><div>
+                            <a
+                                href="lounge.html"
+                                onclick="captureOutboundLink(''); return false;"
+                                >The Loupe Lounge</a
+                            >
+                        </div><div>
+                            <a href="webcam.html">360° Live Webcam</a>
+                        </div><div>
+                            <a href="https://space-needle.myshopify.com/"
+                                >Shop</a
+                            >
+                        </div><p></p>
+                    </div><div class="navblock">
+                        <h3>See it All</h3><p>
+                            Trust the ultimate local to fill your Seattle bucket
+                            list with tours, tips, and tickets.
+                        </p><p></p><div>
+                            <a href="http://seeitall.com/?site=sn">See It All</a
+                            >
+                        </div><p></p>
+                    </div><div class="navblock">
+                        <h3>Groups</h3><p>
+                            Visiting with a group of 15 or more? Want to bring
+                            your school group to the Space Needle? Learn more
+                            about our special rates here.
+                        </p><p></p><div>
+                            <a
+                                href="private-events.html"
+                                onclick="captureOutboundLink(''); return false;"
+                                >Private Events</a
+                            >
+                        </div><div>
+                            <a
+                                href="groups.html"
+                                onclick="captureOutboundLink(''); return false;"
+                                >Group Rates</a
+                            >
+                        </div><p></p>
+                    </div><div class="navblock">
+                        <h3>Community</h3><p>
+                            Proudly making a difference in our community for
+                            over half a century.
+                        </p><p></p><div>
+                            <a
+                                href="community.html"
+                                onclick="captureOutboundLink(''); return false;"
+                                >Space Needle Foundation</a
+                            >
+                        </div><div>
+                            <a
+                                href="base2space.html"
+                                onclick="captureOutboundLink(''); return false;"
+                                >Base 2 Space</a
+                            >
+                        </div><div>
+                            <a
+                                href="green.html"
+                                onclick="captureOutboundLink(''); return false;"
+                                >Leed</a
+                            >
+                        </div><div>
+                            <a
+                                href="world-towers.html"
+                                onclick="captureOutboundLink(''); return false;"
+                                >Federation of Great Towers</a
+                            >
+                        </div><p></p>
+                    </div><div class="navblock">
+                        <h3>About</h3><p>
+                            It all started with a doodle…! Find out more about
+                            the Space Needle then and now.
+                        </p><p></p><div>
+                            <a
+                                href="about.html"
+                                onclick="captureOutboundLink(''); return false;"
+                                >About the Space Needle</a
+                            >
+                        </div><div>
+                            <a
+                                href="press.html"
+                                onclick="captureOutboundLink(''); return false;"
+                                >Press Home</a
+                            >
+                        </div><div><a href="careers.html">Careers</a></div><div>
+                            <a
+                                href="contact.html"
+                                onclick="captureOutboundLink(''); return false;"
+                                >Contact Us</a
+                            >
+                        </div><div>
+                            <a
+                                href="https://share.hsforms.com/1LmDpPjh5R9SuT1vyc93Q6A1nil8"
+                                >SIGN UP FOR EMAIL ALERTS</a
+                            >
+                        </div><p></p>
+                    </div>
+                </div><div class="text-center py-4">
+                    <div class="font-bold text-xl pb-3">Ready to see it?</div><a
+                        href="https://sn.web.ticketing.siaticketing.com/?utm_source=sitefooter&utm_medium=website"
+                        onclick="captureOutboundLink('https://sn.web.ticketing.siaticketing.com/?utm_source=sitefooter&utm_medium=website'); return false;"
+                        class="btn px-8">Buy Tickets</a
+                    >
+                </div><div
+                    class="flex justify-between w-full max-w-xs mx-auto pt-8 px-8"
+                >
+                    <div class="w-1/3">
+                        <a
+                            href="https://facebook.com/Spaceneedle"
+                            class="no-underline bg-yellow rounded-full font-bold text-sm block flex justify-center items-center mx-auto whitesvg h-10 w-10 mx-auto"
+                            ><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 15.43 29.72"
+                                ><title>fb</title><g
+                                    id="Layer_2"
+                                    data-name="Layer 2"
+                                    ><g id="Layer_1-2" data-name="Layer 1"
+                                        ><path
+                                            d="M0,16.16V10.88H4.55V7A6.9,6.9,0,0,1,6.41,1.83,6.75,6.75,0,0,1,11.36,0a30.07,30.07,0,0,1,4.07.21V4.93H12.62a2.63,2.63,0,0,0-2.07.64A3,3,0,0,0,10,7.5v3.38h5.23l-.7,5.28H10V29.72H4.55V16.16Z"
+                                        ></path></g
+                                    ></g
+                                ></svg
+                            ></a
+                        >
+                    </div><div class="w-1/3">
+                        <a
+                            href="https://instagram.com/spaceneedle"
+                            class="no-underline bg-yellow rounded-full font-bold text-sm flex justify-center items-center whitesvg h-10 w-10 mx-auto"
+                            ><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 27.43 27.43"
+                                ><title>insta</title><g
+                                    id="Layer_2"
+                                    data-name="Layer 2"
+                                    ><g id="Layer_1-2" data-name="Layer 1"
+                                        ><path
+                                            d="M0,23.91V3.52A3.38,3.38,0,0,1,1,1,3.38,3.38,0,0,1,3.52,0H23.91a3.38,3.38,0,0,1,2.48,1,3.38,3.38,0,0,1,1,2.48V23.91a3.55,3.55,0,0,1-3.52,3.52H3.52a3.38,3.38,0,0,1-2.48-1A3.39,3.39,0,0,1,0,23.91Zm3.05-.73a1.08,1.08,0,0,0,1.09,1.09H23.23A1.09,1.09,0,0,0,24,24a1,1,0,0,0,.32-.78V11.61H21.91A7.63,7.63,0,0,1,22.27,14a7.93,7.93,0,0,1-1.14,4.15,8.4,8.4,0,0,1-3.11,3,8.57,8.57,0,0,1-4.29,1.11,8.37,8.37,0,0,1-6-2.42A7.89,7.89,0,0,1,5.21,14a7.63,7.63,0,0,1,.36-2.34H3.05V23.18Zm5.18-9.52a5.05,5.05,0,0,0,1.62,3.78A5.39,5.39,0,0,0,13.73,19a5.39,5.39,0,0,0,3.9-1.56,5.22,5.22,0,0,0,0-7.56,5.39,5.39,0,0,0-3.9-1.56A5.39,5.39,0,0,0,9.85,9.88,5.07,5.07,0,0,0,8.23,13.66ZM18.75,7.23A1.23,1.23,0,0,0,20,8.47h3.11A1.17,1.17,0,0,0,24,8.11a1.19,1.19,0,0,0,.36-.88V4.29A1.19,1.19,0,0,0,24,3.42a1.18,1.18,0,0,0-.87-.37H20a1.25,1.25,0,0,0-1.23,1.24Z"
+                                        ></path></g
+                                    ></g
+                                ></svg
+                            ></a
+                        >
+                    </div><div class="w-1/3">
+                        <a
+                            href="https://twitter.com/space_needle"
+                            class="no-underline bg-yellow rounded-full font-bold text-sm flex justify-center items-center mx-auto whitesvg h-10 w-10"
+                            ><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 28.14 22.86"
+                                ><title>tw</title><g
+                                    id="Layer_2"
+                                    data-name="Layer 2"
+                                    ><g id="Layer_1-2" data-name="Layer 1"
+                                        ><path
+                                            d="M0,20.27a11.84,11.84,0,0,0,1.39.07,11.29,11.29,0,0,0,7.17-2.47,5.78,5.78,0,0,1-5.4-4A7.37,7.37,0,0,0,4.25,14a6,6,0,0,0,1.52-.19,5.71,5.71,0,0,1-3.31-2A5.57,5.57,0,0,1,1.14,8.11V8a5.81,5.81,0,0,0,2.61.73A5.7,5.7,0,0,1,1.88,6.71,5.54,5.54,0,0,1,1.18,4,5.63,5.63,0,0,1,2,1.05,16.22,16.22,0,0,0,7.22,5.31a16.05,16.05,0,0,0,6.64,1.78,6.05,6.05,0,0,1-.14-1.32A5.55,5.55,0,0,1,15.4,1.69a5.79,5.79,0,0,1,8.3.13A11.22,11.22,0,0,0,27.36.43a5.61,5.61,0,0,1-2.54,3.18,11.33,11.33,0,0,0,3.32-.9,12.08,12.08,0,0,1-2.89,3c0,.16,0,.41,0,.75a16.48,16.48,0,0,1-.68,4.63,16.83,16.83,0,0,1-2.06,4.44,17.68,17.68,0,0,1-3.3,3.76,14.42,14.42,0,0,1-4.61,2.6,16.79,16.79,0,0,1-5.76,1A16.07,16.07,0,0,1,0,20.27Z"
+                                        ></path></g
+                                    ></g
+                                ></svg
+                            ></a
+                        >
+                    </div>
+                </div>
+            </footer>
+            <div class="text-center text-white text-xs pb-8 relative z-40">
+                <a
+                    href="privacy.html"
+                    class="text-white text-xs roman font-normal"
+                    >Privacy Policy</a
+                > | © 2023 Copyright Space Needle, LLC
+            </div>
+        </div>
+    </div> -->
+
+    <section>
+        <div class="container-fluid">
+            <Content />
+            <Forms />
+            <Components />
+        </div>
+    </section>
+</Layout>

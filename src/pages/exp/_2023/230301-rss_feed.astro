@@ -1,0 +1,48 @@
+---
+import Debug from "astro/components/Debug.astro";
+export interface Props {
+  url?: string;
+}
+const { url = "https://xkcd.com/rss.xml" } = Astro.props as Props;
+
+const rss_feed = await fetch(url)
+  .then((response) => response.text())
+  .then((data) => {
+    return data;
+  });
+---
+
+<Debug {rss_feed} />
+
+<ul id="rss-feed"></ul>
+
+<script define:vars={{ rss_feed }}>
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(rss_feed, "text/xml");
+  console.log(xmlDoc);
+
+  const items = xmlDoc.getElementsByTagName("item");
+
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+    const title = item.getElementsByTagName("title")[0].textContent;
+    const link = item.getElementsByTagName("link")[0].textContent;
+    const pubDate = item.getElementsByTagName("pubDate")[0].textContent;
+    const description = item.getElementsByTagName("description")[0].textContent;
+    
+
+    const date = new Date(pubDate);
+    const formattedDate = `${date.toLocaleDateString()} at ${date.toLocaleTimeString()}`;
+
+    const li = document.createElement("li");
+    li.innerHTML = `
+    <div>
+    ${description}
+    </div>
+    <a href="${link}">${title}</a> 
+    <span>${formattedDate}</span>
+    `;
+    document.getElementById("rss-feed").appendChild(li);
+
+  }
+</script>

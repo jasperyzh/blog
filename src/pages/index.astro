@@ -1,0 +1,101 @@
+---
+import { getCollection, CollectionEntry } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Card from "../layouts/Card.astro";
+import { formatBlogPosts } from "../layouts/Utils";
+
+import * as README from "../../README.md";
+import Debug from "astro/components/Debug.astro";
+
+const {
+  // frontmatter: { title: ExploreTitle, description: ExploreDesc },
+  Content: ReadmeContent,
+} = README;
+
+// glob page_url
+const pages_bootstrap = await Astro.glob("../pages/bootstrap/*.astro");
+const pages_exp = await Astro.glob("../pages/exp/*.astro");
+const pages_exp_rellax = await Astro.glob("../pages/exp/rellax/*.astro");
+const pages_job = await Astro.glob("../pages/job/*.astro");
+
+// blog posts
+const allPosts = await getCollection("blog");
+const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts, {
+  limit: 4,
+});
+---
+
+<Layout
+  title="Welcome to my blog | JasperYong"
+  description="Simple blog, i think."
+>
+  <section id="blog_highlight">
+    <ul class="tw-grid tw-gap-5 tw-max-w-2xl">
+      {
+        formattedPosts.map((post) => (
+          <Card data={post.data} url={post.slug} heading="h2" />
+        ))
+      }
+    </ul>
+  </section>
+
+  <section id="currentwork">
+    <h2>Quick Links</h2>
+    <p>Fast travel to latest experimentations</p>
+
+    <div
+      class="tw-flex tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-4"
+    >
+      <ul class="tw-px-0 tw-list-inside">
+        <h3><a href="/bootstrap">bootstrap</a></h3>
+        {
+          pages_bootstrap
+            // .concat(pages_bootstrap_templates)
+            .filter(
+              (item) => item.url.indexOf("/") !== item.url.lastIndexOf("/")
+            )
+            .map((item) => (
+              <li>
+                <a href={item.url}>{item.url.replace("/bootstrap/", "")}</a>
+              </li>
+            ))
+        }
+      </ul>
+      <ul class="tw-px-0 tw-list-inside">
+        <h3><a href="/exp">exp</a></h3>
+        {
+          pages_exp
+            .sort((a, b) => b.url.localeCompare(a.url))
+            .map((item) => (
+              <li>
+                <a href={item.url}>{item.url.replace("/exp/", "")}</a>
+              </li>
+            ))
+        }
+        {
+          pages_exp_rellax
+            .sort((a, b) => b.url.localeCompare(a.url))
+            .map((item) => (
+              <li>
+                <a href={item.url}>{item.url.replace("/exp/rellax/", "")}</a>
+              </li>
+            ))
+        }
+      </ul>
+      <div class="misc">
+        <h3>job</h3>
+        <ul class="tw-px-0 tw-list-inside">
+          {
+            pages_job
+              .sort((a, b) => b.url.localeCompare(a.url))
+              .map((item) => (
+                <li>
+                  <a href={item.url}>{item.url.replace("/job/", "")}</a>
+                </li>
+              ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,162 @@
+---
+const res = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=9`);
+const photos = await res.json();
+---
+
+<div class="container-fluid">
+  <div class="row">
+    <h1>CSS :has() pseudo-class</h1>
+    <p>The parent selector we been waiting for</p>
+    <ul>
+      <li>
+        <a href="https://www.youtube.com/watch?v=OGJvhpoE8b4"
+          >Kevin Powell tutorial</a
+        >
+      </li>
+      <li>
+        <a href="https://caniuse.com/css-has">https://caniuse.com/css-has</a>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col col-md-6">
+      <article>
+        <h1 class="article__title">
+          .article__title:has(+ .article__subtitle)
+        </h1>
+        <p class="article__subtitle">
+          <u
+            >.article__title:has(+ .article__subtitle) {"{"} color: skyblue {
+              "}"
+            }
+          </u> | More info about it here
+        </p>
+        <p>
+          article:has(p) | Lorem ipsum dolor sit amet consectetur adipisicing
+          elit. Facere, quam!
+        </p>
+        <p>
+          article:has(p) | Dolorem impedit est ab laborum quisquam atque a sit
+          debitis!
+        </p>
+        <p class="example">
+          article:has(p) | Delectus inventore <a href="#">This is a link</a> corrupti
+          veritatis voluptates ipsam earum a rem praesentium.
+        </p>
+      </article>
+      <article>
+        <h1 class="article__title">article:has(h1)</h1>
+      </article>
+      <article>
+        <h1 class="article__title">article:has(p:empty)</h1>
+        <p></p>
+      </article>
+      <article>
+        <h1 class="article__title">
+          .article__title:not(:has(+.article__subtitle))
+        </h1>
+        <button>article:has(> button)</button>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, quam!
+        </p>
+        <p class="fancy-paragraph">
+          article:has(.fancy-paragraph) <b>(Apply to whole articles)</b> | Dolorem
+          impedit est ab laborum quisquam atque a sit debitis!
+        </p>
+        <p>
+          Delectus inventore corrupti veritatis voluptates ipsam earum a rem
+          praesentium.
+        </p>
+      </article>
+    </div>
+    <div class="col col-md-6">
+      <div class="gallery">
+        {
+          photos.map((item) => (
+            <figure>
+              <img src={item.url} alt={item.title} />
+            </figure>
+          ))
+        }
+        <!-- <figure v-for="item in photos" :key="item.id">
+                <img :src="item.url" :alt="item.title">
+              </figure> -->
+      </div>
+      <pre>            <code>
+  .gallery img {'{'}
+    transition: scale 300ms ease, opacity 300ms linear
+  {'}'}
+  .gallery:has(figure:hover) img:not(:hover) {'{'}
+    scale: .9;
+    opacity: .7;
+  {'}'}
+            </code>
+            </pre>
+    </div>
+  </div>
+</div>
+<style>
+  article:has(h1) h1 {
+    font-size: 2rem;
+  }
+
+  article:has(h1) {
+    background-color: hotpink;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  article:has(p) {
+    background-color: pink;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  article:has(p:empty) {
+    background-color: red;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  article:has(.fancy-paragraph) {
+    color: darkblue;
+  }
+
+  article:has(> button) {
+    background-color: lime;
+  }
+
+  .article__title:has(+ .article__subtitle) {
+    color: skyblue;
+    font-weight: bold;
+  }
+
+  .article__title + .article__subtitle {
+    color: skyblue;
+  }
+
+  .article__title:not(:has(+ .article__subtitle)) {
+    color: yellow;
+    font-weight: bold;
+    margin-block-end: 3rem;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .gallery figure {
+    margin-bottom: 0;
+  }
+
+  .gallery img {
+    transition: scale 300ms ease, opacity 300ms linear;
+  }
+
+  .gallery:has(figure:hover) img:not(:hover) {
+    scale: 0.9;
+    opacity: 0.7;
+  }
+</style>

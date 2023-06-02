@@ -1,0 +1,393 @@
+---
+/**
+ * Lenten 2023 Charity website
+ *
+ * This particular section is built to display 40-days videos / group by 7 weeks
+ *
+ * 7 videos within the week should be scrollable for user to pick
+ *
+ * pick video will be display on the iframe-youtube-video
+ *
+ */
+import VideoGalleryTinySliderCard from "./230219-lenten-videogallery-card.astro";
+
+const video_week1 = [
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+];
+const video_week2 = [
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+];
+const video_week3 = [
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+];
+const video_week4 = [
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+];
+const video_week5 = [
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+];
+const video_week6 = [
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+];
+const video_week7 = [
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+  {
+    yt_id: "d57c0Eaa6VY",
+    caption: "",
+  },
+];
+---
+<!-- 
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css"
+/>
+
+<script
+  is:inline
+  src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"
+></script>
+
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+  crossorigin="anonymous"
+/>
+<script
+  is:inline
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+  crossorigin="anonymous"
+></script> -->
+
+<section class="video-weekly my-5">
+  <iframe
+    id="video-iframe"
+    src={`https://www.youtube.com/embed/${video_week1[0]}?enablejsapi=1&autoplay=1`}
+    frameborder="0"></iframe>
+
+  <!-- <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist"> -->
+  <ul class="btn-group" id="myTab" role="tablist">
+    {
+      [1, 2, 3, 4, 5, 6, 7].map((tab) => (
+        <button
+          class={`btn btn-secondary ${tab == 1 && "active"}`}
+          id={`wk${tab}-tab`}
+          data-bs-toggle="tab"
+          data-bs-target={`#wk${tab}-tab-pane`}
+          type="button"
+          role="tab"
+          aria-controls={`wk${tab}-tab-pane`}
+          aria-selected={tab == 1 ? "true" : "false"}
+        >
+          Week {tab}
+        </button>
+      ))
+    }
+  </ul>
+
+  <div class="tab-content" id="myTabContent">
+    <div
+      class="tab-pane fade show active"
+      id="wk1-tab-pane"
+      role="tabpanel"
+      aria-labelledby="wk1-tab"
+      tabindex="0"
+    >
+      <VideoGalleryTinySliderCard videos={video_week1} />
+    </div>
+    <div
+      class="tab-pane fade"
+      id="wk2-tab-pane"
+      role="tabpanel"
+      aria-labelledby="wk2-tab"
+      tabindex="0"
+    >
+      <VideoGalleryTinySliderCard videos={video_week2} />
+    </div>
+    <div
+      class="tab-pane fade"
+      id="wk3-tab-pane"
+      role="tabpanel"
+      aria-labelledby="wk3-tab"
+      tabindex="0"
+    >
+      <VideoGalleryTinySliderCard videos={video_week3} />
+    </div>
+    <div
+      class="tab-pane fade"
+      id="wk4-tab-pane"
+      role="tabpanel"
+      aria-labelledby="wk4-tab"
+      tabindex="0"
+    >
+      <VideoGalleryTinySliderCard videos={video_week4} />
+    </div>
+    <div
+      class="tab-pane fade"
+      id="wk5-tab-pane"
+      role="tabpanel"
+      aria-labelledby="wk5-tab"
+      tabindex="0"
+    >
+      <VideoGalleryTinySliderCard videos={video_week5} />
+    </div>
+    <div
+      class="tab-pane fade"
+      id="wk6-tab-pane"
+      role="tabpanel"
+      aria-labelledby="wk6-tab"
+      tabindex="0"
+    >
+      <VideoGalleryTinySliderCard videos={video_week6} />
+    </div>
+    <div
+      class="tab-pane fade"
+      id="wk7-tab-pane"
+      role="tabpanel"
+      aria-labelledby="wk7-tab"
+      tabindex="0"
+    >
+      <VideoGalleryTinySliderCard videos={video_week7} />
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  // add sliders
+  // tip - disable the tinyslider; copy/paste clean html to wordpress;
+  document.querySelectorAll(".video-thumbnail-tinyslider").forEach((slider) => {
+    var slider = tns({
+      container: slider,
+      slideBy: "page",
+      mouseDrag: true,
+      swipeAngle: false,
+      loop: false,
+      gutter: 15,
+      controls: false,
+      nav: false,
+      responsive: {
+        320: {
+          items: 3,
+          edgePadding: 30,
+        },
+        768: {
+          items: 4,
+        },
+      },
+    });
+  });
+
+  // change videos
+  document.querySelectorAll(".video-iframe__change_video").forEach((item) => {
+    item.addEventListener("click", (e) => {
+      console.log(item.getAttribute("data-yt_id"));
+      const get_id = item.getAttribute("data-yt_id");
+      document.getElementById(
+        "video-iframe"
+      ).src = `https://www.youtube.com/embed/${get_id}?enablejsapi=1&autoplay=1`;
+    });
+  });
+</script>
+
+<style>
+  #video-iframe {
+    aspect-ratio: 16/9;
+    width: 100%;
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  .video-thumbnail-tinyslider img {
+    aspect-ratio: 16/9;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .video-thumbnail-tinyslider .card {
+    cursor: pointer;
+  }
+
+  .video-thumbnail-tinyslider .caption {
+    text-align: center;
+  }
+  .video-weekly {
+    display: flex;
+    flex-direction: column;
+  }
+  .video-weekly .btn-group {
+    margin: 1rem auto;
+  }
+  .video-weekly .nav-item {
+    margin-inline: 0.5rem;
+  }
+  .video-weekly .card {
+    border: 0;
+  }
+</style>

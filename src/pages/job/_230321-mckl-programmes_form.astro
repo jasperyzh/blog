@@ -1,0 +1,485 @@
+<pre>
+230321 - mckl (kl & pykett) main website programme's form 
+
+  - full Name
+  - email
+  - phone 
+  - programme name
+    - LEADCF7 - "Preparatory Programmes",
+    - LEADCF20 - "Pre-U / Foundation",
+    - LEADCF19 - "Diploma & Degree",
+    - LEADCF21 - "Professional Accounting",
+    - LEADCF22 - "Professional Development",
+</pre>
+
+<template>
+  <form
+    action="https://crm.zoho.com/crm/WebToLeadForm"
+    name="WebToLeads4875945000004073003"
+    method="POST"
+    :class="`container-fluid ${microsite_source}`"
+    @submit="onsubmit_form($event)"
+    ref="THE_FORM"
+  >
+    <pre v-if="DEBUG"> {{ form_data }} </pre>
+
+    <div class="row g-2">
+      <div class="col-12 col-md-12">
+        <label for="Last_Name"
+          >Full Name <span class="text-danger">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="Last_Name"
+          minlength="5"
+          required
+          placeholder="Full Name *"
+          v-model="form_data.last_name"
+        />
+      </div>
+      <div class="col-12 col-md-6">
+        <label for="Email">Email <span class="text-danger">*</span></label>
+        <input
+          type="email"
+          class="form-control"
+          id="Email"
+          required
+          placeholder="Email *"
+          v-model="form_data.email"
+        />
+      </div>
+      <div class="col-12 col-md-6">
+        <label for="mobile"
+          >Mobile Phone <span class="text-danger">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="mobile"
+          minlength="8"
+          maxlength="12"
+          required
+          placeholder="Mobile phone *"
+          v-model="form_data.mobile"
+        />
+      </div>
+
+      <!-- campus:LEADCF23 -->
+      <div class="col-12">
+        <label class="d-block">Campus: <span class="text-danger">*</span></label
+        >
+        <div
+          class="btn-group w-100"
+          role="group"
+          aria-label="Radio toggle button group for Campus selection"
+        >
+          <input
+            type="radio"
+            class="btn-check"
+            name="campus"
+            id="campus_kl"
+            value="KL Campus"
+            v-model="form_data.campus"
+            @change="clear_programme_interested()"
+            autocomplete="off"
+            checked
+          />
+          <label class="btn btn-outline-primary btn-sm" for="campus_kl"
+            >Kuala Lumpur Campus</label
+          >
+
+          <input
+            type="radio"
+            class="btn-check"
+            name="campus"
+            id="campus_penang"
+            value="Penang Pykett Campus"
+            v-model="form_data.campus"
+            @change="clear_programme_interested()"
+            autocomplete="off"
+            :disabled="disable_penang"
+          />
+          <label
+            :class="`btn btn-outline-primary btn-sm ${disable_penang && 'd-none'}`"
+            for="campus_penang">Pykett Campus, Penang</label
+          >
+        </div>
+      </div>
+
+      <!-- programme_interested -->
+      <div class="col-12">
+        <label for="programme_interested"
+          >Interested Programme <span class="text-danger">*</span></label
+        >
+        <select
+          class="form-select"
+          id="programme_interested"
+          required
+          v-model="form_data.programme_interested"
+          @change="onchange_programme_interested($event)"
+        >
+          <option disabled="" selected value="">
+            - Please select your preferences -
+          </option>
+
+          <optgroup
+            v-for="(optgroup, optgroup_index) in get_programme_interested_options"
+            :key="optgroup_index"
+            :label="optgroup.title"
+            :id="optgroup_index"
+          >
+            <option
+              v-for="(option_name, option_index) in get_programme_interested_options[
+                            optgroup_index
+                        ].options"
+              :key="option_index"
+              :value="option_index"
+              v-html="option_name"></option>
+          </optgroup>
+        </select>
+      </div>
+
+      <!-- microsite_interest:LEADCF10 -->
+      <div class="col-12">
+        <!-- <div class="col-12" v-if="microsite_source !== 'scholarship'"> -->
+        <div class="microsite_interest bg-white border mt-2 px-3 py-2 rounded">
+          <label>I'm interested in:</label>
+          <!-- <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="check_counselling"
+                            value="Personalised counselling with Senior Academicians"
+                            v-model="form_data.microsite_interest" />
+                        <label for="check_counselling" class="form-check-label">
+                            Personalised counselling with Senior Academicians
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="check_scholarship" value="Scholarships"
+                            v-model="form_data.microsite_interest" />
+                        <label for="check_scholarship" class="form-check-label">
+                            Scholarships
+                        </label>
+                    </div> -->
+
+          <div class="form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="check_virtual"
+              value="Virtual Counselling Session"
+              v-model="form_data.microsite_interest"
+            />
+            <label for="check_virtual" class="form-check-label">
+              Virtual Counselling Session
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="check_physical"
+              value="Physical Counselling Session"
+              v-model="form_data.microsite_interest"
+            />
+            <label for="check_physical" class="form-check-label">
+              Physical Counselling Session
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" v-if="microsite_source === 'scholarship'">
+      <!-- latest_academic_qualification:LEADCF5 -->
+      <div class="col-12">
+        <label for="latest_academic_qualification"
+          >Highest Level of Education <span class="text-danger">*</span></label
+        >
+        <select
+          class="form-select"
+          id="latest_academic_qualification"
+          name="LEADCF5"
+          required
+          v-model="form_data.latest_academic_qualification"
+        >
+          <option disabled selected value=""
+            >- Highest Level of Education -</option
+          >
+          <option value="spm">SPM</option>
+          <option value="igcse">IGCSE</option>
+          <option value="pre_university">Pre-University</option>
+          <option value="diploma">Diploma</option>
+          <option value="other">Other Qualifications</option>
+        </select>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- agreement -->
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="agreement"
+        required
+      />
+      <label class="form-check-label" for="agreement">
+        I have read the College's
+        <a
+          href="https://mckl.edu.my/legal-policies-and-notices/"
+          target="_blank">Personal Data Protection Notice</a
+        >
+        and I give consent to the College to process my personal data accordingly.
+        <span class="text-danger">*</span>
+      </label>
+    </div>
+
+    <!-- submit -->
+    <input
+      type="submit"
+      id="formsubmit"
+      class="btn btn-secondary my-2"
+      value="Submit"
+    />
+  </form>
+</template>
+
+<script setup>
+  import { ref, computed, reactive, onMounted } from "vue";
+
+  const DEBUG = false;
+  const LOG_FORMDATA = false;
+
+  const THE_FORM = ref("null");
+
+  function onsubmit_form(e) {
+    if (DEBUG) e.preventDefault();
+
+    // check formdata
+    if (LOG_FORMDATA) {
+      const formData = new FormData(e.target);
+      const entries = formData.entries();
+      for (var input of entries) {
+        console.log(input[0] + ": " + input[1]);
+      }
+    }
+  }
+
+  onMounted(() => {
+    THE_FORM.value.addEventListener("formdata", (e) => {
+      // modifies the form data
+      const formData = e.formData;
+
+      // zoho_default
+      formData.set(
+        "xnQsjsdp",
+        "4d9f4e6fae5a20e0cd8c2a36a070b76984439065bac62cc4cea2c71c2a1d58fb"
+      );
+      formData.set("zc_gad", "");
+      formData.set("actionType", "TGVhZHM=");
+      formData.set(
+        "xmIwtLD",
+        "3df8513a44e8ee0dc6e36209ffd3db2439ef2cc150b37c8431e58c9fcba68bbe"
+      );
+      formData.set("returnURL", form_data.return_url);
+
+      formData.set("Last Name", form_data.last_name);
+      formData.set("Email", form_data.email);
+      formData.set("Mobile", form_data.mobile);
+      formData.set("LEADCF23", form_data.campus);
+      formData.set(
+        form_data.programme_interested_LEADCFID,
+        form_data.programme_interested
+      );
+      // LEADCF7 - "Preparatory Programmes"
+      // LEADCF20 - "Pre-U / Foundation"
+      // LEADCF19 - "Diploma & Degree"
+      // LEADCF21 - "Professional Accounting"
+      // LEADCF22 - "Professional Development"
+      formData.set("LEADCF5", form_data.latest_academic_qualification);
+      formData.set("LEADCF10", form_data.microsite_interest);
+
+      formData.set("LEADCF11", form_data.remarks);
+      formData.set("LEADCF1", form_data.lead_source);
+      formData.set("LEADCF9", form_data.microsite_source);
+    });
+  });
+
+  const form_data = reactive({
+    last_name: "",
+    email: "",
+    mobile: "",
+    campus: "KL Campus",
+    programme_interested_LEADCFID: "",
+    programme_interested: "",
+    latest_academic_qualification: "",
+    microsite_interest: [],
+    remarks: "",
+    lead_source: "Microsite (MCKL Website)",
+    return_url: props.return_url,
+    microsite_source: props.microsite_source,
+  });
+
+  if (DEBUG) {
+    form_data.last_name = "testform";
+    form_data.email = "testform@email.com";
+    form_data.mobile = "0135552222";
+  }
+
+  const get_programme_interested_options = computed(() => {
+    if (form_data.campus == "Penang Pykett Campus") {
+      return props.programme_interested["penang"];
+    } else {
+      return props.programme_interested["kl"];
+    }
+  });
+
+  function clear_programme_interested() {
+    form_data.programme_interested = "";
+  }
+
+  function onchange_programme_interested(e) {
+    form_data.programme_interested_LEADCFID =
+      e.target.querySelector("option:checked").parentElement.id;
+  }
+
+  const props = defineProps({
+    disable_penang: {
+      type: Boolean,
+      default(rawProps) {
+        return false;
+      },
+    },
+    return_url: {
+      type: String,
+      required: true,
+    },
+    microsite_source: {
+      type: String,
+      required: true,
+    },
+    programme_interested: {
+      type: Object,
+      default(rawProps) {
+        return {
+          kl: {
+            // 220620 - options pulled from zoho-webform
+            LEADCF7: {
+              title: "Preparatory Programmes",
+              options: {
+                PREPCAL: "PREPCAL",
+                // "PREPAUSMAT": "PREPAUSMAT",
+              },
+            },
+            LEADCF20: {
+              title: "Pre-U / Foundation",
+              options: {
+                "Cambridge A Level": "Cambridge A Level",
+                "Cambridge A Level (German Pathway)":
+                  "Cambridge A Level (German Pathway)",
+                AUSMAT: "Australian Matriculation",
+              },
+            },
+            LEADCF19: {
+              title: "Diploma & Degree",
+              options: {
+                ADTP: "American Degree Transfer Program",
+                "DECE (FT)": "Diploma in Early Childhood Education",
+                "DSW (PT)": "Diploma in Social Work",
+                DCS: "Diploma in Computer Science - NEW",
+                DIT: "Diploma in Information Technology - NEW",
+                DEC: "Diploma in Digital Business - NEW",
+                DDM: "Diploma in Digital Marketing - NEW",
+                DIFT: "Diploma in Financial Technology - NEW",
+              },
+            },
+            LEADCF21: {
+              title: "Professional Accounting",
+              options: {
+                "ACCA FIA": "ACCA Foundation in Accountancy",
+                "ACCA (FT)": "Association of Chartered Certified Accountants",
+              },
+            },
+            LEADCF22: {
+              title: "Professional Development",
+              options: {
+                CICTL:
+                  "Cambridge International Certificate in Teaching & Learning",
+                CIDTL: "Cambridge International Diploma in Teaching & Learning",
+                // "International Certification of Digital Literacy":
+                // "International Certification of Digital Literacy",
+                "Micro-Credentials in Social Work":
+                  "Micro-credentials in Social Work",
+                "Micro-Credentials in Early Childhood Education":
+                  "Micro-credentials in Early Childhood Education",
+                "Micro-credentials in Computer Science":
+                  "Micro-credentials in Computer Science",
+                "Micro-credentials in Information Technology":
+                  "Micro-credentials in Information Technology",
+                "Micro-credentials in Fundamentals of Innovation and Entrepreneurship":
+                  "Micro-credentials in Fundamentals of Innovation and Entrepreneurship",
+                "Micro-credentials in Programming with Python":
+                  "Micro-credentials in Programming with Python",
+                // "Educational Management and Leadership for Private Education":
+                // "Educational Management and Leadership for Private Education",
+                // "Teaching &amp; Learning and Education Related Short Courses &amp; Workshop":
+                // "Teaching &amp; Learning and Education Related Short Courses &amp; Workshop",
+                // "Micro-Cred Computing &amp; Business":
+                // "Micro-credentials in Computing &amp; Business",
+                // "AWS Academy": "AWS Academy",
+              },
+            },
+          },
+          penang: {
+            LEADCF20: {
+              title: "Pre-U / Foundation",
+              options: {
+                "Cambridge A Level": "Cambridge A Level",
+                "Cambridge A Level (German Pathway)":
+                  "Cambridge A Level (German Pathway)",
+                AUSMAT: "Australian Matriculation",
+              },
+            },
+            LEADCF19: {
+              title: "Diploma & Degree",
+              options: {
+                "DECE (FT)": "Diploma in Early Childhood Education",
+                DCS: "Diploma in Computer Science - NEW",
+                DIT: "Diploma in Information Technology - NEW",
+                DEC: "Diploma in Digital Business - NEW",
+                DDM: "Diploma in Digital Marketing - NEW",
+              },
+            },
+          },
+        };
+      },
+    },
+  });
+</script>
+
+<!-- <style>
+label {
+    font-size: 0.925rem;
+    margin-top: .5rem;
+    margin-bottom: .25rem;
+}
+
+label.form-check-label {
+    margin-top: initial;
+}
+
+#pdpn_agreement+.form-check-label {
+    margin: 0;
+    font-size: 0.825rem;
+}
+
+.campus.form-check-input+.form-check-label {
+    color: $primary;
+}
+
+.campus.form-check-input:checked+.form-check-label {
+    font-weight: bold;
+}
+</style> -->

@@ -1,0 +1,60 @@
+<form id="myForm">
+    <input type="text" id="name" required />
+    <input type="email" id="email" required />
+    <input type="submit" value="Submit" />
+</form>
+
+<script is:inline>
+    document.getElementById("myForm").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent the form from submitting normally
+
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+
+        // Here, normally you'd do something with the data, like send it to a server
+        console.log(`Submitted with name ${name} and email ${email}`);
+    });
+</script>
+
+<script>
+    // import { test } from "vitest";
+
+    // // Assume we have some way to render our form and return its element
+    // import { renderForm } from "./myForm";
+
+    test("form submission", async () => {
+        // Render our form
+        const form = renderForm();
+
+        // Set up our form inputs
+        const nameInput = form.querySelector("#name");
+        const emailInput = form.querySelector("#email");
+        nameInput.value = "John Doe";
+        emailInput.value = "john.doe@example.com";
+
+        // Listen for the submit event
+        let submitted = false;
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            submitted = true;
+        });
+
+        // Simulate a form submission
+        const submitEvent = new Event("submit");
+        form.dispatchEvent(submitEvent);
+
+        // Check that the form was submitted
+        expect(submitted).toBe(true);
+    });
+</script>
+<!-- 
+In the above test:
+
+We first render our form, which we assume returns its DOM element.
+We then set up our form inputs with some test data.
+We listen for the submit event on the form. When it's fired, we set our submitted variable to true.
+We simulate a form submission by creating a new submit event and dispatching it on the form.
+We check that the form was indeed submitted by asserting that submitted is true.
+This is a very basic test and only checks if the form was submitted. In a real-world application, you'd likely want to test more complex behaviors, like validation rules, AJAX requests, and so forth. For that, you'd likely need to use a more complex setup with a tool like JSDOM or a headless browser. 
+
+-->

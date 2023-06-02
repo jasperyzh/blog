@@ -1,0 +1,183 @@
+<div class="bd-example my-5">
+  <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link active"
+        id="home-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#home-tab-pane"
+        type="button"
+        role="tab"
+        aria-controls="home-tab-pane"
+        aria-selected="true">Home</button
+      >
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="profile-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#profile-tab-pane"
+        type="button"
+        role="tab"
+        aria-controls="profile-tab-pane"
+        aria-selected="false"
+        tabindex="-1">Profile</button
+      >
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="contact-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#contact-tab-pane"
+        type="button"
+        role="tab"
+        aria-controls="contact-tab-pane"
+        aria-selected="false"
+        tabindex="-1">Contact</button
+      >
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="disabled-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#disabled-tab-pane"
+        type="button"
+        role="tab"
+        aria-controls="disabled-tab-pane"
+        aria-selected="false"
+        disabled=""
+        tabindex="-1">Disabled</button
+      >
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div
+      class="tab-pane active fade show"
+      id="home-tab-pane"
+      role="tabpanel"
+      aria-labelledby="home-tab"
+      tabindex="0"
+    >
+      <p>
+        This is some placeholder content the <strong>Home tab's</strong> associated
+        content. Clicking another tab will toggle the visibility of this one for
+        the next. The tab JavaScript swaps classes to control the content visibility
+        and styling. You can use it with tabs, pills, and any other <code
+          >.nav</code
+        >-powered navigation.
+      </p>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="profile-tab-pane"
+      role="tabpanel"
+      aria-labelledby="profile-tab"
+      tabindex="0"
+    >
+      <p>
+        This is some placeholder content the <strong>Profile tab's</strong> associated
+        content. Clicking another tab will toggle the visibility of this one for
+        the next. The tab JavaScript swaps classes to control the content visibility
+        and styling. You can use it with tabs, pills, and any other <code
+          >.nav</code
+        >-powered navigation.
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore
+        soluta, fuga assumenda eos earum similique eaque, illum praesentium
+        repellat distinctio minima quis voluptate ipsam beatae in voluptatibus
+        voluptates itaque ad facere suscipit vel recusandae vitae? Minus animi,
+        quisquam temporibus natus ipsam pariatur. Debitis quibusdam eaque, eum
+        aperiam nihil fugit natus modi fugiat architecto quo tempora, nisi enim
+        voluptas odio nobis porro optio. Cum quia ducimus voluptatem pariatur
+        voluptatibus aliquid ut unde eos! Magni excepturi impedit eaque neque
+        tempora suscipit perspiciatis.
+      </p>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="contact-tab-pane"
+      role="tabpanel"
+      aria-labelledby="contact-tab"
+      tabindex="0"
+    >
+      <p>
+        This is some placeholder content the <strong>Contact tab's</strong> associated
+        content. Clicking another tab will toggle the visibility of this one for
+        the next. The tab JavaScript swaps classes to control the content visibility
+        and styling. You can use it with tabs, pills, and any other <code
+          >.nav</code
+        >-powered navigation.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
+        distinctio culpa sit veritatis minima officiis, cum, ipsa repudiandae
+        odit quia nobis, qui tempore corrupti perspiciatis dolore! Quis ab
+        laudantium alias?
+      </p>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="disabled-tab-pane"
+      role="tabpanel"
+      aria-labelledby="disabled-tab"
+      tabindex="0"
+    >
+      <p>
+        This is some placeholder content the <strong>Disabled tab's</strong> associated
+        content.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  import "bootstrap";
+</script>
+
+<style>
+  @keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes fadeOutRight {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+  }
+
+  /* // navs-tabs
+    // replace bootstrap default "fade" animation */
+  .tab-content .tab-pane.active {
+    animation: fadeInLeft 0.5s ease forwards;
+  }
+
+  /* // override bootstrap "show" to enable smooth animations */
+  .tab-content .tab-pane:not(.active) {
+    animation: fadeOutRight 0.25s ease forwards;
+  }
+  .tab-content > .tab-pane {
+    display: block !important;
+  }
+  .tab-content {
+    display: grid;
+  }
+  .tab-content > .tab-pane {
+    grid-column: 1 /1;
+    grid-row: 1 /1;
+  }
+</style>

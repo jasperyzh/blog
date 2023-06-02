@@ -1,0 +1,47 @@
+---
+import { getCollection, CollectionEntry } from "astro:content";
+
+import { slugify, formatBlogPosts } from "./Utils";
+
+// const allPosts = await Astro.glob("../pages/blog/*.md");
+const allPosts = await getCollection("blog");
+
+// const formattedPosts = formatBlogPosts(allPosts);
+const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts);
+
+const all_categories = formattedPosts.map((cat) => cat.data.category).flat();
+
+const processedCats = all_categories.reduce((acc, category) => {
+  const value = acc[category] || 0;
+  return {
+    ...acc,
+    [category]: value + 1,
+  };
+}, {});
+
+const { showCount } = Astro.props;
+---
+
+<ul class="categories">
+  {
+    Object.entries(processedCats).map(([key, val]) => (
+      <li
+        class:list={[
+          "category",
+          Astro.url.pathname.includes(slugify(key)) ? "tw-font-bold" : "",
+        ]}
+      >
+        <a href={`/blog/category/${slugify(key)}/`}>
+          {key} {showCount && `(${val})`}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+<style>
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+</style>

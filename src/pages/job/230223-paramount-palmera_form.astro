@@ -1,0 +1,178 @@
+<!-- <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+  integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+  crossorigin="anonymous"
+/>
+<script
+  is:inline
+  src="https://code.jquery.com/jquery-3.6.3.js"
+  integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+  crossorigin="anonymous"
+></script> -->
+
+<form class="needs-validation" novalidate>
+  <div class="form-row">
+    <div class="col">
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Full name"
+        minlength="4"
+        required
+      />
+      <div class="invalid-feedback">Please provide your name.</div>
+    </div>
+  </div>
+  <div class="form-row my-3">
+    <div class="col">
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="E-mail"
+        required
+      />
+      <div class="invalid-feedback">Please provide your email address.</div>
+    </div>
+    <div class="col">
+      <input
+        type="text"
+        class="form-control"
+        id="phone"
+        placeholder="Mobile Phone"
+        minlength="8"
+        required
+      />
+      <div class="invalid-feedback">Please provide your contact number.</div>
+    </div>
+  </div>
+
+  <div class="form-group my-3">
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="branding" required />
+      <label for="branding" class="form-check-label">
+        I agree to receive future communications from Paramount Property.
+      </label>
+      <div class="invalid-feedback">You must agree before submitting.</div>
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="tnc" required />
+      <label for="tnc" class="form-check-label">
+        I have understood and accepted the
+        <a
+          href="https://paramountproperty.my/privacy-policy-and-disclaimer-notice/"
+          target="_blank">Privacy Policy and Disclaimer Notice</a
+        >
+        and
+        <a
+          href="https://paramountproperty.my/personal-data-protection-notification/"
+          target="_blank">Personal Data Protection Notification.</a
+        >
+        <span>*</span>
+      </label>
+      <div class="invalid-feedback">You must agree before submitting.</div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary my-2">Submit</button>
+  <div class="invalid-feedback sam-feedback">
+    <p class="mb-1">Submission failed, please try again.</p>
+    <pre id="logs"></pre>
+  </div>
+</form>
+
+<script is:inline>
+  var _DEBUG = false;
+  var _TEST = true;
+  var _REDIRECT = true;
+  const slug = "abfa4946";
+  const project_id = "469";
+  const apikey = "pppW@fisher1827";
+  const sam_api_url = `https://api.samproperty.com/api/1.5/lead/${
+    _TEST ? "test-" : ""
+  }send?slug=${slug}&project_id=${project_id}&apikey=${apikey}`;
+  const sam_api_remark = "Interested in Palmera projects.";
+  const redirect_url = "https://paramountproperty.my/palmera/thank-you";
+
+  (function ($) {
+    $(document).ready(function () {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = $(".needs-validation");
+      // Loop over them and prevent submission
+      forms.each(function () {
+        $(this).submit(function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          $(this).addClass("was-validated");
+
+          if (this.checkValidity()) {
+            submit_form_samapi(this);
+          }
+        });
+      });
+    });
+
+    function submit_form_samapi(form /* , data = {} */) {
+      const btn_submit = $("button[type=submit]", form);
+      const log_error = $(".sam-feedback", form);
+      const log_error_p = $("p", log_error);
+      const log_error_pre = $("pre", log_error);
+
+      const btn_default_text = "Submit";
+      const btn_loading_text = `
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    Loading...`;
+      const btn_success_text = `Success!`;
+
+      btn_submit.prop("disabled", true);
+      btn_submit.html(btn_loading_text);
+
+      $.ajax({
+        type: "POST",
+        dataType: "jsonp",
+        crossDomain: true,
+        url: sam_api_url,
+        data: {
+          name: $(form).find("#name").val(),
+          email: $(form).find("#email").val(),
+          phone: $(form).find("#phone").val(),
+          remark: sam_api_remark,
+        },
+        success: function (res) {
+          if (_DEBUG) {
+            console.log("ajax.success(res)", res);
+            log_error_pre.html(JSON.stringify(res, null, 2));
+          }
+          if (res.status === "SUCCESS") {
+            // success logic
+            btn_submit.html(btn_success_text);
+            log_error.removeClass("d-block");
+
+            if (_REDIRECT) window.location.href = redirect_url;
+          } else if (res.status === "ERROR") {
+            // error logic
+            btn_submit.prop("disabled", false);
+            btn_submit.html(btn_default_text);
+
+            // SAMAPI duplication error
+            if (res.errors.name == "111") {
+              log_error.addClass("d-block");
+              log_error_p.html(
+                "Submission failed. Found duplication in submission. Please try again later."
+              );
+            }
+          }
+        },
+        error: function (err) {
+          if (_DEBUG) console.log(err);
+        },
+      });
+    }
+  })(jQuery);
+</script>

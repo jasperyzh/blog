@@ -1,0 +1,52 @@
+<div
+  class="content tw-grow tw-text-center tw-flex tw-items-center tw-justify-center"
+>
+  <h1 class="tw-flex tw-flex-col tw-text-9xl tw-lowercase">
+    <span>Keep</span>
+    <span>It</span>
+    <span>Huge</span>
+    <span>Simple</span>
+    <span>Stupid</span>
+  </h1>
+</div>
+
+<script is:inline>
+  var div = document.querySelector("span:nth-child(5)"),
+    v = { x: 2.3, y: 1 }, // some vector
+    pos = { x: 100, y: 20 }, // some position
+    g = 0.5, // some gravity
+    absorption = 0.7, // friction/absorption
+    bottom = 150, // floor collision
+    frames = 0; // to reset animation (for demo)
+
+  // main calculation of the animation using a particle and a vector
+  function calc() {
+    pos.x += v.x; // update position with vector
+    pos.y += v.y;
+    v.y += g; // update vector with gravity
+    if (pos.y > bottom) {
+      // hit da floor, bounce
+      pos.y = bottom; // force position = max bottom
+      v.y = -v.y * absorption; // reduce power with absorption
+    }
+    if (pos.x < 0 || pos.x > 620) v.x = -v.x;
+  }
+
+  // animate
+  (function loop() {
+    calc();
+    move(div, pos);
+
+    if (++frames > 220) {
+      // tweak, use other techniques - just to reset bounce
+      frames = 0;
+      pos.y = 20;
+    }
+    requestAnimationFrame(loop);
+  })();
+
+  function move(el, p) {
+    el.style.transform = el.style.webkitTransform =
+      "translate(" + p.x + "px," + p.y + "px)";
+  }
+</script>

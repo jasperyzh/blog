@@ -1,0 +1,152 @@
+<pre>
+- [ ] learn more about flexbox fill-grow-shrink and more
+</pre>
+
+<div class="col-md-8 mx-auto d-flex flex-wrap tw-gap-4">
+  <div class="card card--horizontal">
+    <img
+      class="card-img"
+      src="/placeholder/placeholder.svg"
+      alt=""
+      width="300"
+      height="300"
+      style="max-width: 300px"
+    />
+    <div class="card-body d-flex flex-column justify-content-center">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">
+        This is a wider card with supporting text below as a natural lead-in to
+        additional content. This content is a little bit longer.
+      </p>
+      <p class="card-text">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </p>
+    </div>
+  </div>
+
+  <div class="card card--horizontal">
+    <div class="hover_reveal">
+      <img
+        class="card-img"
+        src="/placeholder/placeholder.svg"
+        alt=""
+        width="300"
+        height="300"
+      />
+      <ul class="hover_reveal__content">
+        <li class="author"><a href="#">John Doe</a></li>
+        <li class="date">Aug. 24, 2015</li>
+        <li>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Learn</a></li>
+            <li class="list-inline-item"><a href="#">Code</a></li>
+            <li class="list-inline-item"><a href="#">HTML</a></li>
+            <li class="list-inline-item"><a href="#">CSS</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="card-body card-body--overlay d-flex flex-column justify-content-center"
+    >
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">
+        This is a wider card with supporting text below as a natural lead-in to
+        additional content. This content is a little bit longer.
+      </p>
+      <p class="card-text">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </p>
+    </div>
+  </div>
+
+  <div class="card card--horizontal">
+    <div class="hover_reveal">
+      <img
+        class="card-img"
+        src="/placeholder/placeholder.svg"
+        alt=""
+        width="300"
+        height="300"
+      />
+      <ul class="hover_reveal__content">
+        <li class="author"><a href="#">John Doe</a></li>
+        <li class="date">Aug. 24, 2015</li>
+        <li>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Learn</a></li>
+            <li class="list-inline-item"><a href="#">Code</a></li>
+            <li class="list-inline-item"><a href="#">HTML</a></li>
+            <li class="list-inline-item"><a href="#">CSS</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="tw-order-first card-body card-body--overlay d-flex flex-column justify-content-center"
+    >
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">
+        This is a wider card with supporting text below as a natural lead-in to
+        additional content. This content is a little bit longer.
+      </p>
+      <p class="card-text">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </p>
+    </div>
+  </div>
+</div>
+
+<style lang="scss" is:global>
+  .is_bootstrap {
+    .card.card--horizontal {
+      display: flex;
+      flex-direction: column;
+    }
+    @media (min-width: 525px) {
+      .card.card--horizontal {
+        flex-direction: row;
+      }
+    }
+    .hover_reveal {
+      position: relative;
+      overflow: hidden;
+    }
+    .hover_reveal__content {
+      margin-bottom: 0 !important;
+      padding: 1rem;
+      position: absolute;
+      inset: 0 0 0 0;
+      background-color: rgba(0 0 0 / 30%);
+      translate: -100% 0;
+      transition: translate 150ms ease-in-out;
+    }
+    .hover_reveal:hover .hover_reveal__content {
+      translate: 0 0;
+    }
+    .hover_reveal .card-img {
+      transform: scale(1) rotate(0deg);
+      transition: all 150ms ease-in-out;
+
+      object-fit: cover;
+    }
+    .hover_reveal:hover .card-img {
+      transform: scale(1.2) rotate(3deg);
+    }
+    .card-body--overlay {
+      position: relative;
+      z-index: 5;
+    }
+    .card-body--overlay:before {
+      transform: skewX(-3deg);
+      content: "";
+      background: #fff;
+      width: 30px;
+      position: absolute;
+      left: -10px;
+      top: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+  }
+</style>

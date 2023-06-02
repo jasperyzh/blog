@@ -1,0 +1,105 @@
+<pre>
+230322 - shiny border on card
+[You Don’t Need A Lot Of Pixels To Be Classy - hyperplexed](https://www.youtube.com/watch?v=CqndlPZkjqY)
+</pre>
+<section>
+  <div class="card shiny_border">
+    <div class="card-content">
+      <h3>Valuable Info</h3>
+      <h1>The worst thing about coding is the dementors</h1>
+      <p>
+        I can't stand when I have spent the last 47 minutes adjusting the rgb on
+        my gradient only to have a dementor appear and suck my soul out.
+      </p>
+    </div>
+  </div>
+
+  <div id="links">
+    <div class="meta-link">
+      <span class="label">Links</span>
+      <span class="dot">·</span>
+      <a class="source" href="https://chroniclehq.com/" target="_blank">
+        <i class="fa-solid fa-link"></i>
+      </a>
+      <span class="dot">·</span>
+      <a class="youtube" href="https://youtu.be/CqndlPZkjqY" target="_blank">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    --primary-color: mediumslateblue;
+    display: grid;
+    place-items: center;
+    background-color: black;
+  }
+
+  .card {
+    margin: 3rem auto;
+    width: 640px;
+    position: relative;
+    border: 1px solid rgb(255 255 255 / 20%);
+    border-radius: 3rem;
+    text-align: center;
+    color: #fff;
+
+    background-image: radial-gradient(
+      rgba(255, 255, 255, 0.3) 1px,
+      transparent 1px
+    );
+    background-position: 50% 50%;
+    background-size: 1.3rem 1.3rem;
+    transition: background-size .5s ease;
+  }
+
+  .card > .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 4rem;
+  }
+
+  .card:hover {
+    background-size: 1.6rem 1.6rem;
+  }
+
+  @media (max-width: 768px) {
+    .card {
+      width: calc(100% - 2rem);
+      padding: 0.75rem;
+      border-radius: 1rem;
+    }
+    .card-content {
+      padding: 3rem;
+    }
+  }
+
+  .shiny_border:after {
+    content: "";
+    height: 70px;
+    width: 1px;
+    position: absolute;
+    left: -1px;
+    top: 65%;
+    transition: top, opacity;
+    transition-duration: 600ms;
+    transition-timing-function: ease;
+    background: linear-gradient(transparent, var(--primary-color), transparent);
+    opacity: 0;
+  }
+
+  .shiny_border:after {
+    top: 65%;
+    opacity: 0;
+  }
+
+  .shiny_border:hover:after {
+    top: 25%;
+    opacity: 1;
+  }
+</style>

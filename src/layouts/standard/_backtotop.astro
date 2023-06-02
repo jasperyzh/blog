@@ -1,0 +1,49 @@
+<!-- Return to Top -->
+<pre>
+    5 years old code, may have better solution (a little buggy from my short test)
+    <a href="https://codepen.io/rdallaire/pen/neMvbX">[180517| Return to Top Arrow.url](http://codepen.io/rdallaire/pen/apoyx)</a>
+</pre>
+<a id="return-to-top">
+    <!-- prettier-ignore -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"> <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/> </svg>
+</a>
+<style>
+    #return-to-top {
+        position: fixed;
+        bottom: 3rem;
+        right: 3rem;
+        z-index: 100;
+
+        opacity: 0;
+        transition: opacity 0.3s ease;
+
+        & > svg {
+            filter: drop-shadow(2px 4px 6px black);
+        }
+    }
+</style>
+
+<script is:inline>
+    // ===== Scroll to Top ====
+
+    // Get the return-to-top element
+    var returnToTop = document.getElementById("return-to-top");
+
+    // Add a scroll event listener to the window
+    window.addEventListener("scroll", function () {
+        if (window.pageYOffset >= 50) {
+            returnToTop.style.opacity = 1;
+        } else {
+            returnToTop.style.opacity = 0;
+        }
+    });
+
+    // Add a click event listener to the return-to-top element
+    returnToTop.addEventListener("click", function () {
+        // When arrow is clicked
+        window.scrollTo({
+            top: 0, // Scroll to top of body
+            behavior: "smooth", // Add smooth scrolling behavior
+        });
+    });
+</script>

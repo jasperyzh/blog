@@ -1,0 +1,243 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout main_classList={[]}>
+  <section class="masthead__container masthead__center masthead__dark">
+    <div
+      style="background-image:url(https://images.pexels.com/photos/11785073/pexels-photo-11785073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);"
+      class="masthead__bg"
+    >
+    </div>
+    <div class="masthead__content">
+      <h3>Image Background</h3>
+    </div>
+  </section>
+
+  <section class="masthead__container has-parallax">
+    <div
+      class="masthead__bg overlay overlay-2 parallax h-100vh"
+      style="background-image:url(https://images.pexels.com/photos/11785073/pexels-photo-11785073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);"
+      data-rellax-speed="-10"
+    >
+    </div>
+    <div class="text-center">
+      <h5>Image Background Parallax</h5>
+    </div>
+  </section>
+
+  <section class="masthead__container has-parallax" id="header-video">
+    <div
+      class="masthead__bg overlay overlay-2 parallax h-100vh"
+      style="background-image:url(https://prium.github.io/assets/images/video.jpg);"
+      data-rellax-speed="-10"
+    >
+      <video autoplay="autoplay" loop="loop" muted="muted">
+        <source
+          src="https://prium.github.io/assets/videos/demo/video.webm"
+          type="video/webm"
+        />
+        <source
+          src="https://prium.github.io/assets/videos/demo/video.mp4"
+          type="video/mp4"
+        />
+        <source
+          src="https://prium.github.io/assets/videos/demo/video.ogv"
+          type="video/ogv"
+        />
+      </video>
+    </div>
+    <div>
+      <h5>Video Background Parallax</h5>
+    </div>
+  </section>
+
+  <section class="masthead__container" id="header-video">
+    <div
+      class="masthead__bg overlay"
+      style="background-image:url(https://images.pexels.com/photos/11785073/pexels-photo-11785073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);"
+    >
+      <video autoplay="autoplay" loop="loop" muted="muted">
+        <source
+          src="https://prium.github.io/assets/videos/demo/video.webm"
+          type="video/webm"
+        />
+        <source
+          src="https://prium.github.io/assets/videos/demo/video.mp4"
+          type="video/mp4"
+        />
+        <source
+          src="https://prium.github.io/assets/videos/demo/video.ogv"
+          type="video/ogv"
+        />
+      </video>
+    </div>
+    <div>
+      <h5>Video Background</h5>
+    </div>
+  </section>
+
+  <section class="masthead__container">
+    <div
+      class="masthead__bg"
+      style="background-image:url(http://img.youtube.com/vi/L3V7LKYPIUQ/maxresdefault.jpg);"
+    >
+      <div
+        class="youtube-background"
+        data-video-url="http://youtu.be/L3V7LKYPIUQ"
+        data-start-at="0"
+        data-stop-at="444"
+      >
+      </div>
+    </div>
+    <div class="text-center">
+      <h4 class="color-white">Youtube Video Background</h4>
+    </div>
+  </section>
+
+  <section class="masthead__container py-7">
+    <div
+      style="background-image:url(https://prium.github.io/assets/images/header-02.jpg);"
+      class="masthead__bg overlay overlay-1"
+    >
+    </div>
+    <div class="text-center">
+      <h5>Image Background</h5>
+      <h6>(.overlay-1)</h6>
+    </div>
+  </section>
+  <!-- 
+  <section id="background">
+    <section class="masthead__landscape">
+      <picture class="masthead__picture">
+        <img
+          src="https://images.pexels.com/photos/11785073/pexels-photo-11785073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);"
+          alt=""
+        />
+      </picture>
+      <div class="text-center">
+        <h4>Image Background</h4>
+      </div>
+    </section>
+  </section>
+
+  <section class="masthead__container">
+    <div
+      style="background-image:url(https://prium.github.io/assets/images/header-02.jpg);"
+      class="masthead__bg"
+    >
+    </div>
+    <div class="text-center">
+      <h4>Image Background</h4>
+    </div>
+  </section> -->
+
+  <section class="tw-relative tw-aspect-video">
+    <picture class="tw-w-full">
+      <img
+        class="tw-w-full"
+        src="https://images.pexels.com/photos/11785073/pexels-photo-11785073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);"
+        alt=""
+      />
+    </picture>
+    <div
+      class="tw-border-pink-400 tw-border-dotted tw-aspect-square tw-absolute tw-z-30 tw-inset-0 tw-h-full tw-m-auto"
+    >
+    </div>
+    <div
+      class="tw-border-lime-400 tw-border-dotted tw-aspect-[4/3] tw-absolute tw-z-30 tw-inset-0 tw-h-full tw-m-auto"
+    >
+    </div>
+    <div
+      class="tw-border-red-400 tw-border-dotted tw-aspect-[2/1] tw-absolute tw-z-30 tw-inset-0 tw-w-full tw-m-auto"
+    >
+    </div>
+    <div
+      class="tw-border-blue-400 tw-border-dotted tw-aspect-[3/1] tw-absolute tw-z-30 tw-inset-0 tw-w-full tw-m-auto"
+    >
+    </div>
+  </section>
+
+  <!-- <AspectRatio /> -->
+
+  <style>
+    .masthead__landscape {
+      @apply tw-max-w-full tw-aspect-[16/9] lg:tw-aspect-[2/1] 2xl:tw-aspect-[3/1] tw-inline-flex tw-w-full tw-flex-col tw-items-center tw-justify-center tw-relative;
+    }
+    .masthead__container {
+      width: 100%;
+      position: relative;
+
+      aspect-ratio: 16/9;
+    }
+
+    .masthead__center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .masthead__dark {
+      color: #fff;
+    }
+
+    .masthead__bg {
+      position: absolute;
+      width: 100%;
+      min-height: 100%;
+      top: 0;
+      left: 0;
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      overflow: hidden;
+    }
+  </style>
+
+  <section id="my_canvas_size" class="tw-w-full tw-mx-auto">
+    <h2>Canvas Sizes</h2>
+    <div
+      class="tw-container tw-flex tw-flex-wrap tw-justify-around tw-items-center"
+    >
+      <div class="canvas_size--40_60">
+        <span class="">40:60</span>
+      </div>
+
+      <div class="canvas_size--1_1">
+        <span class="">1:1</span>
+      </div>
+      <div class="canvas_size--4_3">
+        <span class="">4:3</span>
+      </div>
+
+      <div class="canvas_size--16_9">
+        <span class="">16:9</span>
+      </div>
+    </div>
+    <div class="canvas_size--masthead">
+      <span class="lg:tw-text-xl">16:9</span>
+      <span class="tw-text-xl lg:tw-text-6xl 2xl:tw-text-xl">2:1</span>
+      <span class="tw-text-xl 2xl:tw-text-6xl">3:1</span>
+    </div>
+  </section>
+  <style>
+    .canvas_size--1_1 {
+      @apply tw-max-w-md tw-bg-green-500 tw-aspect-[1/1] tw-inline-flex tw-w-full tw-items-center tw-justify-center;
+    }
+    .canvas_size--4_3 {
+      @apply tw-max-w-md tw-bg-purple-500 tw-aspect-[4/3] tw-inline-flex tw-w-full tw-items-center tw-justify-center;
+    }
+    .canvas_size--16_9 {
+      @apply tw-max-w-md tw-bg-blue-500 tw-aspect-[16/9] tw-inline-flex tw-w-full tw-items-center tw-justify-center;
+    }
+    .canvas_size--40_60 {
+      @apply tw-max-w-md tw-bg-red-500 tw-aspect-[40/60] tw-inline-flex tw-w-full tw-items-center tw-justify-center;
+    }
+    .canvas_size--masthead {
+      @apply tw-max-w-full tw-bg-yellow-500 tw-aspect-[16/9] lg:tw-aspect-[2/1] 2xl:tw-aspect-[3/1] tw-inline-flex tw-w-full tw-flex-col tw-items-center tw-justify-center;
+    }
+    span {
+      @apply tw-text-white tw-font-bold tw-text-6xl;
+    }
+  </style>
+</Layout>

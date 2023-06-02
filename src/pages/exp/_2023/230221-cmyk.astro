@@ -1,0 +1,76 @@
+<div class="cmy_effect">
+  <h1>CMYK Blur Effect</h1>
+  <h1>CMYK Blur Effect</h1>
+  <h1>CMYK Blur Effect</h1>
+</div>
+<figure class="cmy_effect" style="--fontsize:2rem; --blendmode: difference;">
+  <img
+    width="256"
+    src="https://images.pexels.com/photos/15386482/pexels-photo-15386482.jpeg"
+    alt=""
+  />
+  <img
+    width="256"
+    src="https://images.pexels.com/photos/15386482/pexels-photo-15386482.jpeg"
+    alt=""
+  />
+  <img
+    width="256"
+    src="https://images.pexels.com/photos/15386482/pexels-photo-15386482.jpeg"
+    alt=""
+  />
+</figure>
+<style>
+  .cmy_effect {
+    --blendmode: multiply;
+    --fontsize: 3rem;
+    --scale: calc(var(--fontsize) * 0.05);
+
+    --offset-firstchild: calc(-1 * var(--scale)) calc(-1 * var(--scale));
+    --offset-yellow: var(--scale) calc(-1 * var(--scale));
+    --offset-lastchild: var(--scale) var(--scale);
+
+    display: inline-block;
+    position: relative;
+    font-size: var(--fontsize);
+  }
+  .cmy_effect > * {
+    margin: 0;
+    padding: 0;
+    mix-blend-mode: var(--blendmode);
+    filter: contrast(30);
+    transition: all 0.08s ease-out;
+  }
+  .cmy_effect :first-child {
+    color: cyan;
+  }
+  .cmy_effect :nth-child(2) {
+    color: yellow;
+  }
+  .cmy_effect :last-child {
+    color: magenta;
+  }
+  .cmy_effect img:nth-child(1) {
+    filter: hue-rotate(139deg);
+  }
+  .cmy_effect img:nth-child(2) {
+    filter: hue-rotate(19deg);
+  }
+  .cmy_effect img:nth-child(3) {
+    filter: hue-rotate(286deg);
+  }
+  .cmy_effect :not(:first-child) {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .cmy_effect:hover :first-child {
+    translate: var(--offset-firstchild);
+  }
+  .cmy_effect:hover :nth-child(2) {
+    translate: var(--offset-yellow);
+  }
+  .cmy_effect:hover :last-child {
+    translate: var(--offset-lastchild);
+  }
+</style>

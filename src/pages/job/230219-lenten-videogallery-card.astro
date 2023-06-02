@@ -1,0 +1,30 @@
+---
+const {
+  videos = [
+    {
+      yt_id: "rC3MCeB-uf0",
+      caption: "hello_world",
+    },
+  ],
+} = Astro.props;
+---
+
+<div class="video-thumbnail-tinyslider">
+  {
+    videos.map((data) => (
+      <>
+        <div class="card">
+          <img
+            src={`https://i.ytimg.com/vi/${data.yt_id}/hqdefault.jpg`}
+            class="card-img"
+          />
+          <a
+            class="video-iframe__change_video stretched-link"
+            data-yt_id={data.yt_id}
+          />
+          {data.caption && <p class="caption">{data.caption}</p>}
+        </div>
+      </>
+    ))
+  }
+</div>

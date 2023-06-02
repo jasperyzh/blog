@@ -1,0 +1,12 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "allowJs": true,
+    "paths": {
+      "photoswipe/lightbox": [
+        "./node_modules/photoswipe/dist/types/lightbox/lightbox.d.ts"
+      ]
+    }
+  }
+}
