@@ -5,59 +5,58 @@ export interface Props {
   title?: string;
   description?: string;
   image?: string;
-  data?: object;
-  robots?: boolean;
 }
 
-/* const seo_stuff = {
-  image:
-  robots:
-  data:
-}; */
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// - [ ] seo integration
+// <!-- <Seo {title} {description} url={Astro.url} {image} {data} {robots} /> -->
 
 const {
   title,
   description,
-  image,
-  data,
-  robots = false,
+  image = "/placeholder-post.jpg",
 } = Astro.props as Props;
 ---
 
-<head>
-  <!-- Global Metadata -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="generator" content={Astro.generator} />
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
 
-  <!-- [When lightmode breaks your favicon](https://www.youtube.com/watch?v=o5WNKVkm1HA) -->
-  <link
-    rel="icon"
-    type="image/svg+xml"
-    href="/favicon.svg"
-    media="(prefers-color-scheme: dark"
-  />
-  <link
-    rel="icon"
-    type="image/svg+xml"
-    href="/favicon.svg"
-    media="(prefers-color-scheme: light"
-  />
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
 
-  <!-- Primary Meta Tags -->
-  <title>{title}</title>
-  <meta name="title" content={title} />
-  <meta name="description" content={description} />
+<!-- [When lightmode breaks your favicon](https://www.youtube.com/watch?v=o5WNKVkm1HA) -->
+<link
+  rel="icon"
+  type="image/svg+xml"
+  href="/favicon.svg"
+  media="(prefers-color-scheme: dark)"
+/>
+<link
+  rel="icon"
+  type="image/svg+xml"
+  href="/favicon.svg"
+  media="(prefers-color-scheme: light)"
+/>
 
-  <Seo {title} {description} url={Astro.url} {image} {data} {robots} />
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;0,700;1,400&display=swap"
-    rel="stylesheet"
-  />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
 
-  <slot />
-</head>
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />

@@ -1,7 +1,9 @@
 ---
+// for tags
+
 import { getCollection, CollectionEntry } from "astro:content";
 
-import { slugify, formatBlogPosts } from "./Utils";
+import { slugify, formatBlogPosts } from "./_Utils";
 
 // const allPosts = await Astro.glob("../pages/blog/*.md");
 const allPosts = await getCollection("blog");
@@ -28,7 +30,7 @@ const { showCount } = Astro.props;
       <li
         class:list={[
           "category",
-          Astro.url.pathname.includes(slugify(key)) ? "tw-font-bold" : "",
+          Astro.url.pathname.includes(slugify(key)) ? "font-bold" : "",
         ]}
       >
         <a href={`/blog/category/${slugify(key)}/`}>

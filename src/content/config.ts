@@ -1,6 +1,6 @@
 // https://zod.dev/ - TypeScript-first schema validation with static type inference
 import { z, defineCollection } from "astro:content";
-import { numberToDate } from "../layouts/Utils";
+import { numberToDate } from "../layouts/_Utils";
 
 const blogCollection = defineCollection({
     schema: z.object({
@@ -13,7 +13,7 @@ const blogCollection = defineCollection({
             src: z.string(),
             alt: z.string().optional(),
         }).default({
-            src: "/images/post-1.jpg",
+            src: "/placeholder-post.jpg",
             alt: "Welcome to my Blog Image."
         }),
         description: z.string().max(160, "For best SEO results, please keep the description under 160 characters."),
@@ -24,3 +24,27 @@ const blogCollection = defineCollection({
 })
 
 export const collections = { 'blog': blogCollection };
+
+/* from default astroblog template
+import { defineCollection, z } from 'astro:content';
+
+const blog = defineCollection({
+    // Type-check frontmatter using a schema
+    schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        // Transform string to Date object
+        pubDate: z
+            .string()
+            .or(z.date())
+            .transform((val) => new Date(val)),
+        updatedDate: z
+            .string()
+            .optional()
+            .transform((str) => (str ? new Date(str) : undefined)),
+        heroImage: z.string().optional(),
+    }),
+});
+
+export const collections = { blog };
+ */

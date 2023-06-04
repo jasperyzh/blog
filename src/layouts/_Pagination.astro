@@ -5,24 +5,6 @@ const { prevUrl, nextUrl } = Astro.props;
 ---
 
 <nav aria-label="Blog pages">
-  {
-    prevUrl && (
-      <Link
-        text="Previous"
-        href={prevUrl}
-        style="primary"
-        icon={{ name: "tabler:arrow-big-left-line", side: "left" }}
-      />
-    )
-  }
-  {
-    nextUrl && (
-      <Link
-        text="Next"
-        href={nextUrl}
-        style="primary"
-        icon={{ name: "tabler:arrow-big-right-line", side: "right" }}
-      />
-    )
-  }
+  {prevUrl && <Link href={prevUrl}>Previous</Link>}
+  {nextUrl && <Link href={nextUrl}>Next</Link>}
 </nav>

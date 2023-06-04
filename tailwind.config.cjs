@@ -11,9 +11,9 @@ module.exports = {
     }),
   },
   plugins: [],
-  prefix: "tw-",
+  // prefix: "tw-",
   corePlugins: {
     preflight: false,
   },
-  safelist: ["tw-grid-cols-2"],
+  // safelist: ["tw-grid-cols-2"],
 };

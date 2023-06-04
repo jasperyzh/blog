@@ -7,7 +7,6 @@ category: WebDev
 tag: [general]
 ---
 
-# how should i start my blog?
 To start a blog, you will need to choose a blogging platform, create a blog, and start publishing content. Here are some steps that you can follow to start your own blog:
 
 Choose a blogging platform: There are many different blogging platforms to choose from, including WordPress, Blogger, and Squarespace. Each platform has its own features and capabilities, so choose the one that best fits your needs and preferences.

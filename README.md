@@ -1,14 +1,41 @@
-# jy/blog
+# jy
+k.i.s.s. permanent note on principles & long-terms goal (update every quarter)
+figure out the following
+- meditate
+- rational optimism; get meaningful & chalenging goals in area of interest & career
+- physical activity & outdoor exploration: take a walk
+- mindful financial practices
+- self-care practices
+- investment & financial practices
+- prioritize intent
+- reading/gaming/music/art/philosophy
+- /backup (AAA|AA|A)
+- family, check on finance, insurance, protection, memories archive
 
+
+# my_projects
+- /_api - instagram/facebook/linkedin/youtube/twitter (test/scrap with apikey)
 - /blog
+  - [ ] seo_integration
+  - [ ] rss
+  - [ ] insert pathname to body globally for all pages // const body_pathname = [{ frontpage: Astro.url.pathname == "/" }];
+  - [ ] add google font optimally
 - /portfolio
-- /exp
-- /socmed - instagram/facebook/linkedin/youtube
+- /exp - stackblitz
+- /p5js - editorp5jsorg
 
----
+# workflows
 - [ ] deep dive github - improve version control, automate with actions
   - [ ] main | staging | production
   - [ ] [230506| commit-messages-guide-README.md at master · RomuloOliveira-commit-messages-guide.url](https://github.com/RomuloOliveira/commit-messages-guide/blob/master/README.md)
+- [ ] unit-test with form submissions
+
+
+# moar
+- rellax
+- [ ] partytown integration
+- TypeScript
+- [ ] [230506| Instagram APIs - Facebook for Developers.url](https://developers.facebook.com/products/instagram/apis/)
 - [ ] wordpress public comment section
 - [ ] [230506| How to Swap Icons in Figma - YouTube.url](https://www.youtube.com/watch?v=nbBx8vgMpYA)
 - [Masahiro Sakurai on Creating Games - take notes of the games design elements](https://www.youtube.com/channel/UCv1DvRY5PyHHt3KN9ghunuw)
@@ -18,17 +45,12 @@
 - .vimrc
 - Prisma
 - dotfiles - .bashrc / .gitconfig / .ssh/config / .npmrc / .zshrc
-- TypeScript
-- [ ] partytown integration
 - [ ] Chrome Devtool
-- [ ] unit-test with form submissions
 - [ ] [Docker - Never install locally](https://www.youtube.com/watch?v=J0NuOlA2xDc)
 - [ ] Astrojs ServerSideRendering (SSR) - cookies, sessions, authentication
   - [ ] authentication, cookies, sessions, localstorage
   - [ ] [how-to recaptcha](https://developers.google.com/recaptcha/)
 - [ ] [fusejs - Why I don’t need Algolia Search - YouTube.url](https://www.youtube.com/watch?v=7CCQJ0bu9s8&t=565s)
-- [ ] [230506| Instagram APIs - Facebook for Developers.url](https://developers.facebook.com/products/instagram/apis/)
-- rellax
 - [ ] infinite scroll for contents - https://infinite-scroll.com/
 - [ ] website act like a presentation slides
   - http://www.cyclemon.com/
@@ -52,10 +74,9 @@
 - [ ] [230506| Dealing with hover on mobile - YouTube.url](https://www.youtube.com/watch?v=uuluAyw9AI0)
 - [ ] [230508| The simple trick to transition from height 0 to auto with CSS](https://www.youtube.com/watch?v=B_n4YONte5A)
 - [ ] [230506| Build a responsive, animated accordion that looks pretty good - YouTube.url](https://www.youtube.com/watch?v=WJERnXiFFug)
-- [ ] [180517| Wavescroll (drag background).url](http://codepen.io/suez/pen/wMOVXz)
-- [ ] [180517| CSS Parallax Orbs.url](http://codepen.io/jcoulterdesign/pen/OMOqjy)
 
 # logs
+230602 - move all experiment to stackblitz; now this project will only focus on blog & portfolio
 230531 - pulled subscribed youtube channel data, ready for filter and organize
 230518 - move all sketches to p5js to editor.p5js.org; 
 230507 - yt-video on programmer standards, malaysia as financial hub, crashcourse study skill

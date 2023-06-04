@@ -1,7 +1,7 @@
 ---
 // import { Debug } from "astro/components";
 import { Image } from "@astrojs/image/components";
-import { slugify, dateToNumber } from "../layouts/Utils";
+import { slugify, dateToNumber } from "../layouts/_Utils";
 // import Link from "./Link.astro";
 
 const { data, url, heading } = Astro.props;
@@ -18,7 +18,7 @@ const {
 } = data;
 ---
 
-<article class="card tw-flex tw-gap-4 tw-items-start">
+<article class="card flex gap-4 items-start">
   <!-- <figure>
     <a class="tags" href={`/blog/category/${slugify(category)}/`}
       ><span class="badge">{category}</span>
@@ -36,7 +36,7 @@ const {
       />
     </a>
   </figure> -->
-  <Image
+  <!-- <Image
     src={image.src}
     alt={image.description}
     width="92"
@@ -45,8 +45,9 @@ const {
     fit="cover"
     quality={80}
     aspectRatio={1 / 1}
-    class="tw-object-contain"
-  />
+    class="object-contain"
+  /> -->
+  <img src={image.src} alt={image.description} />
   <div class="content">
     <p>
       <!-- by <a href={`/author/${slugify(author)}/`}>{author}</a> |  -->
@@ -66,7 +67,7 @@ const {
       href={`/blog/${url}/`}
       text="Read post"
       style="secondary"
-      class="tw-mt-auto"
+      class="mt-auto"
     />
   </footer> -->
 </article>

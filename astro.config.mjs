@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-import vue from "@astrojs/vue";
-import image from "@astrojs/image";
+// import vue from "@astrojs/vue";
+// import image from "@astrojs/image";
 
 // https://astro.build/config
 // import sitemap from "@astrojs/sitemap";
@@ -11,11 +11,11 @@ import image from "@astrojs/image";
 export default defineConfig({
   integrations: [
     tailwind(),
-    vue(),
+    // vue(),
     //  mdx(),
-    image({
-      serviceEntryPoint: "@astrojs/image/sharp",
-    }),
+    // image({
+    //   serviceEntryPoint: "@astrojs/image/sharp",
+    // }),
     /* sitemap({
       // https://docs.astro.build/en/guides/integrations-guide/sitemap/
       // how to deal with robot.txt pages?
@@ -24,5 +24,6 @@ export default defineConfig({
     // partytown(),
   ],
   site: "https://jasperyong.com",
-  output: "server"
+  // SSR
+  // output: "server"
 });

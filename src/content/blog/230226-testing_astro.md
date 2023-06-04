@@ -3,7 +3,7 @@ title: Testing AstroJS
 pubDate: 221120
 author: jy
 image: {
-  src: "/images/post-1.jpg",
+  src: "/placeholder-post.jpg",
   alt: "A picture of a coder",
 }
 description: Find out what makes Astro awesome!
@@ -11,13 +11,11 @@ draft: false
 category: CSS
 ---
 
-# AstroJS Crash Course
-
 firstpost of the blog, coming from .md
 
 - [ ] [Build a Blog](https://docs.astro.build/en/tutorial/0-introduction/)
 
-<section class="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2">
+<section class="grid grid-cols-1 sm:grid-cols-2">
 <div>
 
 ## Basic

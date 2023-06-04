@@ -1,0 +1,46 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// import { formatBlogPosts } from "../layouts/_Utils";
+// import Card from "../layouts/Card.astro";
+// import QuickLink from "./_quicklink.astro";
+
+// blog
+// import { getCollection, CollectionEntry } from "astro:content";
+// const allPosts = await getCollection("blog");
+// const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts, {
+//   limit: 4,
+// });
+
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<Layout
+    title={SITE_TITLE}
+    description={SITE_DESCRIPTION}
+    image="/placeholder/image.jpg"
+>
+    <div class="wrapper">
+        <img src="/placeholder-300x300.svg" />
+        <img src="/placeholder-300x300.svg" />
+        <img src="/placeholder-300x300.svg" />
+        <img src="/placeholder-300x300.svg" />
+        <img src="/placeholder-300x300.svg" />
+        <img src="/placeholder-300x300.svg" />
+    </div>
+    <!-- <section id="blog_highlight">
+    <ul class="grid gap-5 max-w-2xl">
+      {
+        formattedPosts.map((post) => (
+          <Card data={post.data} url={post.slug} heading="h2" />
+        ))
+      }
+    </ul>
+  </section> -->
+
+    <!-- <section id="currentwork">
+    <h2>Quick Links</h2>
+    <p>Fast travel to latest experimentations</p>
+    <QuickLink />
+  </section> -->
+</Layout>

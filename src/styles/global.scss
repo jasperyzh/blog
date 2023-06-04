@@ -1,0 +1,138 @@
+/*
+  The CSS in this style tag is based off of Bear Blog's default CSS.
+  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
+  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
+ */
+body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 65ch;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b {
+    color: #222;
+}
+a {
+    color: #3273dc;
+}
+nav a {
+    margin-right: 10px;
+}
+textarea {
+    width: 100%;
+    font-size: 16px;
+}
+input {
+    font-size: 16px;
+}
+content {
+    line-height: 1.6;
+}
+table {
+    width: 100%;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+}
+pre {
+    padding: 1rem;
+}
+pre > code {
+    all: unset;
+}
+blockquote {
+    border: 1px solid #999;
+    color: #222;
+    padding: 2px 0px 2px 20px;
+    margin: 0px;
+    font-style: italic;
+}
+
+// html {
+//     color-scheme: light dark;
+//     font-family: "IBM Plex Mono", "Courier New", Courier, monospace;
+
+// }
+// :root {
+//     --spacer: 0.5rem;
+//     --transition-backgroundColor: background-color 0.8s ease;
+//     --body-backgroundColor: #fafafa;
+// }
+// *,
+// *::after,
+// *::before {
+//     box-sizing: border-box;
+// }
+// body {
+//     background-color: var(--body-backgroundColor);
+//     line-height: 1.5;
+
+//     /* sticky_footer */
+//     min-height: 100vh;
+//     margin: 0;
+//     display: flex;
+//     flex-direction: column;
+
+//     & > main {
+//         flex-grow: 1;
+//     }
+//     & > footer {
+//         margin-top: auto;
+//     }
+// }
+
+// main > article {
+//     width: min(70ch, 100% - 4rem);
+//     margin-inline: auto;
+// }
+// pre {
+//     white-space: pre-wrap;
+//     word-wrap: break-word;
+
+//     /* fixes for markdown? */
+//     :is(& > ol, & > ul) {
+//         line-height: 1;
+//     }
+
+//     .task-list-item {
+//         list-style-type: none;
+//     }
+//     ul ul,
+//     ol ol {
+//         padding-left: 1rem;
+//     }
+// }
+// svg,
+// img,
+// video {
+//     max-width: 100%;
+//     height: auto;
+// }
+// a {
+//     transition: var(--transition-backgroundColor);
+// }
+
+// .small {
+//     @apply text-sm;
+// }
+// .muted {
+//     @apply text-gray-400;
+// }

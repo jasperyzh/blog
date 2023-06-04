@@ -3,19 +3,17 @@ import { getCollection, CollectionEntry } from "astro:content";
 
 import Layout from "../../layouts/Layout.astro";
 import Card from "../../layouts/Card.astro";
-import Pagination from "../../layouts/components/Pagination.astro";
-import CategoryCloud from "../../layouts/components/CategoryCloud.astro";
+import Pagination from "../../layouts/_Pagination.astro";
+// import CategoryCloud from "../../layouts/_CategoryCloud.astro";
 
-import { formatBlogPosts } from "../../layouts/Utils";
+import { formatBlogPosts } from "../../layouts/_Utils";
 
 export async function getStaticPaths({ paginate }) {
   const allPosts = await getCollection("blog");
   const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts);
 
-  console.log(formattedPosts);
-
   return paginate(formattedPosts, {
-    pageSize: 6,
+    pageSize: 4,
   });
 }
 
@@ -25,7 +23,7 @@ const { page } = Astro.props;
 <Layout>
   <section aria-label="New Blog Posts">
     <h1>New Blog Posts</h1>
-    <ul class="tw-grid tw-gap-5 tw-max-w-2xl">
+    <ul class="grid gap-5 max-w-2xl">
       {
         page.data.map((post) => (
           <Card data={post.data} url={post.slug} heading="h2" />
@@ -34,9 +32,4 @@ const { page } = Astro.props;
     </ul>
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
   </section>
-
-  <aside class="container" aria-label="Blog categories">
-    <h2 class="h3">Blog Categories</h2>
-    <CategoryCloud showCount={true} />
-  </aside>
 </Layout>

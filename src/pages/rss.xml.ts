@@ -22,7 +22,7 @@ export async function get(context) {
 import { getCollection, CollectionEntry } from "astro:content";
 
 import rss, { pagesGlobToRssItems } from "@astrojs/rss";
-import { formatBlogPosts } from "../layouts/Utils";
+import { formatBlogPosts } from "../layouts/_Utils";
 
 const postImportResult = await getCollection("blog");
 const posts: CollectionEntry<"blog">[] = formatBlogPosts(postImportResult);

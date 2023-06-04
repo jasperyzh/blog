@@ -1,138 +1,47 @@
 ---
-// components
+// global_style
+import "../styles/global.scss";
+
 import Head from "./Head.astro";
 import Footer from "./Footer.astro";
 import Header from "./Header.astro";
-import Link from "./Link.astro";
-
-import "./_styles.scss";
-
-// effects
-// import EffectGrain from "./EffectGrain.astro";
 
 export interface Props {
   title?: string;
   description?: string;
   image?: string;
-  data?: object;
-  robots?: boolean;
-
-  body_classList?: object;
-  main_classList?: object;
-
-  hide_header?: boolean;
-  hide_footer?: boolean;
-
-  is_bootstrap?: boolean;
 }
 
 const {
   title = import.meta.env.PUBLIC_SITE_TITLE,
   description = import.meta.env.PUBLIC_SITE_DESCRIPTION,
   image,
-  data,
-  robots,
-
-  body_classList,
-  main_classList = ["tw-container"],
-
-  hide_header = false,
-  hide_footer = false,
-
-  /**
-   * BOOTSTRAP
-   *
-   * - add class:is_bootstrap to html; limit the styling of bootstrap to the page
-   *
-   */
-  is_bootstrap = false,
-
-  /* 
-  enable_effect = {
-    grain_overlay: true,
-    bigstream_smoothscroll: true,
-    bootstrap_animation_fixes
-  }
-  */
 } = Astro.props as Props;
 
-const html_classes = [{ is_bootstrap: is_bootstrap }];
+// const body_pathname = [{ frontpage: Astro.url.pathname == "/" }];
 
-const body_classes = [{ frontpage: Astro.url.pathname == "/" }];
-
-const var_html_font_size = is_bootstrap ? "16px" : "14px";
+// <!-- google font? -->
+//     <link rel="preconnect" href="https://fonts.googleapis.com" />
+//     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+//     <link
+//       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+//       rel="stylesheet"
+//     />
 ---
 
 <!DOCTYPE html>
-<html lang="en" class:list={html_classes}>
-  <Head {title} {description} {image} {data} {robots} />
+<html lang="en">
+  <head>
+    <Head {title} {description} {image} />
+  </head>
 
-  <body class:list={[body_classes, body_classList]}>
-    <!-- <slot name="effect">
-      <EffectGrain />
-    </slot> -->
+  <body>
+    <Header />
 
-    {
-      !hide_header ? (
-        <Header />
-      ) : (
-        <Link
-          href="/"
-          classList={["tw-absolute tw-opacity-50 tw-z-10 tw-right-0 "]}
-        >
-          Back to Home
-        </Link>
-      )
-    }
+    <main id="site-main" aria-label="site-main">
+      <slot />
+    </main>
 
-    <!-- slot="main" to replace default styling; now you're thinking with slot -->
-    <slot name="main">
-      <!-- slot="default" -->
-      <main id="content" class:list={main_classList}>
-        <slot />
-      </main>
-    </slot>
-
-    {!hide_footer && <Footer />}
-
-    <!-- 
-      // enable_effect
-      <script is:inline src="/js/BigStream-SmoothScroll.js">
-      // experimental_relic
-    </script> -->
-
-    <style define:vars={{ var_html_font_size }} is:global>
-      html {
-        font-size: var(--var_html_font_size);
-      }
-      /* noise_grainy_effect */
-      /* https://www.youtube.com/watch?v=_ZFghigBmqo */
-      html {
-        position: relative;
-
-        &:after {
-          position: absolute;
-          left: 0;
-          top: 0;
-          content: "";
-          width: 100%;
-          height: 100%;
-          z-index: 9999;
-          background: #000;
-          filter: url(#grainy) brightness(0.9);
-          mix-blend-mode: soft-light;
-          pointer-events: none;
-          opacity: 0.3;
-        }
-      }
-    </style>
-
-    <svg>
-      <filter id="grainy">
-        <feTurbulence type="fractalNoise" baseFrequency="0.608"></feTurbulence>
-        <feComposite operator="in" in2="SourceGraphic" result="monoNoise"
-        ></feComposite>
-      </filter>
-    </svg>
+    <Footer />
   </body>
 </html>

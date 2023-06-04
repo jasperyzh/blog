@@ -1,6 +1,18 @@
 ---
-import Icon from "astro-icon";
+import type { HTMLAttributes } from "astro/types";
 
+type Props = HTMLAttributes<"a">;
+
+const { href, class: className, ...props } = Astro.props;
+
+const { pathname } = Astro.url;
+const isActive = href === pathname || href === pathname.replace(/\/$/, "");
+
+/* 
+// https://icon-sets.iconify.design/ant-design/
+// https://icon-sets.iconify.design/ph/
+
+import Icon from "astro-icon";
 interface Props {
   href: string;
   classList?: object;
@@ -20,13 +32,24 @@ const {
   icon_left,
   icon_right,
   ...rest
-} = Astro.props as Props;
-
-// https://icon-sets.iconify.design/ant-design/
-// https://icon-sets.iconify.design/ph/
+} = Astro.props as Props; */
 ---
 
-<a class:list={["link", classList]} href={href} {...rest}>
+<a href={href} class:list={[className, { active: isActive }]} {...props}>
+  <slot />
+</a>
+<style>
+  a {
+    display: inline-block;
+    text-decoration: none;
+  }
+  a.active {
+    font-weight: bolder;
+    text-decoration: underline;
+  }
+</style>
+
+<!-- <a class:list={["link", classList]} href={href} {...rest}>
   {
     icon_left && (
       <Icon
@@ -49,7 +72,8 @@ const {
     )
   }
 </a>
-<style>
+ -->
+<!-- <style>
   a.link {
     display: inline-flex;
     align-items: center;
@@ -57,7 +81,8 @@ const {
     padding: 0.25rem;
     border-radius: 0.25rem;
   }
-  :where(a.active, a:hover) {
+  :where(a.link.active, a.link:hover) {
     background-color: rgba(0 0 0 / 8%);
   }
 </style>
+ -->
