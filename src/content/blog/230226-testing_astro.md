@@ -1,14 +1,13 @@
 ---
 title: Testing AstroJS
 pubDate: 221120
-author: jy
 image: {
-  src: "/placeholder-post.jpg",
+  src: "/placeholder.jpg",
   alt: "A picture of a coder",
 }
 description: Find out what makes Astro awesome!
 draft: false
-category: CSS
+tag: general
 ---
 
 firstpost of the blog, coming from .md

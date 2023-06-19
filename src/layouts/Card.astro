@@ -1,73 +1,52 @@
 ---
 // import { Debug } from "astro/components";
-import { Image } from "@astrojs/image/components";
+// import { Image } from "@astrojs/image/components";
 import { slugify, dateToNumber } from "../layouts/_Utils";
-// import Link from "./Link.astro";
+import Link from "./Link.astro";
 
-const { data, url, heading } = Astro.props;
+import Img from "./Img.astro";
+
+const { data, url, heading, classes } = Astro.props;
 
 const Heading = heading;
 
 const {
   title = "",
   pubDate = "",
-  author = "",
   image = "",
   description = "",
-  category = "",
+  tag = "",
 } = data;
+
 ---
 
-<article class="card flex gap-4 items-start">
-  <!-- <figure>
-    <a class="tags" href={`/blog/category/${slugify(category)}/`}
-      ><span class="badge">{category}</span>
-    </a>
-    <a href={`/blog/${url}/`} aria-hidden="true" tabindex="-1">
-      <Image
-        src={image.src}
-        alt={image.alt}
-        width="400"
-        height="300"
-        format="webp"
-        fit="cover"
-        quality={80}
-        aspectRatio={4 / 3}
-      />
-    </a>
-  </figure> -->
-  <!-- <Image
-    src={image.src}
-    alt={image.description}
-    width="92"
-    height="92"
-    format="webp"
-    fit="cover"
-    quality={80}
-    aspectRatio={1 / 1}
-    class="object-contain"
-  /> -->
-  <img src={image.src} alt={image.description} />
+<article class:list={["card", classes]} >
+  <Img src={image.src} alt={image.description} />
+  <!-- <Img src={image} alt={`helloworld`} /> -->
+
   <div class="content">
-    <p>
-      <!-- by <a href={`/author/${slugify(author)}/`}>{author}</a> |  -->
-      {dateToNumber(pubDate)} | <a href={`/blog/category/${slugify(category)}/`}
-        >{category}</a
-      >
+    <p class="meta">
+      {dateToNumber(pubDate)} | {tag.join(", ")}
     </p>
-    <Heading class="heading">
-      <a href={`/blog/${url}/`}>
+    <Heading class="title">
+      <Link href={`/blog/${url}/`}>
         {title}
-      </a>
+      </Link>
     </Heading>
-    <p class="description">{description}</p>
+    <p>{description}</p>
   </div>
-  <!-- <footer>
-    <Link
-      href={`/blog/${url}/`}
-      text="Read post"
-      style="secondary"
-      class="mt-auto"
-    />
-  </footer> -->
 </article>
+<style>
+  .card {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .card * {
+    margin: 0;
+    padding: 0;
+  }
+  .meta {
+    font-size: var(--size-sm);
+  }
+</style>

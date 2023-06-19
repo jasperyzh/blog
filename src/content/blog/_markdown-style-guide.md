@@ -7,7 +7,7 @@ image: {
   src: "/images/post-2.jpg",
   alt: "A picture of a coder looking at markdown",
 }
-draft: false
+draft: true
 category: General
 ---
 

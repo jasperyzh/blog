@@ -1,6 +1,7 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content";
-import LayoutBlogPost from "../../layouts/LayoutBlogPost.astro";
+import Layout from "../../layouts/Layout.astro";
+import Link from "../../layouts/Link.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -14,8 +15,34 @@ type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content } = await post.render();
+
+const { title, description, image, pubDate } = post.data;
 ---
 
-<LayoutBlogPost {...post.data}>
-  <Content />
-</LayoutBlogPost>
+<Layout {title} {description}>
+  <article>
+    {image && <img class="mb-sm" src={image.src} alt={image.alt} />}
+
+    <date>
+      {
+        pubDate &&
+          new Date(pubDate).toLocaleDateString(undefined, {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+          })
+      }
+    </date>
+
+    <h1>{title}</h1>
+
+    <Content />
+  </article>
+  <Link
+    class="prev mb-sm"
+    style="cursor: pointer"
+    onclick="event.preventDefault(); window.history.back();"
+  >
+    Back
+  </Link>
+</Layout>

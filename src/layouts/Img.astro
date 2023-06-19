@@ -1,0 +1,23 @@
+---
+// [How To Load Images and placeholders](https://www.youtube.com/watch?v=hJ7Rg1821Q0)
+
+// - [ ] add placeholder and smooth transition for images
+
+const {
+    src,
+    alt,
+    width = "92",
+    height = "92",
+    variant = "default",
+    ...props
+} = Astro.props;
+---
+
+<img {src} {alt} class:list={[variant]} {width} {height} loading="lazy" />
+
+<style>
+    img.default {
+        aspect-ratio: 1/1;
+        object-fit: cover;
+    }
+</style>

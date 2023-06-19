@@ -20,7 +20,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
     description={SITE_DESCRIPTION}
     image="/placeholder/image.jpg"
 >
+<pre>
+  - [ ] add modal
+  - [ ] craft portfolio
+</pre>
     <div class="wrapper">
+        <img src="/placeholder-300x300.svg" />
+        <img src="/placeholder-300x300.svg" />
         <img src="/placeholder-300x300.svg" />
         <img src="/placeholder-300x300.svg" />
         <img src="/placeholder-300x300.svg" />
@@ -44,3 +50,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
     <QuickLink />
   </section> -->
 </Layout>
+<style>
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+  img {
+    width: 100%;
+  }
+</style>

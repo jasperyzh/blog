@@ -1,124 +1,67 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Link from "../layouts/Link.astro";
 
-// import { formatBlogPosts } from "../layouts/_Utils";
-// import Card from "../layouts/Card.astro";
-// import QuickLink from "./_quicklink.astro";
+import { formatBlogPosts } from "../layouts/_Utils";
+import Card from "../layouts/Card.astro";
 
 // blog
-// import { getCollection, CollectionEntry } from "astro:content";
-// const allPosts = await getCollection("blog");
-// const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts, {
-//   limit: 4,
-// });
+import { getCollection, CollectionEntry } from "astro:content";
+const allPosts = await getCollection("blog");
+const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts, {
+	limit: 2,
+});
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
-<Layout
-  title={SITE_TITLE}
-  description={SITE_DESCRIPTION}
-  image="/placeholder/image.jpg"
->
-  <div class="wrapper">
-    <h1>🧑‍🚀 Hello, Astronaut!</h1>
-    <p>Welcome to my experiment playground!</p>
-    <p>
-      Have fun! If you get stuck, remember to <a
-        href="https://docs.astro.build/"
-        >read the docs
-      </a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-    </p>
-    <p>
-      Looking for a blog template with a bit more personality? Check out <a
-        href="https://github.com/Charca/astro-blog-template"
-        >astro-blog-template
-      </a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-    </p>
-  </div>
+<Layout>
+	
+	<h2>Latest Posts</h2>
+	{
+		formattedPosts.map((post) => (
+			<Card data={post.data} url={post.slug} heading="h2" classes="mb-lg my-sm" />
+		))
+	}
 
-  <style is:global>
-    #site-main {
-      display: flex;
-      align-items: center;
-    }
-  </style>
-
-  <!-- <section id="blog_highlight">
-    <ul class="grid gap-5 max-w-2xl">
-      {
-        formattedPosts.map((post) => (
-          <Card data={post.data} url={post.slug} heading="h2" />
-        ))
-      }
-    </ul>
-  </section> -->
-
-  <!-- <section id="currentwork">
-    <h2>Quick Links</h2>
-    <p>Fast travel to latest experimentations</p>
-    <QuickLink />
-  </section> -->
+	<hr>
+	
+	<h1>🪅 Welcome to my Digital Universe!</h1>
+	<p>
+		Hello there! I'm a web developer who spends his days and sometimes
+		nights exploring the expanse of the digital universe, creating engaging
+		websites, cracking code mysteries, and transforming business ideas into
+		digital realities. This is my space to share my journey, thoughts, and
+		learnings.
+	</p>
+	<p>
+		In my blog, you'll find a mix of everything - from technical deep-dives
+		into web development topics and tutorials, to my musings about the
+		latest industry trends, and even some nuggets of wisdom I've picked up
+		along my coding journey. Whether you're a fellow developer, a curious
+		mind, or just a visitor, I hope you find something of interest here.
+	</p>
+	<p>
+		Aside from blogging, I also work on various projects, many of which you
+		can find in the portfolio section. It showcases my work and the cool
+		projects I've had the opportunity to be a part of. Take a look, and if
+		you're intrigued, don't hesitate to reach out for a chat.
+	</p>
+	<p>
+		Remember, this journey is continuous, and I am always learning. If you
+		have any suggestions, insights, or just want to chat about web dev
+		stuff, don't hesitate to connect with me.
+	</p>
+	<nav class="quicklinks">
+		<Link href="/blog" class="back">Explore My Blog</Link>
+		<Link href="/work" class="back">Visit My Portfolio</Link>
+	</nav>
+	<p>Enjoy your time here, and happy coding! 🚀</p>
 </Layout>
 
-<!-- import Layout from '../layouts/BlogPost.astro'; -->
-<!-- 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	updatedDate={new Date('August 08 2022')}
-	heroImage="/placeholder-about.jpg"
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
-
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
-
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
-
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
-
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout> -->
+<style>
+	nav.quicklinks {
+		display: inline-flex;
+		gap: var(--size-sm);
+	}
+</style>

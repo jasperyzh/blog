@@ -1,35 +1,155 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
+// [use local fonts over loading via /public](https://www.youtube.com/watch?v=lksnr4e-npo)
+// [Switzer](https://www.fontshare.com/fonts/switzer
+@font-face {
+    font-family: "Switzer";
+    src: local("Switzer Regular"), url("/fonts/Switzer-Regular.woff2") format("woff2"),
+        url("/fonts/Switzer-Regular.woff") format("woff"), url("/fonts/Switzer-Regular.ttf") format("ttf");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Switzer";
+    src: local("Switzer Italic"), url("/fonts/Switzer-Italic.woff2") format("woff2"),
+        url("/fonts/Switzer-Italic.woff") format("woff"), url("/fonts/Switzer-Italic.ttf") format("ttf");
+    font-style: italic;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Switzer";
+    src: local("Switzer Bold"), url("/fonts/Switzer-Bold.woff2") format("woff2"),
+        url("/fonts/Switzer-Bold.woff") format("woff"), url("/fonts/Switzer-Bold.ttf") format("ttf");
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Switzer";
+    src: local("Switzer Bold Italic"), url("/fonts/Switzer-BoldItalic.woff2") format("woff2"),
+        url("/fonts/Switzer-BoldItalic.woff") format("woff"), url("/fonts/Switzer-BoldItalic.ttf") format("ttf");
+    font-style: italic;
+    font-weight: 700;
+}
+
+// global_style
+:root {
+    --html-fontSize: 16px;
+    --html-fontFamily: Switzer, Verdana, Geneva, Tahoma, sans-serif;
+
+    --body-maxWidth: 72ch;
+    --body-color: #555;
+    --body-backgroundColor: #fefdfc;
+
+    --size: 1.608rem;
+    --size-sm: calc(0.608rem * 1.608);
+    --size-lg: calc(1.608rem * 2);
+
+    --dark: #222;
+    --light: #f2f2f2;
+    --grey: #999;
+}
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    color-scheme: light dark;
+    font-family: var(--html-fontFamily);
+    font-size: var(--html-fontSize);
+}
 body {
-    font-family: Verdana, sans-serif;
-    margin: auto;
-    padding: 20px;
-    max-width: 65ch;
-    text-align: left;
-    background-color: #fff;
+    max-width: var(--body-maxWidth);
+    background-color: var(--body-backgroundColor);
+    color: var(--body-color);
+    padding: var(--size) var(--size-sm);
+
+    line-height: 1.5;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    line-height: 1.5;
-    color: #444;
+
+}
+hr {
+    width: 100%;
+    border-top: none;
+    border-color: var(--grey);
+    margin: var(--size-sm) auto;
+}
+h1 {
+    font-size: calc(var(--size) * 1.608);
+}
+h2 {
+    font-size: calc(var(--size) * 1.11);
+}
+h3 {
+    font-size: calc(var(--size) * 1.06);
+}
+h4 {
+    font-size: calc(var(--size) * 1.02);
+}
+h5 {
+    font-size: var(--size);
+}
+h6 {
+    font-size: calc(var(--size) * 0.8);
 }
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
-strong,
-b {
-    color: #222;
+h6 {
+    margin: 0 0 var(--size) 0;
+    line-height: 1.2;
 }
-a {
-    color: #3273dc;
+pre {
+    padding: var(--size);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+
+    /* fixes for markdown? */
+    :is(& > ol, & > ul) {
+        line-height: 1;
+    }
+
+    .task-list-item {
+        list-style-type: none;
+    }
+    ul ul,
+    ol ol {
+        padding-left: 1rem;
+    }
 }
-nav a {
-    margin-right: 10px;
+code {
+    padding: var(--size-sm);
+    background-color: var(--light);
+}
+pre > code {
+    all: unset;
+}
+content {
+    line-height: 1.8;
+}
+blockquote {
+    border: 1px solid var(--grey);
+    color: var(--dark);
+    padding: var(--size-sm) 0px var(--size-sm) var(--size-lg);
+    margin: 0;
+    font-style: italic;
+}
+svg,
+img,
+video {
+    max-width: 100%;
+    height: auto;
+}
+table {
+    width: 100%;
+}
+small {
+    font-size: var(--size-sm);
 }
 textarea {
     width: 100%;
@@ -38,101 +158,42 @@ textarea {
 input {
     font-size: 16px;
 }
-content {
-    line-height: 1.6;
+
+// utilities
+$sizes: (
+    "": var(--size),
+    "-sm": var(--size-sm),
+    "-lg": var(--size-lg),
+);
+
+$directions: (
+    "t": "top",
+    "b": "bottom",
+    "s": "left",
+    "e": "right",
+);
+@each $suffix, $size in $sizes {
+    .m#{$suffix} {
+        margin: $size;
+    }
+
+    .p#{$suffix} {
+        padding: $size;
+    }
+
+    @each $dirSuffix, $dir in $directions {
+        .m#{$dirSuffix}#{$suffix} {
+            margin-#{$dir}: $size;
+        }
+
+        .p#{$dirSuffix}#{$suffix} {
+            padding-#{$dir}: $size;
+        }
+    }
 }
-table {
-    width: 100%;
+.small {
+    font-size: var(--size-sm);
 }
-img {
-    max-width: 100%;
-    height: auto;
+.muted {
+    color: var(--grey);
 }
-code {
-    padding: 2px 5px;
-    background-color: #f2f2f2;
-}
-pre {
-    padding: 1rem;
-}
-pre > code {
-    all: unset;
-}
-blockquote {
-    border: 1px solid #999;
-    color: #222;
-    padding: 2px 0px 2px 20px;
-    margin: 0px;
-    font-style: italic;
-}
-
-// html {
-//     color-scheme: light dark;
-//     font-family: "IBM Plex Mono", "Courier New", Courier, monospace;
-
-// }
-// :root {
-//     --spacer: 0.5rem;
-//     --transition-backgroundColor: background-color 0.8s ease;
-//     --body-backgroundColor: #fafafa;
-// }
-// *,
-// *::after,
-// *::before {
-//     box-sizing: border-box;
-// }
-// body {
-//     background-color: var(--body-backgroundColor);
-//     line-height: 1.5;
-
-//     /* sticky_footer */
-//     min-height: 100vh;
-//     margin: 0;
-//     display: flex;
-//     flex-direction: column;
-
-//     & > main {
-//         flex-grow: 1;
-//     }
-//     & > footer {
-//         margin-top: auto;
-//     }
-// }
-
-// main > article {
-//     width: min(70ch, 100% - 4rem);
-//     margin-inline: auto;
-// }
-// pre {
-//     white-space: pre-wrap;
-//     word-wrap: break-word;
-
-//     /* fixes for markdown? */
-//     :is(& > ol, & > ul) {
-//         line-height: 1;
-//     }
-
-//     .task-list-item {
-//         list-style-type: none;
-//     }
-//     ul ul,
-//     ol ol {
-//         padding-left: 1rem;
-//     }
-// }
-// svg,
-// img,
-// video {
-//     max-width: 100%;
-//     height: auto;
-// }
-// a {
-//     transition: var(--transition-backgroundColor);
-// }
-
-// .small {
-//     @apply text-sm;
-// }
-// .muted {
-//     @apply text-gray-400;
-// }
