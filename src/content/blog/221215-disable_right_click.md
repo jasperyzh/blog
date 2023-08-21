@@ -3,6 +3,7 @@ title: Disabling Right-Click on Your Website
 description: Learn how to prevent the right-click action on your website.
 pubDate: 221215
 tag: webdev, guide
+draft: true
 ---
 
 Disabling right-click on your website can be achieved with a simple JavaScript code snippet. By intercepting the right-click event, you can stop it from triggering the default browser context menu. Let's look at how this can be done:

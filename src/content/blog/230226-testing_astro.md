@@ -6,7 +6,7 @@ image: {
   alt: "A picture of a coder",
 }
 description: Find out what makes Astro awesome!
-draft: false
+draft: true
 tag: general
 ---
 

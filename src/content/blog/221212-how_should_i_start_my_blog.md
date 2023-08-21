@@ -3,6 +3,8 @@ title: "Embarking on Your Blogging Journey: A Starter Guide"
 description: Unraveling the complexity of launching a blog.
 pubDate: 221212
 tag: general
+draft: true
+
 ---
 
 Starting a blog can initially appear daunting, but with a clear step-by-step guide, you can navigate the process with confidence. Here's a roadmap to set you on the right path:

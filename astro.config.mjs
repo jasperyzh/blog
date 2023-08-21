@@ -8,7 +8,8 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://jasperyong.com",
   experimental: {
-    assets: true
+    assets: true,
+    viewTransitions: true
   },
   integrations: [
     sitemap({

@@ -11,6 +11,14 @@ draft: true
 category: General
 ---
 
+---
+- Use I instead of We
+- Avoid using too much jargons
+- Add links to websites where you see fits; use raw-html (a:href open in new tab)
+- 
+
+---
+
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
 
 ## Headings

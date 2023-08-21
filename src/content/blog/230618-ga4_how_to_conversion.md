@@ -6,7 +6,7 @@ image: {
   src: "/assets/placeholder.jpg",
   alt: "A picture of a coder",
 }
-draft: false
+draft: true
 tag: webdev
 ---
 

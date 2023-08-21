@@ -16,47 +16,31 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
 <Layout>
-	
 	<h2>Latest Posts</h2>
 	{
 		formattedPosts.map((post) => (
-			<Card data={post.data} url={post.slug} heading="h2" classes="mb-lg my-sm" />
+			<Card
+				data={post.data}
+				url={post.slug}
+				heading="h2"
+				classes="mb-lg my-sm"
+			/>
 		))
 	}
 
-	<hr>
-	
-	<h1>🪅 Welcome to my Digital Universe!</h1>
+	<hr />
+
+	<h1>Welcome to my digital hub! 🪅</h1>
 	<p>
-		Hello there! I'm a web developer who spends his days and sometimes
-		nights exploring the expanse of the digital universe, creating engaging
-		websites, cracking code mysteries, and transforming business ideas into
-		digital realities. This is my space to share my journey, thoughts, and
-		learnings.
-	</p>
-	<p>
-		In my blog, you'll find a mix of everything - from technical deep-dives
-		into web development topics and tutorials, to my musings about the
-		latest industry trends, and even some nuggets of wisdom I've picked up
-		along my coding journey. Whether you're a fellow developer, a curious
-		mind, or just a visitor, I hope you find something of interest here.
-	</p>
-	<p>
-		Aside from blogging, I also work on various projects, many of which you
-		can find in the portfolio section. It showcases my work and the cool
-		projects I've had the opportunity to be a part of. Take a look, and if
-		you're intrigued, don't hesitate to reach out for a chat.
-	</p>
-	<p>
-		Remember, this journey is continuous, and I am always learning. If you
-		have any suggestions, insights, or just want to chat about web dev
-		stuff, don't hesitate to connect with me.
+		A site where I <span style="color: #ccc; font-size:12px">"</span> write <span style="color: #ccc; font-size:12px">"</span> simple articles about complex topics in coding and tech, sometime not. You'll find discussions, trend analyses, lessons and my my portfolio. Whether you're a developer or just curious, explore my blog, and say hi!
 	</p>
 	<nav class="quicklinks">
 		<Link href="/blog" class="back">Explore My Blog</Link>
 		<Link href="/work" class="back">Visit My Portfolio</Link>
 	</nav>
-	<p>Enjoy your time here, and happy coding! 🚀</p>
+	<p>
+		<strong>Enjoy your visit and happy learning! 🚀</strong>
+	</p>
 </Layout>
 
 <style>

@@ -2,32 +2,44 @@
 // [Switzer](https://www.fontshare.com/fonts/switzer
 @font-face {
     font-family: "Switzer";
-    src: local("Switzer Regular"), url("/fonts/Switzer-Regular.woff2") format("woff2"),
-        url("/fonts/Switzer-Regular.woff") format("woff"), url("/fonts/Switzer-Regular.ttf") format("ttf");
+    src:
+        local("Switzer Regular"),
+        url("/fonts/Switzer-Regular.woff2") format("woff2"),
+        url("/fonts/Switzer-Regular.woff") format("woff"),
+        url("/fonts/Switzer-Regular.ttf") format("ttf");
     font-style: normal;
     font-weight: 400;
 }
 
 @font-face {
     font-family: "Switzer";
-    src: local("Switzer Italic"), url("/fonts/Switzer-Italic.woff2") format("woff2"),
-        url("/fonts/Switzer-Italic.woff") format("woff"), url("/fonts/Switzer-Italic.ttf") format("ttf");
+    src:
+        local("Switzer Italic"),
+        url("/fonts/Switzer-Italic.woff2") format("woff2"),
+        url("/fonts/Switzer-Italic.woff") format("woff"),
+        url("/fonts/Switzer-Italic.ttf") format("ttf");
     font-style: italic;
     font-weight: 400;
 }
 
 @font-face {
     font-family: "Switzer";
-    src: local("Switzer Bold"), url("/fonts/Switzer-Bold.woff2") format("woff2"),
-        url("/fonts/Switzer-Bold.woff") format("woff"), url("/fonts/Switzer-Bold.ttf") format("ttf");
+    src:
+        local("Switzer Bold"),
+        url("/fonts/Switzer-Bold.woff2") format("woff2"),
+        url("/fonts/Switzer-Bold.woff") format("woff"),
+        url("/fonts/Switzer-Bold.ttf") format("ttf");
     font-style: normal;
     font-weight: 700;
 }
 
 @font-face {
     font-family: "Switzer";
-    src: local("Switzer Bold Italic"), url("/fonts/Switzer-BoldItalic.woff2") format("woff2"),
-        url("/fonts/Switzer-BoldItalic.woff") format("woff"), url("/fonts/Switzer-BoldItalic.ttf") format("ttf");
+    src:
+        local("Switzer Bold Italic"),
+        url("/fonts/Switzer-BoldItalic.woff2") format("woff2"),
+        url("/fonts/Switzer-BoldItalic.woff") format("woff"),
+        url("/fonts/Switzer-BoldItalic.ttf") format("ttf");
     font-style: italic;
     font-weight: 700;
 }
@@ -48,6 +60,13 @@
     --dark: #222;
     --light: #f2f2f2;
     --grey: #999;
+
+    --h1: calc(var(--size) * 1.608);
+    --h2: calc(var(--size) * 1.11);
+    --h3: var(--size);
+    --h4: calc(var(--size) * 0.95);
+    --h5: calc(var(--size) * 0.9);
+    --h6: calc(var(--size) * 0.8);
 }
 *,
 *::before,
@@ -69,7 +88,6 @@ body {
     line-height: 1.5;
     word-wrap: break-word;
     overflow-wrap: break-word;
-
 }
 hr {
     width: 100%;
@@ -78,22 +96,22 @@ hr {
     margin: var(--size-sm) auto;
 }
 h1 {
-    font-size: calc(var(--size) * 1.608);
+    font-size: var(--h1);
 }
 h2 {
-    font-size: calc(var(--size) * 1.11);
+    font-size: var(--h2);
 }
 h3 {
-    font-size: calc(var(--size) * 1.06);
+    font-size: var(--h3);
 }
 h4 {
-    font-size: calc(var(--size) * 1.02);
+    font-size: var(--h4);
 }
 h5 {
-    font-size: var(--size);
+    font-size: var(--h5);
 }
 h6 {
-    font-size: calc(var(--size) * 0.8);
+    font-size: var(--h6);
 }
 h1,
 h2,
@@ -123,7 +141,7 @@ pre {
     }
 }
 code {
-    padding: var(--size-sm);
+    padding: 0.2rem 0.4rem;
     background-color: var(--light);
 }
 pre > code {
@@ -163,14 +181,14 @@ input {
 $sizes: (
     "": var(--size),
     "-sm": var(--size-sm),
-    "-lg": var(--size-lg),
+    "-lg": var(--size-lg)
 );
 
 $directions: (
     "t": "top",
     "b": "bottom",
     "s": "left",
-    "e": "right",
+    "e": "right"
 );
 @each $suffix, $size in $sizes {
     .m#{$suffix} {
@@ -196,4 +214,17 @@ $directions: (
 }
 .muted {
     color: var(--grey);
+}
+
+article.blog.single{
+    .blog-featured-image {
+        width: 100%;
+        object-fit: cover;
+        aspect-ratio: 3/1;
+        margin-bottom: 1rem;
+    }
+    iframe {
+        width: 100%;
+        aspect-ratio: 16/9;
+    }
 }

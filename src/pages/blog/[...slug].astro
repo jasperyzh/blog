@@ -16,12 +16,14 @@ type Props = CollectionEntry<"blog">;
 const post = Astro.props;
 const { Content } = await post.render();
 
-const { title, description, image, pubDate } = post.data;
+const { title, description, pubDate } = post.data;
+
+const image = post.slug;
 ---
 
 <Layout {title} {description}>
-  <article>
-    {image && <img class="mb-sm" src={image.src} alt={image.alt} />}
+  <article class="blog single">
+    <img class="blog-featured-image" src={`/assets/${image}.png`} />
 
     <date>
       {

@@ -5,6 +5,7 @@ export interface Props {
   image?: string;
 }
 
+import { ViewTransitions } from "astro:transitions";
 import { SITE_TITLE } from "../consts";
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -47,4 +48,6 @@ const seo_title = title !== SITE_TITLE ? `${title} | ${SITE_TITLE}` : title;
   <meta property="twitter:title" content={title} />
   <meta property="twitter:description" content={description} />
   <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+  <ViewTransitions />
 </head>

@@ -6,7 +6,7 @@ image: {
   src: "/placeholder.jpg",
   alt: "A picture of a coder",
 }
-draft: false
+draft: true
 tag: general
 ---
 
