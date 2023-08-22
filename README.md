@@ -3,8 +3,8 @@ keeping it simple, stupid
 
 ## quick_links
 - [MarkdownGuide](https://www.markdownguide.org/basic-syntax/)
-- [realtimecolors](https://realtimecolors.com/);
-- [stacksorted](https://stacksorted.com/buttons);
+- [realtimecolors](https://realtimecolors.com/)
+- [stacksorted](https://stacksorted.com/buttons)
 - [icons8](https://icons8.com/)
 - [spline](https://spline.design/)
 
