@@ -8,10 +8,10 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://jasperyong.com",
   base: '/',
-  experimental: {
-    assets: true,
-    viewTransitions: true
-  },
+  // experimental: {
+  //   assets: true,
+  //   viewTransitions: true
+  // },
   integrations: [
     sitemap({
       // https://docs.astro.build/en/guides/integrations-guide/sitemap/
@@ -20,3 +20,4 @@ export default defineConfig({
     //   partytown(),
   ],
 });
+

@@ -1,9 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Link from "../layouts/Link.astro";
+// import Link from "../layouts/Link.astro";
 ---
 
 <Layout title="404 Page Not Found">
-  <h1>404: not_found</h1>
-  <Link href="/" class="back">Back to Homepage</Link>
+  <main class="d-flex flex-column align-items-center justify-content-center">
+    <h1>(╯°□°）╯ ︵ <span>404: not_found</span></h1>
+    <a href="/" class="back">go_home</a>
+  </main>
 </Layout>
+<style>
+  span {
+    display: inline-block;
+    rotate: 180deg;
+    font-family: monospace;
+  }
+</style>

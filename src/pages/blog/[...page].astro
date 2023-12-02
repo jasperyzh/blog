@@ -1,18 +1,16 @@
 ---
-import { getCollection, CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 
 import Layout from "../../layouts/Layout.astro";
-import Card from "../../layouts/Card.astro";
-import Pagination from "../../layouts/_Pagination.astro";
-
-import { formatBlogPosts } from "../../layouts/_Utils";
 
 export async function getStaticPaths({ paginate }) {
   const allPosts = await getCollection("blog");
-  const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts);
 
-  return paginate(formattedPosts, {
-    pageSize: 6,
+  // Filter out draft posts
+  const publishedPosts = allPosts.filter(post => !post.data.draft);
+
+  return paginate(publishedPosts, {
+    pageSize: 20,
   });
 }
 
@@ -21,19 +19,30 @@ const { page } = Astro.props;
 
 <Layout>
   <!-- sort by tag|date -->
-
-  <section id="blog-posts">
-    {
-      page.data.map((post) => (
-        <Card data={post.data} url={post.slug} heading="h2" image={post.slug} />
-      ))
-    }
-    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
-  </section>
+  <main>
+    <section class="container section-sm">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <ul class="list-unstyled">
+            {
+              page.data.map((post) => (
+                <li key={post.id}>
+                  <div class="d-flex align-items-center">
+                    <!-- <div class="flex-shrink-0">
+                      <img src="..." alt="..." />
+                    </div> -->
+                    <div class="flex-grow-1 ms-3">
+                      <a href={`/blog/${post.slug}`}><h2 class="fs-5">{post.data.title}</h2></a>
+                      <p>{post.data.description}</p>
+                    </div>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+          <!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} /> -->
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
-<style>
-  #blog-posts {
-    display: grid;
-    gap: var(--size);
-  }
-</style>

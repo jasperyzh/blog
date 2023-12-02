@@ -1,51 +1,47 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Link from "../layouts/Link.astro";
-
-import { formatBlogPosts } from "../layouts/_Utils";
-import Card from "../layouts/Card.astro";
-
-// blog
-import { getCollection, CollectionEntry } from "astro:content";
-const allPosts = await getCollection("blog");
-const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts, {
-	limit: 2,
-});
-
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
 <Layout>
-	<h2>Latest Posts</h2>
-	{
-		formattedPosts.map((post) => (
-			<Card
-				data={post.data}
-				url={post.slug}
-				heading="h2"
-				classes="mb-lg my-sm"
-			/>
-		))
-	}
-
-	<hr />
-
-	<h1>Welcome to my digital hub! 🪅</h1>
-	<p>
-		A site where I <span style="color: #ccc; font-size:12px">"</span> write <span style="color: #ccc; font-size:12px">"</span> simple articles about complex topics in coding and tech, sometime not. You'll find discussions, trend analyses, lessons and my my portfolio. Whether you're a developer or just curious, explore my blog, and say hi!
-	</p>
-	<nav class="quicklinks">
-		<Link href="/blog" class="back">Explore My Blog</Link>
-		<!-- <Link href="/work" class="back">Visit My Portfolio</Link> -->
-	</nav>
-	<p>
-		<strong>Enjoy your visit and happy learning! 🚀</strong>
-	</p>
+  <main class="d-flex flex-column align-items-center justify-content-center">
+    <h1>
+      (。・∀・)ﾉ*:･ﾟhello_world
+      <div class="stack">
+        <span class="animate--moveUpDown" style="--animation-delay: 0">🌟</span>
+        <span class="animate--moveUpDown" style="--animation-delay: .314s"
+          >🌟</span
+        >
+        <span class="animate--moveUpDown" style="--animation-delay: .628s"
+          >🌟</span
+        >
+      </div>
+    </h1>
+  </main>
 </Layout>
-
 <style>
-	nav.quicklinks {
-		display: inline-flex;
-		gap: var(--size-sm);
-	}
+  span {
+    display: inline-block;
+    font-family: monospace;
+    font-size: 1rem;
+    filter: drop-shadow(3px 3px 12px rgba(252 213 63 / 1));
+  }
+  @keyframes moveUpDown {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(
+        -1.5rem
+      ); /* Adjust the value to control the height of the bounce */
+    }
+  }
+  .stack {
+    display: inline-block;
+  }
+
+  .animate--moveUpDown {
+    animation: moveUpDown 2s ease-in-out infinite;
+    animation-delay: var(--animation-delay, 0);
+  }
 </style>

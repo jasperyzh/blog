@@ -1,3 +1,19 @@
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+// darkmode
+html {
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+// utility
+.section-sm {
+    position: relative;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+/* 
 // [use local fonts over loading via /public](https://www.youtube.com/watch?v=lksnr4e-npo)
 // [Switzer](https://www.fontshare.com/fonts/switzer
 @font-face {
@@ -127,7 +143,6 @@ pre {
     white-space: pre-wrap;
     word-wrap: break-word;
 
-    /* fixes for markdown? */
     :is(& > ol, & > ul) {
         line-height: 1;
     }
@@ -190,25 +205,6 @@ $directions: (
     "s": "left",
     "e": "right"
 );
-@each $suffix, $size in $sizes {
-    .m#{$suffix} {
-        margin: $size;
-    }
-
-    .p#{$suffix} {
-        padding: $size;
-    }
-
-    @each $dirSuffix, $dir in $directions {
-        .m#{$dirSuffix}#{$suffix} {
-            margin-#{$dir}: $size;
-        }
-
-        .p#{$dirSuffix}#{$suffix} {
-            padding-#{$dir}: $size;
-        }
-    }
-}
 .small {
     font-size: var(--size-sm);
 }
@@ -227,4 +223,4 @@ article.blog.single{
         width: 100%;
         aspect-ratio: 16/9;
     }
-}
+} */

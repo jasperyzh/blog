@@ -1,12 +1,14 @@
 ---
 title: "Mastering the Art of Habit Formation: A Deep Dive into Atomic Habits"
-description: Drawing insights from James Clear's "Atomic Habits". Learn practical tips and real-world applications to improve your habits and your life.into your site.
+description: Drawing insights from James Clear's "Atomic Habits". Learn practical tips and real-world applications to improve your habits and your life.
 pubDate: 230831
 draft: false
-tag: routine
+tags:
+  - routine
 ---
 
 Habit formation is a topic that has fascinated psychologists, self-help gurus, and everyday people alike. The power of habits to shape our lives is undeniable, but how do we harness this power effectively? This blog post aims to provide a comprehensive guide to understanding and mastering habits, drawing insights from James Clear's book "Atomic Habits" and its various video summaries.
+
 
 ## The Science of Habits
 

@@ -1,0 +1,43 @@
+---
+// source: https://getbootstrap.com/docs/5.3/examples/footers/
+
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_YEAR } from "../consts";
+---
+
+<footer>
+  <div class="container py-3">
+    <div class="row pt-3 border-top">
+      <div class="col-md-4">
+        <p>
+          Just a blog to collect my thought and learning.
+          <br />Enjoy your visit, happy learning, thanks for your time! 🚀
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="d-flex flex-wrap justify-content-between align-items-center py-3"
+    >
+      <div class="col-md-4 d-flex align-items-center">
+        <span class="mb-3 mb-md-0 text-body-secondary"
+          >&copy; {SITE_YEAR} {SITE_TITLE}</span
+        >
+      </div>
+
+      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="ms-3">
+          <a class="text-body-secondary" href="#"><i class="bi-twitter"></i></a>
+        </li>
+        <li class="ms-3">
+          <a class="text-body-secondary" href="#"
+            ><i class="bi-instagram"></i></a
+          >
+        </li>
+        <li class="ms-3">
+          <a class="text-body-secondary" href="#"><i class="bi-facebook"></i></a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>

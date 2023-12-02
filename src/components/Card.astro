@@ -1,8 +1,8 @@
 ---
 // import { Debug } from "astro/components";
 // import { Image } from "@astrojs/image/components";
-import { slugify, dateToNumber } from "../layouts/_Utils";
-import Link from "./Link.astro";
+import { slugify, dateToNumber } from "./_Utils";
+// import Link from "./Link.astro";
 
 const { data, url, heading, classes } = Astro.props;
 
@@ -31,9 +31,9 @@ const image = url;
       {dateToNumber(pubDate)} | {tag.join(", ")}
     </p>
     <Heading class="title">
-      <Link href={`/blog/${url}/`}>
+      <a href={`/blog/${url}/`}>
         {title}
-      </Link>
+      </a>
     </Heading>
     <p>{description}</p>
   </div>

@@ -1,7 +1,7 @@
 import { getCollection, CollectionEntry } from "astro:content";
 
 import rss, { pagesGlobToRssItems } from "@astrojs/rss";
-import { formatBlogPosts } from "../layouts/_Utils";
+import { formatBlogPosts } from "../components/_Utils";
 
 const postImportResult = await getCollection("blog");
 const posts: CollectionEntry<"blog">[] = formatBlogPosts(postImportResult);
