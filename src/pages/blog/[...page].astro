@@ -2,44 +2,43 @@
 import { getCollection } from "astro:content";
 
 import Layout from "../../layouts/Layout.astro";
+import BlogList from "../../components/BlogList.astro";
 
 export async function getStaticPaths({ paginate }) {
   const allPosts = await getCollection("blog");
 
   // Filter out draft posts
-  const publishedPosts = allPosts.filter(post => !post.data.draft);
+  const publishedPosts = allPosts.filter((post) => !post.data.draft);
 
-  return paginate(publishedPosts, {
-    pageSize: 20,
+  // Sort posts by title in ascending order
+  const sortedPosts = publishedPosts.sort((a, b) => {
+    const titleA = a.data.title.toLowerCase(); // to handle case-insensitivity
+    const titleB = b.data.title.toLowerCase(); // to handle case-insensitivity
+    if (titleA < titleB) {
+      return 1;
+    }
+    if (titleA > titleB) {
+      return -1;
+    }
+    return 0;
+  });
+
+  return paginate(sortedPosts, {
+    pageSize: 12,
   });
 }
 
 const { page } = Astro.props;
+
 ---
 
 <Layout>
-  <!-- sort by tag|date -->
   <main>
     <section class="container section-sm">
       <div class="row justify-content-center">
         <div class="col-md-8">
-          <ul class="list-unstyled">
-            {
-              page.data.map((post) => (
-                <li key={post.id}>
-                  <div class="d-flex align-items-center">
-                    <!-- <div class="flex-shrink-0">
-                      <img src="..." alt="..." />
-                    </div> -->
-                    <div class="flex-grow-1 ms-3">
-                      <a href={`/blog/${post.slug}`}><h2 class="fs-5">{post.data.title}</h2></a>
-                      <p>{post.data.description}</p>
-                    </div>
-                  </div>
-                </li>
-              ))
-            }
-          </ul>
+          <BlogList page={page.data} />
+
           <!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} /> -->
         </div>
       </div>

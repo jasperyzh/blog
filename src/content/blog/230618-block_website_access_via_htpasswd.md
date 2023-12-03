@@ -1,13 +1,10 @@
 ---
-title: Securing Your WordPress Staging Site with Basic Password Protection 
+title: Securing Your WordPress Staging Site with Basic Password Protection
 description: A step-by-step guide to securing your staging WordPress site using .htaccess and .htpasswd files.
 pubDate: 230618
-image: {
-  src: "/assets/placeholder.jpg",
-  alt: "A picture of a coder",
-}
 draft: true
-tag: webdev
+tags:
+  - webdev
 ---
 
 ## A step-by-step guide to securing your staging WordPress site using .htaccess and .htpasswd files.

@@ -1,13 +1,10 @@
 ---
 title: Personal Website Progress 2023
 description: Took me long to get to this stage, over-complicate task and stage fright procrastinate. At least its up now.
-pubDate: 230606 
-image: {
-  src: "/placeholder.jpg",
-  alt: "A picture of a coder",
-}
+pubDate: 230606
 draft: true
-tag: journal
+tags:
+  - journal
 ---
 
 ## The Journey of Refinement: Months Spent in Streamlining

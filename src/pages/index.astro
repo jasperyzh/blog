@@ -1,5 +1,28 @@
 ---
+import { getCollection } from "astro:content";
+
 import Layout from "../layouts/Layout.astro";
+import BlogList from "../components/BlogList.astro";
+
+const allPosts = await getCollection("blog");
+
+const blog_posts = allPosts
+  .filter((post) => !post.data.draft) // Filter out drafts
+  .sort((a, b) => {
+    // Compare titles for sorting in descending order
+    const titleA = a.data.title.toLowerCase();
+    const titleB = b.data.title.toLowerCase();
+    if (titleA < titleB) {
+      return 1; // Place b before a for descending order
+    }
+    if (titleA > titleB) {
+      return -1; // Place a before b for descending order
+    }
+    return 0;
+  });
+
+  console.log('blog_posts', blog_posts);
+
 ---
 
 <Layout>
@@ -16,6 +39,14 @@ import Layout from "../layouts/Layout.astro";
         >
       </div>
     </h1>
+
+    <section class="container section-sm">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <BlogList page={blog_posts} />
+        </div>
+      </div>
+    </section>
   </main>
 </Layout>
 <style>

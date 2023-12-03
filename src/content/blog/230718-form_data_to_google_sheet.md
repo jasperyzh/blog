@@ -1,9 +1,10 @@
 ---
-title: "Creating a Simple Form to Google Sheets Database"
+title: Creating a Simple Form to Google Sheets Database
 description: Looking for an efficient, easy-to-implement way to capture and store this data, consider using Google Sheets as a makeshift database.
 pubDate: 230718
-draft: false
-tag: webdev
+draft: true
+tags:
+  - webdev
 ---
 
 ## A Step-by-Step Guide subtitle: Learn how to leverage Google Sheets as a makeshift database for capturing form data on your website, while also considering the critical aspects of data security.

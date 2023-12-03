@@ -1,7 +1,10 @@
 # blog
 
-- [ ] dark mode (BsThemeButton.astro - issue with cross-page)
 
+- 231204 - completed setup p5js boilerplate template
+
+
+- [ ] dark mode (BsThemeButton.astro - issue with cross-page)
 - [ ] (curious) can add sidebar content via .md?
 
 ## requirements

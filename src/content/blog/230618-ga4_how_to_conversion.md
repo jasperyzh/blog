@@ -2,12 +2,9 @@
 title: How to Configure GA4 Goals and Conversions
 description: A Short guide on how to configure GA4 "Goals" and conversion. Setting up custom events and how to view it.
 pubDate: 230618
-image: {
-  src: "/assets/placeholder.jpg",
-  alt: "A picture of a coder",
-}
 draft: true
-tag: webdev
+tags:
+  - webdev
 ---
 
 In Google Analytics 4 (GA4), the concept of 'goals' from Universal Analytics has been replaced with 'conversions'. This change in terminology reflects a shift in how we measure user success on our websites. Whether it's making a purchase, signing up for an account, or downloading an ebook, these actions can all be defined as conversions. But how do we set up these conversions in GA4? Let's dive in.

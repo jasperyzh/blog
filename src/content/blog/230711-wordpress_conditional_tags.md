@@ -2,12 +2,9 @@
 title: Understanding WordPress Conditional Tags
 description: WordPress conditional tags enable developers to control the content flow based on specific conditions.
 pubDate: 230711
-image: {
-  src: "/assets/placeholder.jpg",
-  alt: "A picture of a coder",
-}
 draft: true
-tag: webdev
+tags:
+  - webdev
 ---
 
 ## What are WordPress Conditional Tags?

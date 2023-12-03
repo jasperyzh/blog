@@ -2,8 +2,10 @@
 title: "UXUI Design: KISS"
 description: "Dive into UI/UX design with the world's shortest course! Learn user flow, wireframing, design systems, and more in just minutes. 🎨 #webdesign #quickguide"
 pubDate: 230821
-draft: false
-tag: webdev, uxui
+draft: true
+tags:
+  - webdev
+  - uxui
 ---
 
 ## Step 1: User Flow - Mapping the Journey

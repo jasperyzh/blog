@@ -2,12 +2,9 @@
 title: "Importing Data from a CSV File: A Guide for WordPress Developers"
 description: Learn how to import data from CSV files into WordPress and create/update posts and pages. Streamline your data import process as a web developer.
 pubDate: 230713
-image: {
-  src: "/assets/placeholder.jpg",
-  alt: "A picture of a coder",
-}
 draft: true
-tag: webdev
+tags:
+  - webdev
 ---
 
 As a web developer working with WordPress, you often encounter situations where you need to import a large amount of data into your website. One efficient and convenient method to accomplish this is by using a CSV (Comma-Separated Values) file. In this blog post, we will explore the process of importing data from a CSV file and creating/updating posts and pages in WordPress. This guide aims to provide valuable insights and practical steps for web developers who want to streamline their data import process.

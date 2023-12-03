@@ -2,12 +2,9 @@
 title: Optimizing Google Fonts for Speed and Security
 description: Google Fonts is an amazing resource that many web developers rely on for their projects
 pubDate: 230614
-image: {
-  src: "/assets/placeholder.jpg",
-  alt: "A picture of a coder",
-}
 draft: true
-tag: webdev
+tags:
+  - webdev
 ---
 
 Google Fonts is an amazing resource that many web developers rely on for their projects. However, there are speed and security issues associated with using Google Fonts directly. In this post, we will explore these issues and provide a solution on how to write your own custom font-face declaration for better performance and security.
