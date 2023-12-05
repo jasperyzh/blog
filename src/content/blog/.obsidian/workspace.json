@@ -25,14 +25,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Untitled.md",
+                "file": "Setup for website development.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "7a26914ebd7bcb5f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "The Malaysian's Favourite Clock.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -98,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Untitled.md",
+                "file": "The Malaysian's Favourite Clock.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Untitled.md",
+                "file": "The Malaysian's Favourite Clock.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Untitled.md"
+                "file": "The Malaysian's Favourite Clock.md"
               }
             }
           }
@@ -159,14 +171,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2037f445b8dde1c9",
+  "active": "7a26914ebd7bcb5f",
   "lastOpenFiles": [
-    "On capturing my processing work - ccapturejs.md",
+    "Setup for website development.md",
     "Untitled.md",
+    "The Malaysian's Favourite Clock.md",
+    "On capturing my processing work - ccapturejs.md",
     "231204-circles_goes_wiggling.md",
     "231126-mvp of blog and portfolio.md",
     "Setup for my generative art.md",
-    "Setup for website development.md",
     "231202-nice_ai_art.md",
     "Setup for Blog & Portfolio.md",
     "sketch/231204-circles_goes_wiggling.mp4",
@@ -197,7 +210,6 @@
     "assets/testest.png",
     "assets/DALL·E 2023-11-26 13.11.39 - Create an image of Kuala Lumpur in the 1930s depicted as a low-polygon 3D model scene. The artwork should show the evolution of the city with more mod copy.jpg",
     "assets",
-    "230611-my_webdev_goal.md",
     "template"
   ]
 }

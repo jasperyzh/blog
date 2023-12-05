@@ -21,11 +21,6 @@ import Layout from "../layouts/Layout.astro";
     }
   </style>
   <script is:inline>
-    var ENABLE_BUTTONAB = true;
-    var ENABLE_BUTTONG = true;
-    let overlayLeft = false; // To toggle left overlay
-    let overlayRight = false; // To toggle right overlay
-
     function setup_canvas() {
       let _canvas = createCanvas(512, 512);
       _canvas.parent("canvas");
@@ -33,66 +28,6 @@ import Layout from "../layouts/Layout.astro";
       background(13);
     }
 
-    function draw_canvas() {
-      if (ENABLE_BUTTONAB) {
-        push();
-        draw_canvas_buttonab();
-        pop();
-      }
-    }
-
-    function draw_canvas_buttonab() {
-      // Draw left overlay if 'A' key is held
-      if (overlayLeft) {
-        noStroke();
-        fill(255, 0, 0, 100); // Semi-transparent red
-        rect(0, 0, width / 2, height); // Left half
-      }
-
-      // Draw right overlay if 'B' key is held
-      if (overlayRight) {
-        noStroke();
-        fill(0, 0, 255, 100); // Semi-transparent blue
-        rect(width / 2, 0, width / 2, height); // Right half
-      }
-    }
-
-    function keyPressed_canvas() {
-      if (ENABLE_BUTTONAB) {
-        if (key === "A" || key === "a") {
-          overlayLeft = !overlayLeft; // Toggle left overlay
-        }
-        if (key === "B" || key === "b") {
-          overlayRight = !overlayRight; // Toggle right overlay
-        }
-      }
-
-      if (ENABLE_BUTTONG && key === "G") record_gif();
-    }
-
-    function keyReleased_canvas() {
-      if (ENABLE_BUTTONAB) {
-        if (key === "A" || key === "a") {
-          overlayLeft = false; // Deactivate left overlay
-        }
-        if (key === "B" || key === "b") {
-          overlayRight = false; // Deactivate right overlay
-        }
-      }
-    }
-
-    function record_gif(
-      filename = "the_malaysians_clock.gif",
-      duration = 4,
-      options = {
-        units: "seconds", // Could be 'seconds' if you prefer seconds
-        delay: 0, // Delay of 2 seconds before starting the recordingF
-      }
-    ) {
-      saveGif(filename, duration, options);
-    }
-  </script>
-  <script is:inline>
     // sketch
     let yellow = [255, 224, 26];
     let blue = [8, 9, 146];
@@ -112,19 +47,7 @@ import Layout from "../layouts/Layout.astro";
       push();
       draw_clock();
       pop();
-
-      draw_canvas();
     }
-
-    function keyPressed() {
-      keyPressed_canvas();
-    }
-    function keyReleased() {
-      keyReleased_canvas();
-    }
-    /* function windowResized() {
-      resizeCanvas(windowWidth, windowHeight);
-    } */
 
     function draw_clock() {
       // Translate the origin to the center of the canvas
