@@ -4,22 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "e2593dd26441a4cb",
+        "id": "2a75aa87351c135d",
         "type": "tabs",
         "children": [
           {
-            "id": "1623c3177179e2de",
+            "id": "4de78af4d82e0ac1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "231202-nice_ai_art.md",
+                "file": "On capturing my processing work - ccapturejs.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "2037f445b8dde1c9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Untitled.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "231202-nice_ai_art.md",
+                "file": "Untitled.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "231202-nice_ai_art.md",
+                "file": "Untitled.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "231202-nice_ai_art.md"
+                "file": "Untitled.md"
               }
             }
           }
@@ -146,9 +159,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "1623c3177179e2de",
+  "active": "2037f445b8dde1c9",
   "lastOpenFiles": [
+    "On capturing my processing work - ccapturejs.md",
+    "Untitled.md",
     "231204-circles_goes_wiggling.md",
+    "231126-mvp of blog and portfolio.md",
+    "Setup for my generative art.md",
+    "Setup for website development.md",
+    "231202-nice_ai_art.md",
+    "Setup for Blog & Portfolio.md",
     "sketch/231204-circles_goes_wiggling.mp4",
     "sketch/231204-Wigglewigglewiggle.mp4",
     "sketch/231204-circles_goes_wiggling.gif",
@@ -171,8 +191,6 @@
     "230606-personal_website_progress.md",
     "230609-figma_crash_course.md",
     "230614-optimizing_google_fonts.md",
-    "231202-nice_ai_art.md",
-    "231126-mvp of blog and portfolio.md",
     "'./assets/test.jpg'.md",
     "'./assets",
     "'.",
@@ -180,7 +198,6 @@
     "assets/DALL·E 2023-11-26 13.11.39 - Create an image of Kuala Lumpur in the 1930s depicted as a low-polygon 3D model scene. The artwork should show the evolution of the city with more mod copy.jpg",
     "assets",
     "230611-my_webdev_goal.md",
-    "230226-testing_astro.md",
     "template"
   ]
 }

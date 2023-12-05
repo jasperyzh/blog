@@ -11,12 +11,14 @@ import Header from "./Header.astro";
 import Footer from "./Footer.astro";
 
 export interface Props {
+  empty_canvas?: boolean;
   title?: string;
   description?: string;
   image?: string;
 }
 
 const {
+  empty_canvas = false,
   title = SITE_TITLE,
   description = SITE_DESCRIPTION,
   image,
@@ -29,11 +31,11 @@ const {
 
   <body class="sticky-footer">
     <div class="wrapper">
-      <Header />
+      {!empty_canvas && <Header />}
 
       <slot />
 
-      <Footer />
+      {!empty_canvas && <Footer />}
     </div>
     <style is:global>
       /* sticky_footer */
