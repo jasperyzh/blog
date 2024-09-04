@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+
+import Layout from "../../layouts/Layout.astro";
+import EntriesOne from "../../components/template-parts/EntriesOne.astro";
+
+import Pagination from "../../components/template-parts/Pagination.astro";
+
+const allPosts = await getCollection("posts");
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  // add pagination
+  
+);
+---
+
+<Layout>
+  <!-- 
+  title='Blog'
+  description='Brutal Blog | On this page you can find a collection of blogposts'
+  pageTitle='Brutal Blog' -->
+  <main>
+    <section class="container">
+        <ul class="grid__posts">
+          {
+            sortedPosts.map((post) => (
+              <EntriesOne
+                url={"/posts/" + post.slug}
+                title={post.data.title}
+                description={post.data.description}
+                alt={post.data.title}
+                pubDate={post.data.pubDate.toString().slice(0, 10)}
+                author={post.data.author}
+                image={post.data.image}
+                tags={post.data.tags}
+              />
+            ))
+          }
+        </ul>
+
+        <!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} /> -->
+      </div>
+    </section>
+  </main>
+</Layout>

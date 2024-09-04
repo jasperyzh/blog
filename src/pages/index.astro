@@ -2,142 +2,47 @@
 import { getCollection } from "astro:content";
 
 import Layout from "../layouts/Layout.astro";
-import BlogList from "../components/BlogList.astro";
+import EntriesOne from "../components/template-parts/EntriesOne.astro";
 
-const allPosts = await getCollection("blog");
+import ContactForm from "../components/ContactForm.astro";
 
-const blog_posts = allPosts
-  .filter((post) => !post.data.draft) // Filter out drafts
-  .sort((a, b) => {
-    // Compare titles for sorting in descending order
-    const titleA = a.data.title.toLowerCase();
-    const titleB = b.data.title.toLowerCase();
-    if (titleA < titleB) {
-      return 1; // Place b before a for descending order
-    }
-    if (titleA > titleB) {
-      return -1; // Place a before b for descending order
-    }
-    return 0;
-  });
+const allPosts = await getCollection("posts");
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+
+// Sort posts by date in descending order (newest first)
+const sortedPosts = allPosts
+  .sort((a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate))
+  .slice(0, 4);
 ---
 
-<Layout>
+<Layout large_banner={true}>
   <main class="d-flex flex-column align-items-center justify-content-center">
-    <h1>
-      (。・∀・)ﾉ*:･ﾟhello_world
-      <div class="stack">
-        <span class="animate--moveUpDown" style="--animation-delay: 0">🌟</span>
-        <span class="animate--moveUpDown" style="--animation-delay: .314s"
-          >🌟</span
-        >
-        <span class="animate--moveUpDown" style="--animation-delay: .628s"
-          >🌟</span
-        >
-      </div>
-    </h1>
-
-    <section class="container section-sm">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <BlogList page={blog_posts} />
-        </div>
-      </div>
+    <section class="container">
+      <!-- <ol role="list" class="flex flex-wrap gap-3">
+          {
+            tags.map((tag) => (
+              <li class="inline-flex items-center uppercase mx-auto hover:text-blue-500 text-xs font-medium text-black">
+                <a href={`/tags/${tag}`}>{tag}</a>
+              </li>
+            ))
+          }
+        </ol> -->
+      <ul class="grid__posts">
+        {
+          sortedPosts.map((post) => (
+            <EntriesOne
+              url={"/posts/" + post.slug}
+              title={post.data.title}
+              description={post.data.description}
+              alt={post.data.title}
+              pubDate={post.data.pubDate.toString().slice(0, 10)}
+              author={post.data.author}
+              image={post.data.image}
+              tags={post.data.tags}
+            />
+          ))
+        }
+      </ul>
     </section>
-
-    <hr />
-
-    <!-- modify this form HTML and place wherever you want your form -->
-    <div class="container">
-      <form
-        class="row"
-        id="my-form"
-        action="https://formspree.io/f/xdoqowbb"
-        method="POST"
-      >
-        <div class="col col-md-6 mx-auto">
-          <h2>Drop me a message! :)</h2>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" name="email" />
-          </div>
-
-          <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea class="form-control" name="message" rows="3"></textarea>
-          </div>
-
-          <button type="submit" id="my-form-button" class="btn btn-primary"
-            >Submit</button
-          >
-
-          <p id="my-form-status"></p>
-        </div>
-      </form>
-    </div>
-    <!-- Place this script at the end of the body tag -->
-    <script is:inline>
-      var form = document.getElementById("my-form");
-      async function handleSubmit(event) {
-        event.preventDefault();
-        var status = document.getElementById("my-form-status");
-        var data = new FormData(event.target);
-        fetch(event.target.action, {
-          method: form.method,
-          body: data,
-          headers: {
-            Accept: "application/json",
-          },
-        })
-          .then((response) => {
-            if (response.ok) {
-              status.innerHTML = "Thanks for your submission!";
-              form.reset();
-            } else {
-              response.json().then((data) => {
-                if (Object.hasOwn(data, "errors")) {
-                  status.innerHTML = data["errors"]
-                    .map((error) => error["message"])
-                    .join(", ");
-                } else {
-                  status.innerHTML =
-                    "Oops! There was a problem submitting your form";
-                }
-              });
-            }
-          })
-          .catch((error) => {
-            status.innerHTML = "Oops! There was a problem submitting your form";
-          });
-      }
-      form.addEventListener("submit", handleSubmit);
-    </script>
   </main>
 </Layout>
-<style>
-  span {
-    display: inline-block;
-    font-family: monospace;
-    font-size: 1rem;
-    filter: drop-shadow(3px 3px 12px rgba(252 213 63 / 1));
-  }
-  @keyframes moveUpDown {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(
-        -1.5rem
-      ); /* Adjust the value to control the height of the bounce */
-    }
-  }
-  .stack {
-    display: inline-block;
-  }
-
-  .animate--moveUpDown {
-    animation: moveUpDown 2s ease-in-out infinite;
-    animation-delay: var(--animation-delay, 0);
-  }
-</style>

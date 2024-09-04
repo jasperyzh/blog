@@ -1,15 +1,34 @@
 ---
 // source: https://getbootstrap.com/docs/5.3/examples/navbars/
+// import BsThemeButton from "../components/BsThemeButton.astro";
 
 import { SITE_TITLE } from "../consts";
 
-import BsThemeButton from "../components/BsThemeButton.astro";
+import { Image } from "astro:assets";
+import img_banner from '../assets/240830-blog-banner.jpg';
+
+export interface Props {
+  large_banner?: boolean;
+}
+
+const { large_banner } = Astro.props as Props;
 ---
 
-<header>
-  <nav class="navbar navbar-expand-lg">
-    <div class="container col-lg-8">
-      <a class="navbar-brand" href="/">{SITE_TITLE}</a>
+<header class="my-3">
+  <nav class="navbar navbar-expand-sm">
+    <div class="container header_layout">
+      <!-- pagebanner -->
+      <div class={`page-banner${large_banner ? " page-banner--large" : ""}`}>
+        <!-- insert banner image -->
+        <Image src={img_banner} alt="#" width="3000" height="1000" />
+      </div>
+
+      <!-- logo -->
+      <a class="navbar-brand" href="/">
+        <div class="logo">{SITE_TITLE}</div>
+      </a>
+
+      <!-- menu_toggle -->
       <button
         class="navbar-toggler"
         type="button"
@@ -22,47 +41,97 @@ import BsThemeButton from "../components/BsThemeButton.astro";
         <span class="navbar-toggler-icon"></span>
       </button>
 
+      <!-- menu -->
       <div class="collapse navbar-collapse" id="navbar_primary">
-        <ul class="navbar-nav ms-auto me-0 mb-2 mb-lg-0">
+        <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" href="/">home</a>
+            <a class="nav-link active" href="/posts">blog</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="/blog">blog</a>
-          </li>
-          <!-- <li class="nav-item">
             <a class="nav-link active" href="/portfolio">portfolio</a>
-          </li> -->
-          <!-- <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            data-bs-toggle="dropdown"
-            aria-expanded="false">Dropdown</a
-          >
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li> -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/about">about</a>
+          </li>
         </ul>
-        <!-- <form role="search">
-        <input
-          class="form-control"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-      </form> -->
-      <!-- <BsThemeButton /> -->
+      </div>
+
+      <!-- soc_med -->
+      <div class="nav-social">
+        <a href="https://www.instagram.com/"
+          ><img src="/images/instagram.png" /></a
+        >
       </div>
     </div>
   </nav>
 </header>
+
+<style>
+  .page-banner {
+    width: 100%;
+    background-color: #ddd; /* placeholder color */
+    background-size: cover;
+    background-position: center;
+    aspect-ratio: 3/1;
+
+    border-radius: var(--bs-border-radius); 
+    overflow: hidden;
+
+    @media screen and (min-width: 768px) {
+      aspect-ratio: 5/1;
+    }
+  }
+
+  .page-banner--large {
+    aspect-ratio: 3/1;
+  }
+
+  .header_layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (min-width: 768px) {
+      grid-template-columns: auto 1fr;
+      grid-template-rows: 1fr auto;
+      .navbar-brand {
+        display: block;
+        height: 100%;
+        grid-column: 1/1;
+        grid-row: 1/-1;
+        z-index: 10;
+        align-self: self-start;
+      }
+      .page-banner {
+        grid-column: 1/-1;
+        grid-row: 1/2;
+      }
+      .navbar-toggler {
+        grid-column: 2/3;
+        grid-row: 1/2;
+      }
+      .navbar-collapse {
+        grid-column: 2/ -1;
+        grid-row: 2/-1;
+      }
+      .nav-social {
+        display: none;
+        /* grid-column: -1/ -1;
+        grid-row: 1/1; */
+      }
+    }
+  }
+
+  .navbar-brand {
+    margin: 1rem;
+    .logo {
+      position: sticky;
+      top: 1rem;
+      aspect-ratio: 1/1;
+      width: 120px;
+      background: #ccc;
+    }
+  }
+</style>

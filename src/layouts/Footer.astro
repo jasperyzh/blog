@@ -4,40 +4,73 @@
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_YEAR } from "../consts";
 ---
 
-<footer>
-  <div class="container py-3">
-    <div class="row pt-3 border-top">
-      <div class="col-md-4">
-        <p>
-          A blog with collection of my thought and learnings.
-          <br />Enjoy your visit, happy learning & thank you for your time!
-        </p>
-      </div>
-    </div>
-
-    <div
-      class="d-flex flex-wrap justify-content-between align-items-center py-3"
-    >
-      <div class="col-md-4 d-flex align-items-center">
-        <span class="mb-3 mb-md-0 text-body-secondary"
-          >&copy; {SITE_YEAR} {SITE_TITLE}</span
+<footer class="pt-5">
+  <div class="container text-center">
+    <p class="hello_world">
+      {`(`}。・∀・{`)`}ﾉ*:･ﾟhello_world
+      <span class="stars">
+        <span class="star animate--moveUpDown" style="--animation-delay: 0">🌟</span>
+        <span class="star animate--moveUpDown" style="--animation-delay: .314s"
+          >🌟</span
         >
-      </div>
+        <span class="star animate--moveUpDown" style="--animation-delay: .628s"
+          >🌟</span
+        >
+      </span>
+    </p>
 
-      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-        <!-- <li class="ms-3">
-          <a class="text-body-secondary" target="_blank" href="#"><i class="bi-twitter"></i></a>
-        </li> -->
-        <li class="ms-3">
-          <a class="text-body-secondary" target="_blank" href="https://www.instagram.com/jasperyzh/"
-            ><i class="bi-instagram"></i></a
-          >
-        </li>
-        <!-- <li class="ms-3">
-          <a class="text-body-secondary" target="_blank" href="#"><i class="bi-facebook"></i></a
-          >
-        </li> -->
-      </ul>
-    </div>
+    <p>
+      A blog with collection of learnings and experiments.
+      <br />Hope you enjoy your visit!
+    </p>
+    <p>
+      <a
+        class="text-body-secondary"
+        target="_blank"
+        href="https://www.instagram.com/jasperyzh/"
+        ><i class="bi-instagram"></i></a
+      >
+    </p>
+
+    <p class="copy">
+      &copy;{SITE_YEAR}
+      {SITE_TITLE}
+    </p>
   </div>
 </footer>
+
+<style>
+  .copy,
+  .hello_world {
+    font-size: 0.8rem;
+  }
+  .hello_world {
+    display: inline-block;
+    position: relative;
+  }
+  span.stars {
+    position: absolute;
+    right: -3rem;
+    top: 0;
+    span.star {
+      display: inline-block;
+      font-family: monospace;
+      filter: drop-shadow(3px 3px 12px rgba(252 213 63 / 1));
+    }
+  }
+  .animate--moveUpDown {
+    animation: moveUpDown 2s ease-in-out infinite;
+    animation-delay: var(--animation-delay, 0);
+  }
+  @keyframes moveUpDown {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(
+        -1.5rem
+      ); /* Adjust the value to control the height of the bounce */
+    }
+  }
+</style>
