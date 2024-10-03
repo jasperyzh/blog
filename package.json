@@ -13,10 +13,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/partytown": "^2.1.1",
+    "@astrojs/partytown": "^2.1.2",
     "@astrojs/rss": "^4.0.7",
     "@astrojs/sitemap": "^3.1.6",
-    "astro": "^4.12.3",
+    "astro": "^4.15.4",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "marked": "^13.0.3",
